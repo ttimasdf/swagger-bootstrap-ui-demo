@@ -4,8 +4,7 @@ package com.swagger.bootstrap.ui.demo.common;
 import java.io.Serializable;
 
 /***
- * @since:cloud-sdk 1.0
- * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
+ * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
  */
 public class RestMessage implements Serializable{
 	private boolean success=true;
