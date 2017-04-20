@@ -6,7 +6,6 @@ import java.io.Serializable;
 /***
  * @since:cloud-sdk 1.0
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
- * 2016年3月17日 下午3:28:32
  */
 public class RestMessage implements Serializable{
 	private boolean success=true;
