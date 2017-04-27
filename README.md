@@ -2,19 +2,17 @@
 
 # 说明
 
-因为swagger-bootstrap-ui的jar包没有上传的中央仓库,需要[下载](https://git.oschina.net/xiaoym/swagger-bootstrap-ui/releases)swagger-bootstrap-ui的jar包,然后使用maven install 命令 到本地仓库
+swagger-bootstrap-ui的jar包已经上传到maven中央仓库,可以直接使用，目前的版本是1.1
 
-```java
-mvn install:install-file  -Dfile=swagger-bootstrap-ui-1.0.jar  -DgroupId=com.drore.cloud  -DartifactId=swagger-bootstrap-ui -Dversion=1.0 -Dpackaging=jar
-```
+[中央仓库地址](http://search.maven.org/#search%7Cga%7C1%7Cswagger-bootstrap-ui)
 
-不然maven中的以下配置会报错
+maven配置
 
 ```java
 <dependency>
     <groupId>com.drore.cloud</groupId>
     <artifactId>swagger-bootstrap-ui</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
 </dependency>
 
 ```
