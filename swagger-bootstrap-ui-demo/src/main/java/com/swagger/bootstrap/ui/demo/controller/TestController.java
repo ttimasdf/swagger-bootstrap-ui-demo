@@ -5,10 +5,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /***
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
@@ -20,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @ApiOperation(value = "测试接口1",notes = "测试说明1")
-    @GetMapping(value = "/code")
+    @GetMapping(value = "/xdf_{code}")
     @ApiImplicitParams({@ApiImplicitParam(value = "code",name = "code",dataType = "string",paramType = "path"),@ApiImplicitParam(name = "st",value = "st",dataType = "boolean")})
-    public RestMessage urlpath(String code, Boolean st){
+    public RestMessage urlpath(@PathVariable(value = "code") String code, Boolean st){
         return new RestMessage(code);
     }
 
@@ -30,6 +27,21 @@ public class TestController {
     @PostMapping(value = "/gxx_code")
     @ApiImplicitParams({@ApiImplicitParam(value = "code",name = "code",dataType = "string",paramType = "path"),@ApiImplicitParam(name = "st",value = "st",dataType = "boolean")})
     public RestMessage gxx_code(String code, Boolean st){
+        return new RestMessage(code);
+    }
+
+
+    @ApiOperation(value = "puttest",notes = "puttest测试说明2")
+    @PutMapping(value = "/puttest")
+    @ApiImplicitParam(value = "code",name = "code",dataType = "string")
+    public RestMessage puttest(String code){
+        return new RestMessage(code);
+    }
+
+    @ApiOperation(value = "deletetest",notes = "deletetest测试说明2")
+    @DeleteMapping(value = "/deletetest")
+    @ApiImplicitParam(value = "code",name = "code",dataType = "string")
+    public RestMessage deletetest(@RequestParam(value = "code") String code){
         return new RestMessage(code);
     }
 }
