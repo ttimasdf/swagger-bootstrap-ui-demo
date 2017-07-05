@@ -2,7 +2,7 @@
 
 # 说明
 
-swagger-bootstrap-ui的jar包已经上传到maven中央仓库,可以直接使用，目前的版本是1.1
+swagger-bootstrap-ui的jar包已经上传到maven中央仓库,可以直接使用，目前的版本是1.3
 
 [中央仓库地址](http://search.maven.org/#search%7Cga%7C1%7Cswagger-bootstrap-ui)
 
@@ -12,7 +12,7 @@ maven配置
 <dependency>
     <groupId>com.drore.cloud</groupId>
     <artifactId>swagger-bootstrap-ui</artifactId>
-    <version>1.1</version>
+    <version>1.3</version>
 </dependency>
 
 ```
