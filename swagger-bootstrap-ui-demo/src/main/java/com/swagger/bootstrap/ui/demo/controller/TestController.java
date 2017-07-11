@@ -23,7 +23,7 @@ import java.util.UUID;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
  * 2017/04/20 14:01
  */
-@Api("测试接口")
+@Api(value = "测试",tags = "测试用例")
 @RestController
 @RequestMapping("/api/test")
 public class TestController {

@@ -7,6 +7,8 @@
 
 package com.swagger.bootstrap.ui.demo.domain;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /***
  *
  * @since:swagger-bootstrap-ui-demo 1.0
@@ -15,6 +17,7 @@ package com.swagger.bootstrap.ui.demo.domain;
  */
 public class ReqEntity {
     private String name;
+    @ApiModelProperty(value = "222",example = "555")
     private String tel;
 
     public String getName() {
