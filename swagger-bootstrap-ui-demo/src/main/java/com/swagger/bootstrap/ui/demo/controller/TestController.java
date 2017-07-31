@@ -78,10 +78,13 @@ public class TestController {
     @ApiOperation(value = "header参数",notes = "header参数")
     @ApiImplicitParams({
             @ApiImplicitParam(value = "code",name = "code",dataType = "string",paramType = "query"),
-            @ApiImplicitParam(value = "headerparam",name = "headerparam",dataType = "string",paramType = "header")
+            @ApiImplicitParam(value = "headerparam",name = "headerparam",dataType = "string",paramType = "header"),
+            @ApiImplicitParam(value = "page",name = "page",dataType = "int",paramType = "query"),
+            @ApiImplicitParam(value = "page1",name = "page1",dataType = "Long",paramType = "query")
     })
-    public RestMessage reqbody3(@RequestHeader(value = "headerparam") String headerparam,@RequestParam(value = "code") String code){
-        return new RestMessage(ImmutableMap.of("code",code,"header",headerparam));
+    public RestMessage reqbody3(@RequestHeader(value = "headerparam") String headerparam,@RequestParam(value = "code") String code,
+                                @RequestParam(value = "page") int page,@RequestParam(value = "page1") Long page1){
+        return new RestMessage(ImmutableMap.of("code",code,"header",headerparam,"page",page,"page1",page1));
     }
 
 
