@@ -1,8 +1,8 @@
 /*
- * Copyright (C) 2017 Zhejiang DRORE Technology CO.,LTD.
+ * Copyright (C) 2017 Zhejiang BYCDAO Technology CO.,LTD.
  * All rights reserved.
- * Official Web Site: http://www.drore.com.
- * Developer Web Site: http://open.drore.com.
+ * Official Web Site: http://www.BYCDAO.com.
+ * Developer Web Site: http://open.BYCDAO.com.
  */
 
 package com.swagger.bootstrap.ui.demo.domain;

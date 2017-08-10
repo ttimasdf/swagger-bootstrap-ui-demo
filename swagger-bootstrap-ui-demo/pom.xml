@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.drore.cloud</groupId>
+	<groupId>com.bycdao.cloud</groupId>
 	<artifactId>swagger-bootstrap-ui-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -41,9 +41,9 @@
 			<version>2.7.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.drore.cloud</groupId>
+			<groupId>com.bycdao.cloud</groupId>
 			<artifactId>swagger-bootstrap-ui</artifactId>
-			<version>1.4</version>
+			<version>1.5</version>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>

@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.swagger.bootstrap.ui.demo.common.RestMessage;
+import com.swagger.bootstrap.ui.demo.domain.Menu;
 import com.swagger.bootstrap.ui.demo.domain.ReqEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
