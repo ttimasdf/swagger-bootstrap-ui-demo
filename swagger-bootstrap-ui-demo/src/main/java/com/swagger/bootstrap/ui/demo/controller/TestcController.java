@@ -47,4 +47,10 @@ public class TestcController {
                                 @RequestParam(value = "page") int page,@RequestParam(value = "page1") Long page1){
         return new RestMessage(ImmutableMap.of("code",code,"header",headerparam,"page",page,"page1",page1));
     }
+
+    @DeleteMapping(value = "/xdf/{code}")
+    @ApiImplicitParams({@ApiImplicitParam(value = "code",name = "code",dataType = "Long",paramType = "path")})
+    public RestMessage urlpath(@PathVariable(value = "code") Long code){
+        return new RestMessage(code);
+    }
 }
