@@ -41,8 +41,8 @@ public class TestcController {
     @PostMapping("/select1")
     @ApiOperation(value = "header参数",notes = "header参数")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "code",name = "code",dataType = "RestMessage"),
-            @ApiImplicitParam(value = "headerparam",name = "headerparam",dataType = "String"),
+            @ApiImplicitParam(value = "code",name = "code",dataType = "string"),
+            @ApiImplicitParam(value = "headerparam",name = "headerparam",dataType = "string"),
             @ApiImplicitParam(value = "page",name = "page",dataType = "int",paramType = "query"),
             @ApiImplicitParam(value = "page1",name = "page1",dataType = "Long",paramType = "query")
     })
