@@ -8,7 +8,10 @@
 package com.swagger.bootstrap.ui.demo.controller;
 
 import com.google.common.collect.ImmutableMap;
+import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.common.RestMessage;
+import com.swagger.bootstrap.ui.demo.domain.ReqEntity;
+import com.swagger.bootstrap.ui.demo.domain.RestEetity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -52,5 +55,24 @@ public class TestcController {
     @ApiImplicitParams({@ApiImplicitParam(value = "code",name = "code",dataType = "Long",paramType = "path")})
     public RestMessage urlpath(@PathVariable(value = "code") Long code){
         return new RestMessage(code);
+    }
+    @GetMapping("/rest")
+    public Rest<ReqEntity> rest(){
+        ReqEntity reqEntity=new ReqEntity();
+        reqEntity.setName("张飞");
+        reqEntity.setTel("13093939102");
+       Rest<ReqEntity> restEetity=new Rest<>();
+       restEetity.setData(reqEntity);
+        return restEetity;
+    }
+
+    @GetMapping("/resp")
+    public RestEetity resp(){
+        ReqEntity reqEntity=new ReqEntity();
+        reqEntity.setName("张飞");
+        reqEntity.setTel("13093939102");
+        RestEetity restEetity=new RestEetity();
+        restEetity.setReqEntity(reqEntity);
+        return restEetity;
     }
 }

@@ -16,8 +16,9 @@ import io.swagger.annotations.ApiModelProperty;
  * 2017/07/03 14:58
  */
 public class ReqEntity {
+    @ApiModelProperty(value = "姓名")
     private String name;
-    @ApiModelProperty(value = "222",example = "555")
+    @ApiModelProperty(value = "电话号码",example = "555")
     private String tel;
 
     public String getName() {

@@ -1,15 +1,23 @@
 package com.swagger.bootstrap.ui.demo.common;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 /***
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
  */
+@ApiModel(description = "返回接口类")
 public class RestMessage implements Serializable{
+	@ApiModelProperty(value = "是否成功")
 	private boolean success=true;
+	@ApiModelProperty(value = "返回对象")
 	private Object data;
+	@ApiModelProperty(value = "错误编号")
 	private Integer errCode;
+	@ApiModelProperty(value = "错误信息")
 	private String message;
 	
 
