@@ -15,13 +15,34 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfiguration {
 
-    @Bean
-    public Docket createRestApi() {
+    @Bean(value = "defaultApi")
+    public Docket defaultApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
+                .groupName("默认接口")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo"))
+                .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.controller"))
                 .paths(PathSelectors.any())
+                .build();
+    }
+    @Bean(value = "groupRestApi")
+    public Docket groupRestApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(groupApiInfo())
+                .groupName("分组接口")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.group"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+
+    private ApiInfo groupApiInfo(){
+        return new ApiInfoBuilder()
+                .title("分组Api")
+                .description("swagger-bootstrap-ui-demo RESTful APIs")
+                .termsOfServiceUrl("http://www.group.com/")
+                .contact("group@qq.com")
+                .version("1.0")
                 .build();
     }
 
