@@ -27,9 +27,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/group")
 public class GroupController {
 
-    @PostMapping("/reqbody1")
-    @ApiOperation(value = "ModelAttribute",notes = "ModelAttribute类型参数")
+    @PostMapping("/xxx")
+    @ApiOperation(value = "ModelAttribute",notes = "ModelAttribute类型参数",tags = {"测试用例","分组测试"})
     public RestMessage reqbody1(@ModelAttribute ReqEntity reqEntity){
+        return new RestMessage(reqEntity);
+    }
+    @PostMapping("/reqbody2")
+    @ApiOperation(value = "ModelAttribute",notes = "ModelAttribute类型参数")
+    public RestMessage reqbody2(@ModelAttribute ReqEntity reqEntity){
         return new RestMessage(reqEntity);
     }
 
