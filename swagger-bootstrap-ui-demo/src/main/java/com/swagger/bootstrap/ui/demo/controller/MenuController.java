@@ -7,6 +7,7 @@
 
 package com.swagger.bootstrap.ui.demo.controller;
 
+import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.Menu;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -35,5 +36,20 @@ public class MenuController {
         menu.addChildren(new Menu("label3","菜单3"));
         menu.addChildren(new Menu("label4","菜单4"));
         return menu;
+    }
+
+    @PostMapping("/getRestMenu")
+    @ApiOperation(value = "获取Rest菜单",notes = "获取菜单,考虑递归的情况")
+    public Rest<Menu> getRestMenu(){
+        Menu menu=new Menu("caidan_system","菜单系统");
+
+        menu.addChildren(new Menu("label1","菜单1"));
+        menu.addChildren(new Menu("label2","菜单2"));
+        menu.addChildren(new Menu("label3","菜单3"));
+        menu.addChildren(new Menu("label4","菜单4"));
+
+        Rest<Menu> rest=new Rest<>();
+        rest.setData(menu);
+        return rest;
     }
 }

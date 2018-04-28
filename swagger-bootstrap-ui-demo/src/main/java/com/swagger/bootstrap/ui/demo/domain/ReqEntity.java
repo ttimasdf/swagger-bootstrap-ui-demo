@@ -9,6 +9,9 @@ package com.swagger.bootstrap.ui.demo.domain;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /***
  *
  * @since:swagger-bootstrap-ui-demo 1.0
@@ -20,6 +23,17 @@ public class ReqEntity {
     private String name;
     @ApiModelProperty(value = "电话号码",example = "555",required = false)
     private String tel;
+
+    private List<WorkExperience> workExperiences=new ArrayList<>();
+
+
+    public List<WorkExperience> getWorkExperiences() {
+        return workExperiences;
+    }
+
+    public void setWorkExperiences(List<WorkExperience> workExperiences) {
+        this.workExperiences = workExperiences;
+    }
 
     public String getName() {
         return name;

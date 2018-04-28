@@ -9,6 +9,7 @@ package com.swagger.bootstrap.ui.demo.controller;
 
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.ReqEntity;
+import com.swagger.bootstrap.ui.demo.domain.WorkExperience;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,10 +30,12 @@ public class ApiResponseController {
                 @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
                  })
     @PostMapping("/obj")
-    public Rest<ReqEntity> obj(){
+    public Rest<ReqEntity> obj(ReqEntity rr){
         ReqEntity reqEntity=new ReqEntity();
+        reqEntity.getWorkExperiences().add(new WorkExperience("阿里妈妈","董事长","2011","2018"));
         Rest<ReqEntity> reqEntityRest=new Rest<>();
         reqEntityRest.setData(reqEntity);
         return reqEntityRest;
     }
 }
+
