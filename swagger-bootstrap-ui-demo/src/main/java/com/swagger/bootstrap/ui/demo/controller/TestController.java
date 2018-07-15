@@ -51,7 +51,7 @@ public class TestController {
 
     @ApiOperation(value = "deletetest",notes = "deletetest测试说明2")
     @DeleteMapping(value = "/deletetest")
-    @ApiImplicitParam(value = "code",name = "code",dataType = "string",paramType = "query")
+    @ApiImplicitParam(value = "code",name = "code",dataType = "string",paramType = "query",example = "abcefg")
     public RestMessage deletetest(@RequestParam(value = "code") String code){
         return new RestMessage(code);
     }

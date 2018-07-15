@@ -28,13 +28,13 @@ import java.util.Map;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
  * 2017/09/04 15:49
  */
-@Api(value = "测试ResponseEntity",tags = "测试ResponseEntity")
+@Api(value = "泛型响应",tags = "泛型响应")
 @RequestMapping("/api/resp")
 @RestController
 public class RespController {
 
     @PostMapping("/test")
-    @ApiOperation(value = "string类型",notes = "针对ResponseEntity<String>")
+    @ApiOperation(value = "响应泛型类型为String类型",notes = "针对ResponseEntity<String>")
     public ResponseEntity<String> test(){
         Map<String,Object> map= Maps.newHashMap();
         map.put("message","保存成功");
@@ -44,7 +44,7 @@ public class RespController {
 
     }
     @PostMapping("/test1")
-    @ApiOperation(value = "实体类",notes = "针对ResponseEntity<T>类型")
+    @ApiOperation(value = "响应泛型类型为实体累引用类型",notes = "针对ResponseEntity<T>类型")
     public ResponseEntity<Menu> test1(){
         Menu menu=new Menu("m1","首页");
         return new ResponseEntity<Menu>(menu,new HttpHeaders(), HttpStatus.OK);

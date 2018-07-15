@@ -26,20 +26,26 @@ import java.util.Map;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
  * 2017/08/10 14:47
  */
-@Api(value = "测试C",tags = "测试C")
+@Api(value = "测试路径",tags = "测试路径")
 @RequestMapping("/api/testc")
 @RestController
 public class TestcController {
 
     @PostMapping("/selectLog")
-    @ApiOperation(value = "selectLog",notes = "selectLog")
+    @ApiOperation(value = "RequestBody接收Map参数",notes = "RequestBody接收Map参数")
     public RestMessage selectLog(@RequestBody Map<String,Object> infoMap,
                                  @RequestAttribute(name = "CURRENTUSERID" ) int userId){
         return new RestMessage(infoMap);
     }
 
+    @PostMapping("/examp1")
+    @ApiOperation(value = "ModelAttribute接收实体类参数",notes = "ModelAttribute接收实体类参数,非RequestBody的情况")
+    public RestMessage reqbody1(ReqEntity reqEntity){
+        return new RestMessage(reqEntity);
+    }
+
     @PostMapping("/select1")
-    @ApiOperation(value = "header参数",notes = "header参数")
+    @ApiOperation(value = "请求头Header参数",notes = "请求头Header参数")
     @ApiImplicitParams({
             @ApiImplicitParam(value = "code",name = "code",dataType = "string"),
             @ApiImplicitParam(value = "headerparam",name = "headerparam",dataType = "string"),
@@ -53,9 +59,12 @@ public class TestcController {
 
     @DeleteMapping(value = "/xdf/{code}")
     @ApiImplicitParams({@ApiImplicitParam(value = "code",name = "code",dataType = "Long",paramType = "path")})
+    @ApiOperation(value = "PathVariable路径请求",notes = "PathVariable路径请求")
     public RestMessage urlpath(@PathVariable(value = "code") Long code){
         return new RestMessage(code);
     }
+
+    @ApiOperation(value = "响应泛型对象",notes = "响应泛型对象")
     @GetMapping("/rest")
     public Rest<ReqEntity> rest(){
         ReqEntity reqEntity=new ReqEntity();
@@ -67,6 +76,7 @@ public class TestcController {
     }
 
     @GetMapping("/resp")
+    @ApiOperation(value = "响应一般对象",notes = "响应一般对象")
     public RestEetity resp(){
         ReqEntity reqEntity=new ReqEntity();
         reqEntity.setName("张飞");

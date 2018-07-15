@@ -9,9 +9,11 @@ package com.swagger.bootstrap.ui.demo.controller;
 
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.ReqEntity;
+import com.swagger.bootstrap.ui.demo.domain.WorkExperience;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +30,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/list")
 public class ListController {
+
+    @PostMapping("/query1")
+    @ApiOperation(value = "场馆列表",notes = "获取场馆列表",responseContainer = "List",response = ReqEntity.class)
+    public List<ReqEntity> query1(@RequestBody List<WorkExperience> workExperiences){
+        List<ReqEntity> list=new ArrayList<>();
+        list.add(new ReqEntity());
+        return list;
+    }
 
     @PostMapping("/query")
     @ApiOperation(value = "场馆列表",notes = "获取场馆列表",responseContainer = "List",response = ReqEntity.class)

@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
  * 2017/08/10 14:14
  */
-@Api(value = "菜单",tags = "菜单")
+@Api(value = "菜单信息",tags = "菜单信息")
 @RestController
 @RequestMapping("/api/menu")
 public class MenuController {
 
     @PostMapping("/getMenu")
-    @ApiOperation(value = "获取菜单",notes = "获取菜单,考虑递归的情况")
+    @ApiOperation(value = "递归获取菜单",notes = "获取菜单,考虑递归的情况")
     public Menu getMenu(){
         Menu menu=new Menu("caidan_system","菜单系统");
 
@@ -39,7 +39,7 @@ public class MenuController {
     }
 
     @PostMapping("/getRestMenu")
-    @ApiOperation(value = "获取Rest菜单",notes = "获取菜单,考虑递归的情况")
+    @ApiOperation(value = "响应泛型为菜单Menu对象",notes = "获取菜单,考虑递归的情况")
     public Rest<Menu> getRestMenu(){
         Menu menu=new Menu("caidan_system","菜单系统");
 
