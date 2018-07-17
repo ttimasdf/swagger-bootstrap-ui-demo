@@ -4,6 +4,7 @@ package com.swagger.bootstrap.ui.demo.config;
 import com.google.common.collect.Lists;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -21,7 +22,9 @@ import java.util.List;
 @EnableSwagger2
 public class SwaggerConfiguration {
 
+
     @Bean(value = "defaultApi")
+    @Order(value = 4)
     public Docket defaultApi() {
         ParameterBuilder parameterBuilder=new ParameterBuilder();
         List<Parameter> parameters= Lists.newArrayList();
@@ -38,6 +41,7 @@ public class SwaggerConfiguration {
                 .build().globalOperationParameters(parameters);
     }
     @Bean(value = "groupRestApi")
+    @Order(value = 1)
     public Docket groupRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(groupApiInfo())
