@@ -7,6 +7,8 @@
 
 package com.swagger.bootstrap.ui.demo.domain;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /***
  *
  * @since:swagger-bootstrap-ui 1.0
@@ -14,6 +16,7 @@ package com.swagger.bootstrap.ui.demo.domain;
  * 2018/04/28 10:24
  */
 public class WorkExperience {
+    @ApiModelProperty(value = "公司",required = true,example = "牛B的公司")
     private String company;
     private String role;
     private String start;

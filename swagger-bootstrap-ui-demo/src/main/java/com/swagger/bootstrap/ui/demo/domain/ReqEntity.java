@@ -19,9 +19,9 @@ import java.util.List;
  * 2017/07/03 14:58
  */
 public class ReqEntity {
-    @ApiModelProperty(value = "姓名")
+    @ApiModelProperty(value = "姓名",required = true)
     private String name;
-    @ApiModelProperty(value = "电话号码",example = "555",required = false)
+    @ApiModelProperty(value = "电话号码",example = "555",required = true)
     private String tel;
 
     private List<WorkExperience> workExperiences=new ArrayList<>();

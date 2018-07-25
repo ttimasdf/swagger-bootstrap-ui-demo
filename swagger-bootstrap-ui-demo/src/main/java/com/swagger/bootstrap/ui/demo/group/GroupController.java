@@ -7,8 +7,10 @@
 
 package com.swagger.bootstrap.ui.demo.group;
 
+import com.swagger.bootstrap.ui.demo.common.Language;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.common.RestMessage;
+import com.swagger.bootstrap.ui.demo.domain.Recipt;
 import com.swagger.bootstrap.ui.demo.domain.ReqEntity;
 import com.swagger.bootstrap.ui.demo.domain.ResponseList;
 import io.swagger.annotations.Api;
@@ -50,8 +52,14 @@ public class GroupController {
         ResponseList rl=new ResponseList();
         r.setData(rl);
         return r;
+    }
 
-
+    @PostMapping("/actList")
+    @ApiOperation(value = "actList",notes = "递归参数",tags = {"测试用例","分组测试"})
+    public Rest<Recipt> actList(){
+        Rest<Recipt> r=new Rest<>();
+        r.setData(new Recipt());
+        return r;
     }
 
 }
