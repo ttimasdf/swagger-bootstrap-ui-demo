@@ -7,20 +7,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import springfox.documentation.spring.web.SpringfoxWebMvcConfiguration;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.List;
 
 @SpringBootApplication
-public class SwaggerBootstrapUiDemoApplication  extends WebMvcConfigurerAdapter {
+@ConditionalOnClass(SpringfoxWebMvcConfiguration.class)
+public class SwaggerBootstrapUiDemoApplication  implements WebMvcConfigurer{
+
+	/*@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("doc.html").addResourceLocations("classpath*:/META-INF/resources/");
+		registry.addResourceHandler("/webjars/**").addResourceLocations("classpath*:/META-INF/resources/webjars/");
+	}*/
 
 	private static Logger logger= LoggerFactory.getLogger(SwaggerBootstrapUiDemoApplication.class);
+
 
 	public static void main(String[] args) throws UnknownHostException {
 		ConfigurableApplicationContext application=SpringApplication.run(SwaggerBootstrapUiDemoApplication.class, args);
@@ -39,14 +50,5 @@ public class SwaggerBootstrapUiDemoApplication  extends WebMvcConfigurerAdapter 
 				env.getProperty("server.port"));
 	}
 
-	@Override
-	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-		FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
-		FastJsonConfig fastJsonConfig = new FastJsonConfig();
-		fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat);
-		fastConverter.setFastJsonConfig(fastJsonConfig);
 
-		converters.add(fastConverter);
-		super.configureMessageConverters(converters);
-	}
 }

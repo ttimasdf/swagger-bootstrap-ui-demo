@@ -7,6 +7,7 @@
 
 package com.swagger.bootstrap.ui.demo.domain;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /***
@@ -15,6 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
  * 2018/04/28 10:24
  */
+@ApiModel(description = "工作经验")
 public class WorkExperience {
     @ApiModelProperty(value = "公司",required = true,example = "牛B的公司")
     private String company;

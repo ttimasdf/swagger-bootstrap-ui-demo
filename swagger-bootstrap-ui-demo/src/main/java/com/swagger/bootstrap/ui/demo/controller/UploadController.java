@@ -14,6 +14,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,8 +39,10 @@ import java.util.UUID;
 @RequestMapping("/api/upload")
 public class UploadController {
 
+
+    @Order(value = 3)
     @ApiOperation(value = "文件素材上传接口")
-    @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,dataType = "MultipartFile",dataTypeClass = MultipartFile.class),
+    @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,allowMultiple = true),
             @ApiImplicitParam(name = "title", value = "title", required = true)}
     )
     @RequestMapping(value="/uploadMaterial",method = RequestMethod.POST)
@@ -80,8 +83,9 @@ public class UploadController {
         rm.setData(uploadFiles);
         return rm;
     }
+    @Order(value = 2)
     @ApiOperation(value = "文件素材上传接口1")
-    @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,dataType = "MultipartFile",dataTypeClass = MultipartFile.class),
+    @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,dataType = "MultipartFile",allowMultiple = true),
             @ApiImplicitParam(name = "title", value = "title", required = true)}
     )
     @RequestMapping(value="/uploadMaterial1",method = RequestMethod.POST)
