@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class EnumController {
 
     @PostMapping("/actEumList")
-    @ApiOperation(value = "简单枚举类型",notes = "递归参数-enum-简单枚举",tags = {"测试用例","枚举测试"})
+    @ApiOperation(value = "简单枚举类型",notes = "递归参数-enum-简单枚举",tags = {"枚举测试"})
     public Rest<Recipt> actEumList(Language language){
         Rest<Recipt> r=new Rest<>();
         Recipt rp=new Recipt();
@@ -39,7 +39,7 @@ public class EnumController {
         return r;
     }
     @PostMapping("/actEumsList")
-    @ApiOperation(value = "复杂枚举类型",notes = "递归参数-enum-复杂枚举",tags = {"测试用例","枚举测试"})
+    @ApiOperation(value = "复杂枚举类型",notes = "递归参数-enum-复杂枚举",tags = {"枚举测试"})
     public Rest<Recipt> actEumsList(ErrorCode errorCode){
         Rest<Recipt> r=new Rest<>();
         Recipt rp=new Recipt();
@@ -49,7 +49,7 @@ public class EnumController {
     }
 
     @PostMapping("/actEumssList")
-    @ApiOperation(value = "复杂枚举类型-domain",notes = "递归参数-enum-复杂枚举-domain",tags = {"测试用例","枚举测试"})
+    @ApiOperation(value = "复杂枚举类型-domain",notes = "递归参数-enum-复杂枚举-domain",tags = {"枚举测试"})
     public Rest<EnumDomain> actEumssList(EnumDomain ed){
         Rest<EnumDomain> r=new Rest<>();
         r.setData(ed);

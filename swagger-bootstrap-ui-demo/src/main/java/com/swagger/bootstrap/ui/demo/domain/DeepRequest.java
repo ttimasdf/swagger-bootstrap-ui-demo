@@ -11,23 +11,19 @@ package com.swagger.bootstrap.ui.demo.domain;
  *
  * @since:swagger-bootstrap-ui 1.0
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
- * 2018/07/25 7:45
+ * 2018/08/05 16:46
  */
-public class Actor {
+public class DeepRequest {
+    private String name;
 
     private Recipt recipt;
 
-    private String address;
-    private Integer sort;
-
-    private DeepOne deepOne;
-
-    public DeepOne getDeepOne() {
-        return deepOne;
+    public String getName() {
+        return name;
     }
 
-    public void setDeepOne(DeepOne deepOne) {
-        this.deepOne = deepOne;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Recipt getRecipt() {
@@ -36,21 +32,5 @@ public class Actor {
 
     public void setRecipt(Recipt recipt) {
         this.recipt = recipt;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Integer getSort() {
-        return sort;
-    }
-
-    public void setSort(Integer sort) {
-        this.sort = sort;
     }
 }

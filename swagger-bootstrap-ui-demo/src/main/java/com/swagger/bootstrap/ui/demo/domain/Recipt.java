@@ -22,6 +22,16 @@ public class Recipt {
 
     private List<Actor> actors;
 
+    private EnumDomain enumDomain;
+
+    public EnumDomain getEnumDomain() {
+        return enumDomain;
+    }
+
+    public void setEnumDomain(EnumDomain enumDomain) {
+        this.enumDomain = enumDomain;
+    }
+
     public String getName() {
         return name;
     }
