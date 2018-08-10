@@ -33,7 +33,11 @@ public class ApiController {
         return new RestMessage(reqEntity);
     }
 
-
+    @PostMapping("/xxx1")
+    @ApiOperation(value = "ModelAttribute1",notes = "ModelAttribute类型参数1",tags = {"API注释","API自定义"})
+    public RestMessage reqbody2(@ModelAttribute ActInteger reqEntity){
+        return new RestMessage(reqEntity);
+    }
 
     @PostMapping("/sendUser")
     @ApiOperation(value = "用户注册",notes = "填写用户信息注册用户")

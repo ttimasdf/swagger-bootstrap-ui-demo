@@ -31,6 +31,9 @@ public class WorkExperience {
         this.end = end;
     }
 
+    public WorkExperience() {
+    }
+
     public String getCompany() {
         return company;
     }

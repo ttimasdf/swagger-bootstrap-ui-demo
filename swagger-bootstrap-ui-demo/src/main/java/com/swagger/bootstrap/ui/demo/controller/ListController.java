@@ -8,10 +8,13 @@
 package com.swagger.bootstrap.ui.demo.controller;
 
 import com.swagger.bootstrap.ui.demo.common.Rest;
+import com.swagger.bootstrap.ui.demo.common.RestMessage;
 import com.swagger.bootstrap.ui.demo.domain.ReqEntity;
 import com.swagger.bootstrap.ui.demo.domain.WorkExperience;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +32,7 @@ import java.util.List;
 @Api(value = "列表展示",tags = "列表展示")
 @RestController
 @RequestMapping("/api/list")
+@ApiResponses({@ApiResponse(code = 500, message = "服务器内部错误", response = RestMessage.class)})
 public class ListController {
 
     @PostMapping("/query1")
@@ -38,6 +42,7 @@ public class ListController {
         list.add(new ReqEntity());
         return list;
     }
+
 
     @PostMapping("/query")
     @ApiOperation(value = "场馆列表",notes = "获取场馆列表",responseContainer = "List",response = ReqEntity.class)

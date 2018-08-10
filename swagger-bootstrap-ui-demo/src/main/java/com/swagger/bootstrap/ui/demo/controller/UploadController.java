@@ -10,16 +10,14 @@ package com.swagger.bootstrap.ui.demo.controller;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.swagger.bootstrap.ui.demo.common.RestMessage;
+import com.swagger.bootstrap.ui.demo.domain.UploadModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,9 +38,17 @@ import java.util.UUID;
 public class UploadController {
 
 
+    @ApiOperation(value = "文件素材上传Model接口")
+    @PostMapping("/uploadModel")
+    public RestMessage uploadModel(UploadModel uploadModel){
+
+        return null;
+    }
+
+
     @Order(value = 3)
     @ApiOperation(value = "文件素材上传接口")
-    @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,allowMultiple = true),
+    @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,dataType = "MultipartFile",allowMultiple = true),
             @ApiImplicitParam(name = "title", value = "title", required = true)}
     )
     @RequestMapping(value="/uploadMaterial",method = RequestMethod.POST)

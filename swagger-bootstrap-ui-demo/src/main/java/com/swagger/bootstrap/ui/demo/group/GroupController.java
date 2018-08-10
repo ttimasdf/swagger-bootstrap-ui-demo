@@ -59,6 +59,11 @@ public class GroupController {
     public Rest<Recipt> actList(){
         Rest<Recipt> r=new Rest<>();
         r.setData(new Recipt());
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return r;
     }
 
