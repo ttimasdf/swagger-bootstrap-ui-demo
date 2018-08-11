@@ -47,6 +47,14 @@ public class ApiController {
         return requestRest;
     }
 
+    @PostMapping("/listDomain")
+    @ApiOperation(value = "listDomain",notes = "针对属性是集合的example")
+    public Rest<ListDomain> listDomain(@RequestBody ListDomain sendUserRequest){
+        Rest<ListDomain> requestRest=new Rest<>();
+        requestRest.setData(sendUserRequest);
+        return requestRest;
+    }
+
     @PostMapping("/sendReciptUser")
     @ApiOperation(value = "用户注册sendReciptUser",notes = "填写用户信息注册用户sendReciptUser")
     public Rest<Recipt> sendReciptUser(@RequestBody Recipt recipt){

@@ -15,10 +15,7 @@ import com.swagger.bootstrap.ui.demo.domain.ReqEntity;
 import com.swagger.bootstrap.ui.demo.domain.ResponseList;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.xml.ws.Response;
 
@@ -42,6 +39,12 @@ public class GroupController {
     @ApiOperation(value = "ModelAttribute",notes = "ModelAttribute类型参数")
     public RestMessage reqbody2(@ModelAttribute ReqEntity reqEntity){
         return new RestMessage(reqEntity);
+    }
+
+    @PostMapping("/reqbody3")
+    @ApiOperation(value = "ModelAttribute3",notes = "ModelAttribute类型参数3")
+    public RestMessage reqbody3(@RequestParam(value = "name") String name){
+        return new RestMessage(name);
     }
 
     @PostMapping("/responseListRest")
