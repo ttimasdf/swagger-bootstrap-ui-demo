@@ -48,12 +48,12 @@ public class UploadController {
 
     @Order(value = 3)
     @ApiOperation(value = "文件素材上传接口")
-    @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,dataType = "MultipartFile",allowMultiple = true),
+    @ApiImplicitParams({@ApiImplicitParam(name = "file[]", value = "文件流对象,接收数组格式", required = true,dataType = "MultipartFile",allowMultiple = true),
             @ApiImplicitParam(name = "title", value = "title", required = true)}
     )
     @RequestMapping(value="/uploadMaterial",method = RequestMethod.POST)
     @ResponseBody
-    public RestMessage uploadMaterial(@RequestParam(value="file",required = true) MultipartFile[] files,@RequestParam(value = "title") String title, HttpServletRequest request) throws IOException {
+    public RestMessage uploadMaterial(@RequestParam(value="file[]",required = true) MultipartFile[] files,@RequestParam(value = "title") String title, HttpServletRequest request) throws IOException {
         //int mul=1*1024*1024;
         String realPath=request.getSession().getServletContext().getRealPath("/upload");
         File realFile=new File(realPath);
