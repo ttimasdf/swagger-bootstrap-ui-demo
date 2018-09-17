@@ -35,6 +35,9 @@ public class Menu {
     }
 
 
+    public Menu() {
+    }
+
     public String getLabel() {
         return label;
     }
