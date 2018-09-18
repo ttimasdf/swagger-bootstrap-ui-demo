@@ -4,7 +4,7 @@
 
 swagger-bootstrap-ui的jar包已经上传到maven中央仓库,可以直接使用
 
-[中央仓库地址](http://search.maven.org/#search%7Cga%7C1%7Cswagger-bootstrap-ui)
+[中央仓库地址](https://search.maven.org/search?q=g:com.github.xiaoymin%20AND%20a:swagger-bootstrap-ui&core=gav)
 
 maven配置
 
