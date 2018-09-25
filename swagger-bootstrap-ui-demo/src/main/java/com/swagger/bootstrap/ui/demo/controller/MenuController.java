@@ -8,7 +8,7 @@
 package com.swagger.bootstrap.ui.demo.controller;
 
 import com.swagger.bootstrap.ui.demo.common.Rest;
-import com.swagger.bootstrap.ui.demo.domain.Menu;
+import com.swagger.bootstrap.ui.demo.domain.old.Menu;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;

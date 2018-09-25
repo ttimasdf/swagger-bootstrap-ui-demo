@@ -10,7 +10,7 @@ package com.swagger.bootstrap.ui.demo.controller;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.swagger.bootstrap.ui.demo.common.RestMessage;
-import com.swagger.bootstrap.ui.demo.domain.UploadModel;
+import com.swagger.bootstrap.ui.demo.domain.old.UploadModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

@@ -5,18 +5,20 @@
  * Developer Web Site: http://open.xiaominfo.com.
  */
 
-package com.swagger.bootstrap.ui.demo.domain;
+package com.swagger.bootstrap.ui.demo.domain.old;
+
+import java.util.List;
 
 /***
  *
  * @since:swagger-bootstrap-ui 1.0
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
- * 2018/08/05 16:49
+ * 2018/08/25 12:36
  */
-public class DeepOne {
-    private String name;
+public class Domain182T1 {
 
-    private WorkExperience workExperience;
+    private String name;
+    private List<String> labels;
 
     public String getName() {
         return name;
@@ -24,5 +26,13 @@ public class DeepOne {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<String> getLabels() {
+        return labels;
+    }
+
+    public void setLabels(List<String> labels) {
+        this.labels = labels;
     }
 }

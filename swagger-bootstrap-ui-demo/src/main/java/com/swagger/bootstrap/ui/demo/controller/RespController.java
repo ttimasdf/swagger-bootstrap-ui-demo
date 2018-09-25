@@ -9,13 +9,12 @@ package com.swagger.bootstrap.ui.demo.controller;
 
 import com.google.common.collect.Maps;
 import com.google.gson.Gson;
-import com.swagger.bootstrap.ui.demo.domain.Menu;
+import com.swagger.bootstrap.ui.demo.domain.old.Menu;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

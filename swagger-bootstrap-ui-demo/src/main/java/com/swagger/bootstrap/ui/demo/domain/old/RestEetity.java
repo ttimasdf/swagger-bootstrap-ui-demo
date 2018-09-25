@@ -5,9 +5,9 @@
  * Developer Web Site: http://open.bycdao.com.
  */
 
-package com.swagger.bootstrap.ui.demo.domain;
+package com.swagger.bootstrap.ui.demo.domain.old;
 
-import io.swagger.annotations.Api;
+import com.swagger.bootstrap.ui.demo.domain.old.ReqEntity;
 import io.swagger.annotations.ApiModelProperty;
 
 /***

@@ -5,20 +5,18 @@
  * Developer Web Site: http://open.xiaominfo.com.
  */
 
-package com.swagger.bootstrap.ui.demo.domain;
-
-import java.util.List;
+package com.swagger.bootstrap.ui.demo.domain.old;
 
 /***
  *
  * @since:swagger-bootstrap-ui 1.0
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
- * 2018/08/25 12:36
+ * 2018/08/05 16:46
  */
-public class Domain182T1 {
-
+public class DeepRequest {
     private String name;
-    private List<String> labels;
+
+    private Recipt recipt;
 
     public String getName() {
         return name;
@@ -28,11 +26,11 @@ public class Domain182T1 {
         this.name = name;
     }
 
-    public List<String> getLabels() {
-        return labels;
+    public Recipt getRecipt() {
+        return recipt;
     }
 
-    public void setLabels(List<String> labels) {
-        this.labels = labels;
+    public void setRecipt(Recipt recipt) {
+        this.recipt = recipt;
     }
 }

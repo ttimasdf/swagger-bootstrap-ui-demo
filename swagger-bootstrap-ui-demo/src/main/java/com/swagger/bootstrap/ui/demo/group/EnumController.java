@@ -7,11 +7,10 @@
 
 package com.swagger.bootstrap.ui.demo.group;
 
-import com.swagger.bootstrap.ui.demo.common.ErrorCode;
 import com.swagger.bootstrap.ui.demo.common.Language;
 import com.swagger.bootstrap.ui.demo.common.Rest;
-import com.swagger.bootstrap.ui.demo.domain.EnumDomain;
-import com.swagger.bootstrap.ui.demo.domain.Recipt;
+import com.swagger.bootstrap.ui.demo.domain.old.EnumDomain;
+import com.swagger.bootstrap.ui.demo.domain.old.Recipt;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +37,7 @@ public class EnumController {
         r.setData(rp);
         return r;
     }
-    @PostMapping("/actEumsList")
+    /*@PostMapping("/actEumsList")
     @ApiOperation(value = "复杂枚举类型",notes = "递归参数-enum-复杂枚举",tags = {"枚举测试"})
     public Rest<Recipt> actEumsList(ErrorCode errorCode){
         Rest<Recipt> r=new Rest<>();
@@ -46,7 +45,7 @@ public class EnumController {
         rp.setName(errorCode.getMsg()+"--"+errorCode.getCode());
         r.setData(rp);
         return r;
-    }
+    }*/
 
     @PostMapping("/actEumssList")
     @ApiOperation(value = "复杂枚举类型-domain",notes = "递归参数-enum-复杂枚举-domain",tags = {"枚举测试"})

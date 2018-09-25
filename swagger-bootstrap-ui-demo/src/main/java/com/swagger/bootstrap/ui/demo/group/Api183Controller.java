@@ -8,16 +8,12 @@
 package com.swagger.bootstrap.ui.demo.group;
 
 import com.google.common.collect.Lists;
-import com.swagger.bootstrap.ui.demo.common.ErrorCode;
 import com.swagger.bootstrap.ui.demo.common.Rest;
-import com.swagger.bootstrap.ui.demo.domain.*;
+import com.swagger.bootstrap.ui.demo.domain.old.MulRequest;
 import com.swagger.bootstrap.ui.demo.domain.resp183.CombineResponse;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 

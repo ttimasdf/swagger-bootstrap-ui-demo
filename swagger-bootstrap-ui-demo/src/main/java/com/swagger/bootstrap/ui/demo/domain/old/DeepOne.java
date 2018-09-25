@@ -5,18 +5,18 @@
  * Developer Web Site: http://open.xiaominfo.com.
  */
 
-package com.swagger.bootstrap.ui.demo.domain;
+package com.swagger.bootstrap.ui.demo.domain.old;
 
 /***
  *
  * @since:swagger-bootstrap-ui 1.0
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
- * 2018/08/05 16:46
+ * 2018/08/05 16:49
  */
-public class DeepRequest {
+public class DeepOne {
     private String name;
 
-    private Recipt recipt;
+    private WorkExperience workExperience;
 
     public String getName() {
         return name;
@@ -24,13 +24,5 @@ public class DeepRequest {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Recipt getRecipt() {
-        return recipt;
-    }
-
-    public void setRecipt(Recipt recipt) {
-        this.recipt = recipt;
     }
 }

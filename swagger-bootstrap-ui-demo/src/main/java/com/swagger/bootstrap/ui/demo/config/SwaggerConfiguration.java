@@ -28,7 +28,7 @@ public class SwaggerConfiguration {
         ParameterBuilder parameterBuilder=new ParameterBuilder();
         List<Parameter> parameters= Lists.newArrayList();
         parameterBuilder.name("token").description("token令牌").modelRef(new ModelRef("String"))
-                .parameterType("header").defaultValue("abc")
+                .parameterType("header")
                 .required(true).build();
         parameters.add(parameterBuilder.build());
 

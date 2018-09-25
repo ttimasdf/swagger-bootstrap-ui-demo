@@ -5,7 +5,7 @@
  * Developer Web Site: http://open.BYCDAO.com.
  */
 
-package com.swagger.bootstrap.ui.demo.domain;
+package com.swagger.bootstrap.ui.demo.domain.old;
 
 import java.util.ArrayList;
 import java.util.List;

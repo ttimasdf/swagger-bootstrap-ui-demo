@@ -5,7 +5,7 @@
  * Developer Web Site: http://open.lishiots.com.
  */
 
-package com.swagger.bootstrap.ui.demo.domain;
+package com.swagger.bootstrap.ui.demo.domain.old;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

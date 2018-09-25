@@ -9,9 +9,8 @@ package com.swagger.bootstrap.ui.demo.group;
 
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.common.RestMessage;
-import com.swagger.bootstrap.ui.demo.domain.*;
+import com.swagger.bootstrap.ui.demo.domain.old.*;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
@@ -62,7 +61,13 @@ public class ApiController {
         requestRest.setData(recipt);
         return requestRest;
     }
-
+    @PostMapping("/deepRequest")
+    @ApiOperation(value = "请求参数多层",notes = "请求参数多层")
+    public Rest<DeepRequest> deepRequest(@RequestBody DeepRequest sendUserRequest){
+        Rest<DeepRequest> requestRest=new Rest<>();
+        requestRest.setData(sendUserRequest);
+        return requestRest;
+    }
     @PostMapping("/requestActInteger")
     @ApiOperation(value = "字符类型",notes = "字符类型")
     public Rest<ActInteger> requestActInteger(@RequestBody ActInteger sendUserRequest){
@@ -71,13 +76,7 @@ public class ApiController {
         return requestRest;
     }
 
-    @PostMapping("/deepRequest")
-    @ApiOperation(value = "请求参数多层",notes = "请求参数多层")
-    public Rest<DeepRequest> deepRequest(@RequestBody DeepRequest sendUserRequest){
-        Rest<DeepRequest> requestRest=new Rest<>();
-        requestRest.setData(sendUserRequest);
-        return requestRest;
-    }
+
 
     @GetMapping("/sendUser1")
     @ApiOperation(value = "用户注册",notes = "填写用户信息注册用户")

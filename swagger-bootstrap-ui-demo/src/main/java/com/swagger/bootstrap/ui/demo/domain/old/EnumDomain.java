@@ -5,7 +5,7 @@
  * Developer Web Site: http://open.xiaominfo.com.
  */
 
-package com.swagger.bootstrap.ui.demo.domain;
+package com.swagger.bootstrap.ui.demo.domain.old;
 
 import com.swagger.bootstrap.ui.demo.common.ErrorCode;
 import com.swagger.bootstrap.ui.demo.common.Language;

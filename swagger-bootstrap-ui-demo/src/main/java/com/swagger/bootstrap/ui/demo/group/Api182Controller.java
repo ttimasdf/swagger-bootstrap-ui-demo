@@ -10,9 +10,9 @@ package com.swagger.bootstrap.ui.demo.group;
 import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.ErrorCode;
 import com.swagger.bootstrap.ui.demo.common.Rest;
-import com.swagger.bootstrap.ui.demo.domain.ActInteger;
-import com.swagger.bootstrap.ui.demo.domain.Domain182T1;
-import com.swagger.bootstrap.ui.demo.domain.MulRequest;
+import com.swagger.bootstrap.ui.demo.domain.old.ActInteger;
+import com.swagger.bootstrap.ui.demo.domain.old.Domain182T1;
+import com.swagger.bootstrap.ui.demo.domain.old.MulRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -20,7 +20,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /***

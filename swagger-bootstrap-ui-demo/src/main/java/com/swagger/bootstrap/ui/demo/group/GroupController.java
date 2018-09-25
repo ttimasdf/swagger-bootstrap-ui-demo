@@ -7,17 +7,14 @@
 
 package com.swagger.bootstrap.ui.demo.group;
 
-import com.swagger.bootstrap.ui.demo.common.Language;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.common.RestMessage;
-import com.swagger.bootstrap.ui.demo.domain.Recipt;
-import com.swagger.bootstrap.ui.demo.domain.ReqEntity;
-import com.swagger.bootstrap.ui.demo.domain.ResponseList;
+import com.swagger.bootstrap.ui.demo.domain.old.Recipt;
+import com.swagger.bootstrap.ui.demo.domain.old.ReqEntity;
+import com.swagger.bootstrap.ui.demo.domain.old.ResponseList;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
-
-import javax.xml.ws.Response;
 
 /***
  *

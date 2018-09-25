@@ -1,22 +1,13 @@
 package com.swagger.bootstrap.ui.demo.controller;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.swagger.bootstrap.ui.demo.common.RestMessage;
-import com.swagger.bootstrap.ui.demo.domain.ReqEntity;
+import com.swagger.bootstrap.ui.demo.domain.old.ReqEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.http.HttpServletRequest;
-import java.io.*;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 /***
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>

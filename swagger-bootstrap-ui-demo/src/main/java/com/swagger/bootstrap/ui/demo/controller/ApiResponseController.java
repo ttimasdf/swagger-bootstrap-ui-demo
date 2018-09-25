@@ -8,8 +8,8 @@
 package com.swagger.bootstrap.ui.demo.controller;
 
 import com.swagger.bootstrap.ui.demo.common.Rest;
-import com.swagger.bootstrap.ui.demo.domain.ReqEntity;
-import com.swagger.bootstrap.ui.demo.domain.WorkExperience;
+import com.swagger.bootstrap.ui.demo.domain.old.ReqEntity;
+import com.swagger.bootstrap.ui.demo.domain.old.WorkExperience;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;

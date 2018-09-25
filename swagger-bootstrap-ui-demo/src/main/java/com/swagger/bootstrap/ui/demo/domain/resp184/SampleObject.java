@@ -5,21 +5,21 @@
  * Developer Web Site: http://open.xiaominfo.com.
  */
 
-package com.swagger.bootstrap.ui.demo.domain;
+package com.swagger.bootstrap.ui.demo.domain.resp184;
 
-import io.swagger.annotations.ApiModelProperty;
+import com.swagger.bootstrap.ui.demo.domain.old.Menu;
 
 /***
  *
  * @since:swagger-bootstrap-ui 1.0
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
- * 2018/08/21 12:48
+ * 2018/09/18 19:51
  */
-public class MulRequest {
-    @ApiModelProperty(value = "名称名称\n第二个",example = "名称名称\n第二个")
-    private String name;
+public class SampleObject {
 
-    @ApiModelProperty(value = "菜单")
+
+    private String sampleName;
+
     private Menu menu;
 
     public Menu getMenu() {
@@ -30,11 +30,11 @@ public class MulRequest {
         this.menu = menu;
     }
 
-    public String getName() {
-        return name;
+    public String getSampleName() {
+        return sampleName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSampleName(String sampleName) {
+        this.sampleName = sampleName;
     }
 }
