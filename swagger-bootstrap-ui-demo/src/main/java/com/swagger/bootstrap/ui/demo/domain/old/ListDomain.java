@@ -24,10 +24,12 @@ public class ListDomain {
     @ApiModelProperty(value = "name",example = "'abd-name'")
     private String name;
 
-    @ApiModelProperty(value = "params",example = "['abc','456']")
+    //@ApiModelProperty(value = "params",example = "['abc','456']")
+    @ApiModelProperty(value = "params")
     private List<String> params;
 
-    @ApiModelProperty(value = "params1",example = "[\"abc\",\"456\"]")
+//    @ApiModelProperty(value = "params1",example = "[\"abc\",\"456\"]")
+    @ApiModelProperty(value = "params1")
     private List<String> params1;
 
 

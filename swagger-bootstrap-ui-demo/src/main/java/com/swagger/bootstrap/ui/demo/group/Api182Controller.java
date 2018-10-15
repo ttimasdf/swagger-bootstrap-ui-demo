@@ -13,10 +13,7 @@ import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.old.ActInteger;
 import com.swagger.bootstrap.ui.demo.domain.old.Domain182T1;
 import com.swagger.bootstrap.ui.demo.domain.old.MulRequest;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,6 +26,7 @@ import java.util.List;
  * 2018/08/21 12:44
  */
 @Api(value = "1.8.2版本",tags = "1.8.2版本")
+@ApiSort(4)
 @RestController
 @RequestMapping(value = "/api/new182/")
 public class Api182Controller {

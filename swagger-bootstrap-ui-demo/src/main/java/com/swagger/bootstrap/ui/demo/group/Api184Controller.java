@@ -26,6 +26,7 @@ import java.util.List;
  * 2018/08/21 12:44
  */
 @Api(value = "1.8.4版本-20180918",tags = "1.8.4版本-20180918")
+@ApiSort(2)
 @RestController
 @RequestMapping(value = "/api/new184/")
 public class Api184Controller {
@@ -178,6 +179,23 @@ public class Api184Controller {
         return r;
     }
 
+
+    @PostMapping("/threeSample")
+    @ApiOperation(value = "三层解析")
+    public RestJson<MyPageInfo<HasToDoTasksInfoSelectVo>> threeSample(){
+        return null;
+    }
+
+    @PostMapping("/threeTClazzs1")
+    @ApiOperation(value = "多层泛型返回-复杂类1")
+    public Rest<MyPageInfo<HasToDoTasksInfoSelectVo>> threeTClazzsss(@RequestBody HasToDoTasksInfoSelectVo sampleField){
+        Rest<MyPageInfo<HasToDoTasksInfoSelectVo>> rr=new Rest<>();
+        MyPageInfo<HasToDoTasksInfoSelectVo> ss=new MyPageInfo<>();
+        ss.setList(new ArrayList<HasToDoTasksInfoSelectVo>());
+        ss.getList().add(sampleField);
+        rr.setData(ss);
+        return rr;
+    }
 
 
 

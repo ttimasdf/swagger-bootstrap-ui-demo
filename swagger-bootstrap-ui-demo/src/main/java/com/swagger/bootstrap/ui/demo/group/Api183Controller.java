@@ -13,6 +13,7 @@ import com.swagger.bootstrap.ui.demo.domain.old.MulRequest;
 import com.swagger.bootstrap.ui.demo.domain.resp183.CombineResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiSort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +25,7 @@ import java.util.List;
  * 2018/08/21 12:44
  */
 @Api(value = "1.8.3版本",tags = "1.8.3版本")
+@ApiSort(3)
 @RestController
 @RequestMapping(value = "/api/new183/")
 public class Api183Controller {

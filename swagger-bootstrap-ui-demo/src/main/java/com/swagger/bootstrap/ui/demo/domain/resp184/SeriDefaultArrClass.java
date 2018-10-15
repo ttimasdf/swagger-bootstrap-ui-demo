@@ -22,7 +22,8 @@ public class SeriDefaultArrClass<T> {
 
     private String title;
 
-    @ApiModelProperty(value = "返回消息体",example = "{'key':'value'}")
+    //@ApiModelProperty(value = "返回消息体",example = "{'key':'value'}")
+    @ApiModelProperty(value = "返回消息体")
     private List<T> data=new ArrayList<>();
 
     public String getTitle() {
