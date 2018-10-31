@@ -26,7 +26,7 @@ import java.util.List;
  * 2018/08/21 12:44
  */
 @Api(value = "1.8.4版本-20180918",tags = "1.8.4版本-20180918")
-@ApiSort(2)
+@ApiSort(301)
 @RestController
 @RequestMapping(value = "/api/new184/")
 public class Api184Controller {

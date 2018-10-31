@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.env.Environment;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -26,6 +27,7 @@ import java.util.List;
 
 @SpringBootApplication
 @ConditionalOnClass(SpringfoxWebMvcConfiguration.class)
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class SwaggerBootstrapUiDemoApplication  implements WebMvcConfigurer{
 
 	/*@Override

@@ -33,7 +33,7 @@ import java.util.Map;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
  * 2018/08/25 12:44
  */
-@Api(tags = "1.8.5版本-20180925",position = 1,description = "测试description属性")
+@Api(tags = "1.8.5版本-20180925",position = 300,description = "测试description属性")
 @ApiSort(1)
 @RestController
 @RequestMapping(value = "/api/new185/")
@@ -59,6 +59,15 @@ public class Api185Controller {
     @ApiOperation(value = "map参数请求",position = 3)
     @PostMapping("/requestMap")
     public Rest<Map<String,String>> requestMap(@RequestParam Map<String,String> params){
+        Rest<Map<String,String>> r=new Rest<>();
+        r.setData(params);
+        return r;
+    }
+
+
+    @ApiOperation(value = "map参数请求1",position = 4)
+    @PostMapping("/requestMap1")
+    public Rest<Map<String,String>> requestMap1(@RequestBody Map<String,String> params){
         Rest<Map<String,String>> r=new Rest<>();
         r.setData(params);
         return r;
