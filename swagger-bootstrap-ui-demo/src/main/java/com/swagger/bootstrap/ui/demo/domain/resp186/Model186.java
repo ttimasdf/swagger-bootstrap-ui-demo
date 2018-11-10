@@ -9,6 +9,7 @@ package com.swagger.bootstrap.ui.demo.domain.resp186;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /***
@@ -17,7 +18,9 @@ import java.math.BigDecimal;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
  * 2018/10/14 19:37
  */
-public class Model186 {
+public class Model186 implements Serializable{
+
+    private Long value;
 
     private BigDecimal total;
 
@@ -25,6 +28,14 @@ public class Model186 {
 
     @ApiModelProperty(value = "这个参数很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长")
     private String zhegecanshuhenchanghenchanghenchanghenchang;
+
+    public Long getValue() {
+        return value;
+    }
+
+    public void setValue(Long value) {
+        this.value = value;
+    }
 
     public String getZhegecanshuhenchanghenchanghenchanghenchang() {
         return zhegecanshuhenchanghenchanghenchanghenchang;

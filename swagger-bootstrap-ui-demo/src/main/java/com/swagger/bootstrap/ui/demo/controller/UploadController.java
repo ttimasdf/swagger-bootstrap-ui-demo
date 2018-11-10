@@ -91,7 +91,7 @@ public class UploadController {
     }
     @Order(value = 2)
     @ApiOperation(value = "文件素材上传接口1")
-    @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,dataType = "MultipartFile",allowMultiple = true),
+    @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,dataType = "MultipartFile"),
             @ApiImplicitParam(name = "title", value = "title", required = true)}
     )
     @RequestMapping(value="/uploadMaterial1",method = RequestMethod.POST)
