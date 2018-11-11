@@ -1,4 +1,4 @@
-package com.lianqu1990.springboot.web.version.mapping.annotation;
+package com.swagger.bootstrap.ui.demo.annotation;
 
 import java.lang.annotation.*;
 

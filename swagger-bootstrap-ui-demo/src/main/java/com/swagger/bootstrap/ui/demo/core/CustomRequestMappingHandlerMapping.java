@@ -1,8 +1,8 @@
-package com.lianqu1990.springboot.web.version.mapping.core;
+package com.swagger.bootstrap.ui.demo.core;
 
-import com.lianqu1990.springboot.web.version.mapping.annotation.ApiVersion;
-import com.lianqu1990.springboot.web.version.mapping.annotation.ClientVersion;
-import com.lianqu1990.springboot.web.version.mapping.condition.ClientVersionRequestCondition;
+import com.swagger.bootstrap.ui.demo.annotation.ApiVersion;
+import com.swagger.bootstrap.ui.demo.annotation.ClientVersion;
+import com.swagger.bootstrap.ui.demo.condition.ClientVersionRequestCondition;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;

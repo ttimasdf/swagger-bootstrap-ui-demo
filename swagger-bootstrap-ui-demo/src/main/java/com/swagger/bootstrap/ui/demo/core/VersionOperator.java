@@ -1,4 +1,4 @@
-package com.lianqu1990.springboot.web.version.mapping.core;
+package com.swagger.bootstrap.ui.demo.core;
 
 /**
  * @author hanchao

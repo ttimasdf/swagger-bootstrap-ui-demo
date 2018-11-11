@@ -1,7 +1,7 @@
-package com.lianqu1990.springboot.web.version.mapping.condition;
+package com.swagger.bootstrap.ui.demo.condition;
 
-import com.lianqu1990.springboot.web.version.mapping.annotation.TerminalVersion;
-import com.lianqu1990.springboot.web.version.mapping.core.VersionOperator;
+import com.swagger.bootstrap.ui.demo.annotation.TerminalVersion;
+import com.swagger.bootstrap.ui.demo.core.VersionOperator;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.servlet.mvc.condition.AbstractRequestCondition;
 

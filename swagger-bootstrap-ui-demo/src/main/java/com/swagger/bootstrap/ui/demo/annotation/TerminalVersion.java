@@ -1,6 +1,7 @@
-package com.lianqu1990.springboot.web.version.mapping.annotation;
+package com.swagger.bootstrap.ui.demo.annotation;
 
-import com.lianqu1990.springboot.web.version.mapping.core.VersionOperator;
+
+import com.swagger.bootstrap.ui.demo.core.VersionOperator;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

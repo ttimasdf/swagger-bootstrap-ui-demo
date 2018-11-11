@@ -5,7 +5,9 @@ import com.github.xiaoymin.swaggerbootstrapui.annotations.EnableSwaggerBootstrap
 import com.google.common.collect.Lists;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
+import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.*;
 import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.*;
@@ -19,6 +21,7 @@ import java.util.List;
 @Configuration
 @EnableSwagger2
 @EnableSwaggerBootstrapUI
+@Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfiguration {
 
 

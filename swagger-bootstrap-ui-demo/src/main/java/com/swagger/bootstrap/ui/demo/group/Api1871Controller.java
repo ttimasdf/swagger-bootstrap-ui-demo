@@ -7,12 +7,15 @@
 
 package com.swagger.bootstrap.ui.demo.group;
 
-import com.lianqu1990.springboot.web.version.mapping.annotation.ApiVersion;
+import com.swagger.bootstrap.ui.demo.annotation.ApiVersion;
 import com.swagger.bootstrap.ui.demo.common.Rest;
+import com.swagger.bootstrap.ui.demo.domain.resp187.ModeValidl187;
 import com.swagger.bootstrap.ui.demo.domain.resp187.Model187;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /***
  * 1.8.6fixed bug修改
@@ -20,9 +23,9 @@ import org.springframework.web.bind.annotation.*;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
  * 2018/11/05 08:44
  */
-@Api(tags = "1.8.71版本-20181105",position = 298)
+@Api(value = "1.8.71版本-20181105",position = 297)
 @RestController
-@RequestMapping
+@RequestMapping(value = "/api/new187/")
 public class Api1871Controller {
 
     @ApiOperation(value = "版本2-post请求参数Hidden属性是否生效",position = 30)
@@ -35,10 +38,19 @@ public class Api1871Controller {
     }
 
 
-    @ApiOperation(value = "版本1-post请求参数Hidden属性是否生效",position = 2)
+    @ApiOperation(value = "版本3-post请求参数Hidden属性是否生效",position = 2)
     @PostMapping("/postRequest")
+    @ApiVersion("3")
     public Rest<Model187> postRequest1(@RequestBody Model187 model187){
         Rest<Model187> r=new Rest<>();
+        r.setData(model187);
+        return r;
+    }
+
+    @ApiOperation(value = "验证@Valid注解",position = 3)
+    @PostMapping("/postValidRequest")
+    public Rest<ModeValidl187> postValidRequest(@Valid @RequestBody ModeValidl187 model187){
+        Rest<ModeValidl187> r=new Rest<>();
         r.setData(model187);
         return r;
     }
