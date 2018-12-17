@@ -23,13 +23,16 @@ import java.time.YearMonth;
  */
 public class Model187 implements Serializable{
 
+    @ApiModelProperty(value = "Integer -ab值",example = "23",dataType = "integer",name = "ab")
+    private Integer ab=0;
+
     @ApiModelProperty(value = "可用Long值")
     private Long value;
 
     @ApiModelProperty(value = "总value值")
     private BigDecimal total;
 
-    @ApiModelProperty(value = "名称")
+    @ApiModelProperty(value = "名称",example = "test")
     private String name;
 
     @ApiModelProperty(hidden = true)
@@ -51,6 +54,14 @@ public class Model187 implements Serializable{
 
     public ModelRef187 getModelRef187() {
         return modelRef187;
+    }
+
+    public Integer getAb() {
+        return ab;
+    }
+
+    public void setAb(Integer ab) {
+        this.ab = ab;
     }
 
     public void setModelRef187(ModelRef187 modelRef187) {

@@ -16,6 +16,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 /***
  * 1.8.6fixed bug修改
@@ -38,6 +39,7 @@ public class Api1871Controller {
     }
 
 
+
     @ApiOperation(value = "版本3-post请求参数Hidden属性是否生效",position = 2)
     @PostMapping("/postRequest")
     @ApiVersion("3")
@@ -53,5 +55,23 @@ public class Api1871Controller {
         Rest<ModeValidl187> r=new Rest<>();
         r.setData(model187);
         return r;
+    }
+
+    @ApiOperation(value = "验证@rMap",position = 4)
+    @PostMapping("/rMap")
+    public Rest<Map<String,Object>> rMap(@RequestBody Map params){
+        Rest<Map<String,Object>> r=new Rest<>();
+        r.setData(params);
+        return  r;
+    }
+
+    @ApiOperation(value = "验证泛型Rest<Model187>",position = 4)
+    @PostMapping("/rT")
+    @Deprecated
+    public Rest<Model187> rT(@RequestBody Model187 params){
+        Rest<Model187> r=new Rest<>();
+        params.setName("验证泛型Rest<Model187>");
+        r.setData(params);
+        return  r;
     }
 }

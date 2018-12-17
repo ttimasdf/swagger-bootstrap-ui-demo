@@ -35,7 +35,7 @@ public class ModeValidl187 implements Serializable{
 
     @NotEmpty
     @NotNull
-    @ApiModelProperty(value = "名称")
+    @ApiModelProperty(value = "名称",example = "dx")
     @Length(min = 0,max = 255,message = "长度必须在0-255之间")
     private String name;
 

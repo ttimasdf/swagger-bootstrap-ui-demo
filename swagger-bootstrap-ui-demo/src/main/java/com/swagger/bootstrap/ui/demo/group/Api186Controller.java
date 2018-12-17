@@ -58,6 +58,13 @@ public class Api186Controller {
         r.setData(model1851);
         return r;
     }
+    @ApiOperation(value = "header参数无请求示例1",position = 1)
+    @PostMapping("/headerBody1")
+    public Rest<String> headerBody1(@RequestHeader(value = "token")String token){
+        Rest<String> r=new Rest<>();
+        r.setData(token);
+        return r;
+    }
 
     @ApiOperation(value = "使用HttpSession参数显示错误",position = 3)
     @PostMapping(value = "/useSession")
