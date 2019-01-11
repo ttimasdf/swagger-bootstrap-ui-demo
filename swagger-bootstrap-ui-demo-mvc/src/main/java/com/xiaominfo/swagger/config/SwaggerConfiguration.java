@@ -1,5 +1,5 @@
 
-package com.swagger.bootstrap.ui.demo.config;
+package com.xiaominfo.swagger.config;
 
 import com.github.xiaoymin.swaggerbootstrapui.annotations.EnableSwaggerBootstrapUI;
 import com.google.common.collect.Lists;
@@ -8,9 +8,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
-import springfox.documentation.builders.*;
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.ParameterBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
@@ -24,6 +27,7 @@ import java.util.List;
 @EnableSwagger2
 @EnableSwaggerBootstrapUI
 @Import(BeanValidatorPluginsConfiguration.class)
+@EnableWebMvc
 public class SwaggerConfiguration {
 
 
@@ -38,7 +42,7 @@ public class SwaggerConfiguration {
         parameters.add(parameterBuilder.build());
 
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
+                .apiInfo(groupApiInfo())
                 .groupName("默认接口")
                 .select()
                 //.apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.controller"))
@@ -47,17 +51,7 @@ public class SwaggerConfiguration {
                 .build().globalOperationParameters(parameters)
                 .securityContexts(Lists.newArrayList(securityContext(),securityContext1())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey(),apiKey1()));
     }
-    @Bean(value = "groupRestApi")
-    @Order(value = 1)
-    public Docket groupRestApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(groupApiInfo())
-                .groupName("分组接口")
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.group"))
-                .paths(PathSelectors.any())
-                .build().securityContexts(Lists.newArrayList(securityContext(),securityContext1())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey(),apiKey1()));
-    }
+
 
     private ApiInfo groupApiInfo(){
         return new ApiInfoBuilder()

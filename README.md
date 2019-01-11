@@ -1,6 +1,6 @@
-# swagger-bootstarp-ui演示项目
+# swagger-bootstarp-ui集成web框架示例项目
 
-# 说明
+## 说明
 
 swagger-bootstrap-ui的jar包已经上传到maven中央仓库,可以直接使用
 
@@ -16,6 +16,12 @@ maven配置
 </dependency>
 ```
 
+## 项目说明
+
+### swagger-bootstrap-ui-demo
+
+swagger-bootstrap-ui-demo项目是SpringBoot项目,集成Springfox-swagger与swagger-bootstrap-ui
+
 1、该项目是Spring boot项目,直接main方法运行`SwaggerBootstrapUiDemoApplication`即可
 
 2、端口是`application.properties`中配置的8999
@@ -24,3 +30,9 @@ server.port=8999
 ```
 
 3、访问http://localhost:8999/doc.html
+
+### swagger-bootstrap-ui-demo-mvc
+
+1、该项目是Spring Mvc项目,可直接下载后,在Tomcat中直接运行
+
+2、访问<http://localhost:8999/doc.html>

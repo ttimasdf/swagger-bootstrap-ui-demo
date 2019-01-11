@@ -5,40 +5,22 @@
  * Developer Web Site: http://open.xiaominfo.com.
  */
 
-package com.swagger.bootstrap.ui.demo.domain.resp187;
+package com.xiaominfo.swagger.domain.old;
 
 import io.swagger.annotations.ApiModelProperty;
+import org.springframework.web.multipart.MultipartFile;
 
 /***
  *
  * @since:swagger-bootstrap-ui 1.0
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
- * 2018/12/09 15:29
+ * 2018/08/09 22:38
  */
-public class MetaModel {
-    private Long id;
-
-    @ApiModelProperty(value = "名称",example = "122")
+public class UploadModel {
     private String name;
 
-    @ApiModelProperty(value = "名称2",example = "test222")
-    private String name1;
-
-    public String getName1() {
-        return name1;
-    }
-
-    public void setName1(String name1) {
-        this.name1 = name1;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @ApiModelProperty(dataType = "MultipartFile",value = "上传文件")
+    private MultipartFile file;
 
     public String getName() {
         return name;
@@ -46,5 +28,13 @@ public class MetaModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 }

@@ -5,7 +5,7 @@
  * Developer Web Site: http://open.xiaominfo.com.
  */
 
-package com.swagger.bootstrap.ui.demo.domain.resp187;
+package com.xiaominfo.swagger.domain.old;
 
 import io.swagger.annotations.ApiModelProperty;
 
@@ -13,31 +13,21 @@ import io.swagger.annotations.ApiModelProperty;
  *
  * @since:swagger-bootstrap-ui 1.0
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
- * 2018/12/09 15:29
+ * 2018/08/21 12:48
  */
-public class MetaModel {
-    private Long id;
-
-    @ApiModelProperty(value = "名称",example = "122")
+public class MulRequest {
+    @ApiModelProperty(value = "名称名称\n第二个",example = "名称名称\n第二个")
     private String name;
 
-    @ApiModelProperty(value = "名称2",example = "test222")
-    private String name1;
+    @ApiModelProperty(value = "菜单")
+    private Menu menu;
 
-    public String getName1() {
-        return name1;
+    public Menu getMenu() {
+        return menu;
     }
 
-    public void setName1(String name1) {
-        this.name1 = name1;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     public String getName() {

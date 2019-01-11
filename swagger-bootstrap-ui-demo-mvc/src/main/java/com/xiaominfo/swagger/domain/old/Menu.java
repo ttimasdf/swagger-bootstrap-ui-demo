@@ -5,7 +5,7 @@
  * Developer Web Site: http://open.BYCDAO.com.
  */
 
-package com.swagger.bootstrap.ui.demo.domain.old;
+package com.xiaominfo.swagger.domain.old;
 
 import io.swagger.annotations.ApiModelProperty;
 

@@ -5,9 +5,7 @@
  * Developer Web Site: http://open.xiaominfo.com.
  */
 
-package com.swagger.bootstrap.ui.demo.domain.resp187;
-
-import io.swagger.annotations.ApiModelProperty;
+package com.xiaominfo.swagger.domain.old;
 
 /***
  *
@@ -16,27 +14,16 @@ import io.swagger.annotations.ApiModelProperty;
  * 2018/12/09 15:29
  */
 public class MetaModel {
-    private Long id;
 
-    @ApiModelProperty(value = "名称",example = "122")
     private String name;
 
-    @ApiModelProperty(value = "名称2",example = "test222")
-    private String name1;
+    private String id;
 
-    public String getName1() {
-        return name1;
-    }
-
-    public void setName1(String name1) {
-        this.name1 = name1;
-    }
-
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

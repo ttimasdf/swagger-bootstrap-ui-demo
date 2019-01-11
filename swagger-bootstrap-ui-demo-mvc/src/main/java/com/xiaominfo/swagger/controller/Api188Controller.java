@@ -5,13 +5,13 @@
  * Developer Web Site: http://open.xiaominfo.com.
  */
 
-package com.swagger.bootstrap.ui.demo.group;
+package com.xiaominfo.swagger.controller;
 
-import com.swagger.bootstrap.ui.demo.common.Rest;
-import com.swagger.bootstrap.ui.demo.domain.resp183.CombineResponse;
-import com.swagger.bootstrap.ui.demo.domain.resp187.MetaModel;
-import com.swagger.bootstrap.ui.demo.domain.resp187.Model187;
-import com.swagger.bootstrap.ui.demo.domain.resp188.Tags;
+import com.xiaominfo.swagger.common.Rest;
+import com.xiaominfo.swagger.domain.resp183.CombineResponse;
+import com.xiaominfo.swagger.domain.resp187.MetaModel;
+import com.xiaominfo.swagger.domain.resp187.Model187;
+import com.xiaominfo.swagger.domain.resp188.Tags;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +31,7 @@ import java.util.Map;
 public class Api188Controller {
     @ApiOperation(value = "异常处理1",position = 30)
     @PostMapping("/errorHandel1")
-    public Rest<Model187> postRequest1(@RequestBody Model187 model187,@ApiParam(hidden = true) HttpSession httpSession){
+    public Rest<Model187> postRequest1(@RequestBody Model187 model187, @ApiParam(hidden = true) HttpSession httpSession){
         Rest<Model187> r=new Rest<>();
         r.setData(model187);
         if (true){
