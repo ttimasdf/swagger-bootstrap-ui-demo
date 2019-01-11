@@ -42,12 +42,21 @@ public class Api189Controller {
     @ApiOperation(value = "下载",position = 30)
     @GetMapping("/downloadFile")
     public void postRequest1(HttpServletRequest request, HttpServletResponse response){
-        download(response);
+        download("八一菜刀",response);
     }
+
+
+
     @ApiOperation(value = "下载1-octet-stream",position = 30)
     @GetMapping(value = "/downloadFile1",produces = "application/octet-stream")
     public void postRequest2(HttpServletRequest request, HttpServletResponse response){
-        download(response);
+        download("八一菜刀",response);
+    }
+
+    @ApiOperation(value = "下载1-octet-stream-参数",position = 30)
+    @GetMapping(value = "/downloadFileAndParam",produces = "application/octet-stream")
+    public void postRequest2AndParam(@RequestParam(value = "name") String name, HttpServletRequest request, HttpServletResponse response){
+        download(name,response);
     }
 
     @ApiOperation(value = "list套list的返回值会不显示")
@@ -150,15 +159,34 @@ public class Api189Controller {
         return r;
     }
 
-
-
-    private void download(HttpServletResponse response){
+    @ApiOperation(value = "RequestMapping接口类型,未标注具体方法类型")
+    @RequestMapping("/numberInvalidRest1")
+    public Rest<ModelNumberInvalid> numberInvalidRest1(@RequestBody ModelNumberInvalid modelNumberInvalid){
+        Rest<ModelNumberInvalid> r=new Rest<>();
+        r.setData(modelNumberInvalid);
+        return r;
+    }
+    @ApiOperation(value = "RequestMapping接口类型2")
+    @RequestMapping("/numberInvalidRest2")
+    public Rest<ModelNumberInvalid> numberInvalidRest2(@RequestBody ModelNumberInvalid modelNumberInvalid){
+        Rest<ModelNumberInvalid> r=new Rest<>();
+        r.setData(modelNumberInvalid);
+        return r;
+    }
+    @ApiOperation(value = "RequestMapping接口类型3,PUT和POST")
+    @RequestMapping(value = "/numberInvalidRest3",method = {RequestMethod.POST,RequestMethod.PUT})
+    public Rest<ModelNumberInvalid> numberInvalidRest3(@RequestBody ModelNumberInvalid modelNumberInvalid){
+        Rest<ModelNumberInvalid> r=new Rest<>();
+        r.setData(modelNumberInvalid);
+        return r;
+    }
+    private void download(String name,HttpServletResponse response){
         String fileName=new Random().nextInt(1000)+".txt";
         try {
             response.setContentType("text/plain;charset=UTF-8;");
             response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);
             ByteArrayOutputStream by=new ByteArrayOutputStream();
-            String content="This test Download File Api,哈哈哈,我是中文,我是无敌的";
+            String content="This test Download File Api,哈哈哈,我是中文,我是无敌的,我的名字是："+name;
             by.write(content.getBytes());
             by.writeTo(response.getOutputStream());
         } catch (IOException e) {
