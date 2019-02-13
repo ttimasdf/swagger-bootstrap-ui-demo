@@ -41,8 +41,8 @@ public class SwaggerConfiguration {
                 .apiInfo(apiInfo())
                 .groupName("默认接口")
                 .select()
-                //.apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.controller"))
-                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+                .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.controller"))
+                //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build().globalOperationParameters(parameters)
                 .securityContexts(Lists.newArrayList(securityContext(),securityContext1())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey(),apiKey1()));

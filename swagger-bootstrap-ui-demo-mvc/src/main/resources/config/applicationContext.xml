@@ -13,9 +13,12 @@
         ">
 	<!--ApplicationContext.xml配置中需要配置扫描目录,否则XmlWebApplicationContext容器对象获取不到所有接口地址-->
 	<!-- 设置注解扫描目录 -->
-	<context:component-scan base-package="com.xiaominfo.swagger">
+	<!--<context:component-scan base-package="com.xiaominfo.swagger">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-	</context:component-scan>
+	</context:component-scan>-->
+
+	<!--引入swagger相关配置信息-->
+	<context:property-placeholder location="classpath:swagger.properties"/>
 
 
 
