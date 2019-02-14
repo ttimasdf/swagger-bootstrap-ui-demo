@@ -46,15 +46,7 @@ public class UploadController {
     }
 
 
-    @Order(value = 3)
-    @ApiOperation(value = "文件素材上传接口")
-    @ApiImplicitParams({@ApiImplicitParam(name = "file[]", value = "文件流对象,接收数组格式", required = true,dataType = "MultipartFile",allowMultiple = true),
-            @ApiImplicitParam(name = "title", value = "title", required = true)}
-    )
-    @RequestMapping(value="/uploadMaterial",method = RequestMethod.POST)
-    @ResponseBody
-    public RestMessage uploadMaterial(@RequestParam(value="file[]",required = true) MultipartFile[] files,@RequestParam(value = "title") String title, HttpServletRequest request) throws IOException {
-        //int mul=1*1024*1024;
+    private List<Map> upload(HttpServletRequest request,MultipartFile[] files){
         String realPath=request.getSession().getServletContext().getRealPath("/upload");
         File realFile=new File(realPath);
         if (!realFile.exists()){
@@ -85,46 +77,52 @@ public class UploadController {
             fileInfo.put("original_name",targetFile.getName());
             uploadFiles.add(fileInfo);
         }
+        return uploadFiles;
+    }
+
+
+    @Order(value = 3)
+    @ApiOperation(value = "多文件MultipartFile上传")
+    @ApiImplicitParams({@ApiImplicitParam(name = "file[]", value = "文件流对象,接收数组格式", required = true,dataType = "MultipartFile",allowMultiple = true),
+            @ApiImplicitParam(name = "title", value = "title", required = true)}
+    )
+    @RequestMapping(value="/uploadMaterial",method = RequestMethod.POST)
+    @ResponseBody
+    public RestMessage uploadMaterial(@RequestParam(value="file[]",required = true) MultipartFile[] files,@RequestParam(value = "title") String title, HttpServletRequest request) throws IOException {
+        //int mul=1*1024*1024;
+        List<Map> uploadFiles= upload(request,files);
         RestMessage rm=new RestMessage();
         rm.setData(uploadFiles);
         return rm;
     }
+
     @Order(value = 2)
-    @ApiOperation(value = "文件素材上传接口1")
-    @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,dataType = "__File",allowMultiple = true),
+    @ApiOperation(value = "单文件File上传")
+    @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,dataType = "__File"),
+            @ApiImplicitParam(name = "title", value = "title", required = true)}
+    )
+    @RequestMapping(value="/uploadMaterial2",method = RequestMethod.POST)
+    @ResponseBody
+    public RestMessage uploadMaterial2(@RequestParam(value="file",required = true) MultipartFile file,@RequestParam(value = "title") String title, HttpServletRequest request) throws IOException {
+        //int mul=1*1024*1024;
+        List<MultipartFile> a=Lists.newArrayList();
+        a.add(file);
+        List<Map> uploadFiles= upload(request,a.toArray(new MultipartFile[]{}));
+        RestMessage rm=new RestMessage();
+        rm.setData(uploadFiles);
+        return rm;
+    }
+
+    @Order(value = 2)
+    @ApiOperation(value = "多文件File上传")
+    @ApiImplicitParams({@ApiImplicitParam(name = "file[]", value = "文件流对象,接收数组格式", required = true,dataType = "__File",allowMultiple = true),
             @ApiImplicitParam(name = "title", value = "title", required = true)}
     )
     @RequestMapping(value="/uploadMaterial1",method = RequestMethod.POST)
     @ResponseBody
-    public RestMessage uploadMaterial1(@RequestParam(value="file",required = true) MultipartFile file,@RequestParam(value = "title") String title, HttpServletRequest request) throws IOException {
+    public RestMessage uploadMaterial1(@RequestParam(value="file[]",required = true) MultipartFile[] files,@RequestParam(value = "title") String title, HttpServletRequest request) throws IOException {
         //int mul=1*1024*1024;
-        String realPath=request.getSession().getServletContext().getRealPath("/upload");
-        File realFile=new File(realPath);
-        if (!realFile.exists()){
-            realFile.mkdirs();
-        }
-        List<Map> uploadFiles= Lists.newArrayList();
-        File targetFile=new File(realFile,file.getOriginalFilename());
-        FileOutputStream fileOutputStream=null;
-        InputStream ins=null;
-        try{
-            fileOutputStream=new FileOutputStream(targetFile);
-            int i=-1;
-            byte[] bytes=new byte[1024*1024];
-            ins=file.getInputStream();
-            while ((i=ins.read(bytes))!=-1){
-                fileOutputStream.write(bytes,0,i);
-            }
-        }catch (IOException e){
-        }finally {
-            closeQuilty(ins);
-            closeQuilty(fileOutputStream);
-        }
-        Map fileInfo= Maps.newHashMap();
-        fileInfo.put("id", UUID.randomUUID().toString());
-        fileInfo.put("url",targetFile.getPath());
-        fileInfo.put("original_name",targetFile.getName());
-        uploadFiles.add(fileInfo);
+        List<Map> uploadFiles= upload(request,files);
         RestMessage rm=new RestMessage();
         rm.setData(uploadFiles);
         return rm;

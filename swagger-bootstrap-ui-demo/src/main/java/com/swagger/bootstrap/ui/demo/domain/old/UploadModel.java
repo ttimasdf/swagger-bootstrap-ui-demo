@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadModel {
     private String name;
 
-    @ApiModelProperty(dataType = "MultipartFile",value = "上传文件")
+    @ApiModelProperty(dataType = "",value = "上传文件")
     private MultipartFile file;
 
     public String getName() {
