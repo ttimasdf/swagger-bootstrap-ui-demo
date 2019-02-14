@@ -32,8 +32,9 @@ import java.util.Random;
 @RequestMapping("/api/image")
 public class ImageController {
 
-    @GetMapping("/preview")
+    @GetMapping(value = "/preview",produces = "image/jpeg")
     public void preview(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        System.out.println("codePreview-------------------------");
         int width=65,height=20;
         BufferedImage image=new BufferedImage(width,height,BufferedImage.TYPE_INT_BGR);
         // 获取图形上下文
