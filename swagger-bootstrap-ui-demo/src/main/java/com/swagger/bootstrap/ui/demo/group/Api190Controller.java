@@ -8,7 +8,7 @@
 package com.swagger.bootstrap.ui.demo.group;
 
 import com.swagger.bootstrap.ui.demo.common.Rest;
-import com.swagger.bootstrap.ui.demo.domain.resp190.BatchModifyForGoodsReq;
+import com.swagger.bootstrap.ui.demo.domain.resp190.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -19,6 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 /***
@@ -33,7 +36,48 @@ import java.util.Random;
 public class Api190Controller {
 
     Logger logger= LoggerFactory.getLogger(Api190Controller.class);
+    @PostMapping("/reatA2")
+    @ApiOperation(value = "请求响应实体类内有Map类型参数无法正常显示2")
+    public Rest<Map<String,List<BInfoVo>>> reatA12(@RequestBody Map<String,List<BInfoVo>> b){
+        Rest<Map<String,List<BInfoVo>>> r=new Rest<>();
+        r.setData(b);
+        return r;
 
+    }
+    @PostMapping("/reatA3")
+    @ApiOperation(value = "请求响应实体类内有Map类型参数无法正常显示3")
+    public Rest<Map<String,BInfoVo>> reatA13(@RequestBody Map<String,BInfoVo> b){
+        Rest<Map<String,BInfoVo>> r=new Rest<>();
+        r.setData(b);
+        return r;
+
+    }
+    @PostMapping("/reatA")
+    @ApiOperation(value = "请求响应实体类内有Map类型参数无法正常显示")
+    public Rest<AInfoVo> reatA(){
+        AInfoVo a=new AInfoVo();
+        a.setaId("dd");
+        Map<String,BInfoVo> bInfoVoMap=new HashMap<>();
+
+        BInfoVo b=new BInfoVo();
+        b.setConditionType("cType");
+        b.setPkId("233");
+        b.setRuleId("444");
+
+        bInfoVoMap.put("a1",b);
+        a.setbList(bInfoVoMap);
+
+        Rest<AInfoVo> rest=new Rest<>();
+        rest.setData(a);
+        return rest;
+    }
+    @PostMapping("/reatA1")
+    @ApiOperation(value = "请求响应实体类内有Map类型参数无法正常显示1")
+    public Rest<AInfoVo> reatA1(@RequestBody AInfoVo aInfoVo){
+        Rest<AInfoVo> rest=new Rest<>();
+        rest.setData(aInfoVo);
+        return rest;
+    }
 
     @ApiOperation(value = "下载测试-无参数版",position = 1)
     @GetMapping(value = "/downloadFile1",produces = "application/octet-stream")
@@ -60,7 +104,26 @@ public class Api190Controller {
         r.setData(batchModifyForGoodsReq);
         return r;
     }
-
+    @ApiOperation(value = "泛型返回类型解析问题-new")
+    @GetMapping("/deepFx3")
+    public BaseRsp<PageResult<AccountDetail>> deepFx3(){
+        return null;
+    }
+    @ApiOperation(value = "泛型返回类型解析问题")
+    @GetMapping("/deepFx")
+    public Rest<PageResultLocal<AccountDetail>> deepFx(){
+        return null;
+    }
+    @ApiOperation(value = "泛型返回类型解析问题-array")
+    @GetMapping("/deepFxArr")
+    public Rest<PageResultLocal<List<AccountDetail>>> deepFx2(){
+        return null;
+    }
+    @ApiOperation(value = "泛型返回类型解析问题1")
+    @GetMapping("/deepFx1")
+    public Rest<List<AccountDetail>> deepFx1(){
+        return null;
+    }
     private void download(String name,HttpServletResponse response){
         String fileName=new Random().nextInt(1000)+".txt";
         try {
