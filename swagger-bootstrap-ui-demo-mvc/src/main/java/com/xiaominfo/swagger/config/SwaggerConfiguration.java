@@ -32,8 +32,8 @@ import java.util.List;
 public class SwaggerConfiguration {
 
 
-    @Bean(value = "defaultApi")
-    @Order(value = 4)
+    /*@Bean(value = "defaultApi")
+    @Order(value = 4)*/
     public Docket defaultApi() {
         ParameterBuilder parameterBuilder=new ParameterBuilder();
         List<Parameter> parameters= Lists.newArrayList();
@@ -50,7 +50,7 @@ public class SwaggerConfiguration {
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build().globalOperationParameters(parameters)
-                .securityContexts(Lists.newArrayList(securityContext(),securityContext1())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey(),apiKey1()));
+                .securityContexts(Lists.newArrayList(securityContext())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey()));
     }
 
 

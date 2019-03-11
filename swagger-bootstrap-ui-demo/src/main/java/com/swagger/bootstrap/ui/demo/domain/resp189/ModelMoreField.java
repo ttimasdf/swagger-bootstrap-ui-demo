@@ -10,6 +10,7 @@ package com.swagger.bootstrap.ui.demo.domain.resp189;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
+import java.util.List;
 
 /***
  *
@@ -19,19 +20,19 @@ import java.util.Date;
  */
 public class ModelMoreField {
 
-    @ApiModelProperty(value = "人物id")
+    @ApiModelProperty(value = "人物id",hidden = true)
     private String id;
 
-    @ApiModelProperty(value = "姓名")
+    @ApiModelProperty(value = "姓名",example = "张三",readOnly = true)
     private String name;
 
-    @ApiModelProperty(value = "邮箱地址")
+    @ApiModelProperty(value = "邮箱地址",example = "zhangsan@qq.com")
     private String email;
 
     @ApiModelProperty(value = "描述信息")
     private String des;
 
-    @ApiModelProperty(value = "联系方式")
+    @ApiModelProperty(value = "联系方式",example = "1388888888",accessMode = ApiModelProperty.AccessMode.READ_ONLY)
     private String tel;
 
     @ApiModelProperty(value = "昵称")
@@ -51,6 +52,16 @@ public class ModelMoreField {
 
     @ApiModelProperty(value = "年龄")
     private Integer age;
+
+    private List<String> jobs;
+
+    public List<String> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(List<String> jobs) {
+        this.jobs = jobs;
+    }
 
     public String getId() {
         return id;

@@ -7,9 +7,12 @@
 
 package com.swagger.bootstrap.ui.demo.group;
 
+import com.alibaba.fastjson.JSON;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.resp190.*;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +37,20 @@ import java.util.Random;
 @RestController
 @RequestMapping(value = "/api/new190/")
 public class Api190Controller {
+
+
+    @ApiImplicitParams({@ApiImplicitParam(value = "b",name = "body",dataType = "__Json",dataTypeClass = BInfoVo.class)})
+    @PostMapping("/reatA233")
+    @ApiOperation(value = "请求泛型T")
+    public Rest<BInfoVo> r33r(RequestInfo requestInfo,String body){
+        Rest<BInfoVo> r=new Rest<>();
+        System.out.println(body);
+        //r.setData(requestInfo.getBody());
+        r.setMessage(requestInfo.getName());
+        return r;
+
+    }
+
 
     Logger logger= LoggerFactory.getLogger(Api190Controller.class);
     @PostMapping("/reatA2")

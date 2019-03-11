@@ -45,7 +45,7 @@ public class SwaggerConfiguration {
                 //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build().globalOperationParameters(parameters)
-                .securityContexts(Lists.newArrayList(securityContext(),securityContext1())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey(),apiKey1()));
+                .securityContexts(Lists.newArrayList(securityContext())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey()));
     }
     @Bean(value = "groupRestApi")
     @Order(value = 1)
@@ -62,7 +62,7 @@ public class SwaggerConfiguration {
     private ApiInfo groupApiInfo(){
         return new ApiInfoBuilder()
                 .title("swagger-bootstrap-ui很棒~~~！！！")
-                .description("swagger-bootstrap-ui-demo RESTful APIs")
+                .description("<div style='font-size:14px;color:red;'>swagger-bootstrap-ui-demo RESTful APIs</div>")
                 .termsOfServiceUrl("http://www.group.com/")
                 .contact("group@qq.com")
                 .version("1.0")
