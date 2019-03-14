@@ -15,9 +15,11 @@ import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.*;
@@ -36,7 +38,7 @@ public class Api191Controller {
 
     @ApiOperation(value = "example属性丢失")
     @PostMapping("/notExample")
-    public Rest<ModelMoreField> notfied(@RequestBody ModelMoreField modelMoreField){
+    public Rest<ModelMoreField> notfied(@ApiIgnore HttpSession httpSession, @RequestBody ModelMoreField modelMoreField){
         Rest<ModelMoreField> r=new Rest<>();
         System.out.println("dddddddddd");
 
