@@ -10,18 +10,11 @@ package com.swagger.bootstrap.ui.demo.group;
 import cn.hutool.core.date.DateTime;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.resp189.ModelMoreField;
-import com.swagger.bootstrap.ui.demo.domain.resp190.*;
 import io.swagger.annotations.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.*;
 
 /***
@@ -30,7 +23,7 @@ import java.util.*;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
  * 2019-3-5 18:53:45
  */
-@Api(tags = "1.9.1版本-20190114",position = 294)
+@Api(tags = "1.9.1版本-20190305",position = 294)
 @RestController
 @RequestMapping(value = "/api/new191/")
 public class Api191Controller {
@@ -59,7 +52,7 @@ public class Api191Controller {
         Rest<List<ModelMoreField>> r=new Rest<>();
         List<ModelMoreField> modelMoreFields=new ArrayList<>();
         ModelMoreField m1=new ModelMoreField();
-        m1.setAddress("浙江省杭州市文一西路22号杭州大厦18幢393");
+        m1.setAddress("浙江省杭州市文一西路22号杭州大厦18幢393浙江省杭州市文一西路22号杭州大厦18幢393浙江省杭州市文一西路22号杭州大厦18幢393浙江省杭州市文一西路22号杭州大厦18幢393浙江省杭州市文一西路22号杭州大厦18幢393浙江省杭州市文一西路22号杭州大厦18幢393浙江省杭州市文一西路22号杭州大厦18幢393");
         m1.setAge(32);
         m1.setCompany("代码无敌");
         m1.setDes("JavaScript无敌");

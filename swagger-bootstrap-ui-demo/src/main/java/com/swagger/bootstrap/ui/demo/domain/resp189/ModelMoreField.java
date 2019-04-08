@@ -20,6 +20,9 @@ import java.util.List;
  */
 public class ModelMoreField {
 
+    @ApiModelProperty(value = "姓名-昵称啦")
+    private String aname;
+
     @ApiModelProperty(value = "人物id",hidden = true)
     private String id;
 
@@ -54,6 +57,14 @@ public class ModelMoreField {
     private Integer age;
 
     private List<String> jobs;
+
+    public String getAname() {
+        return aname;
+    }
+
+    public void setAname(String aname) {
+        this.aname = aname;
+    }
 
     public List<String> getJobs() {
         return jobs;

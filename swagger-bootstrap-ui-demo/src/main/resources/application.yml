@@ -1,0 +1,10 @@
+server:
+  port: 8999
+spring:
+  application:
+    name: SwaggerBootstrapUi-Demo
+swagger:
+  basic:
+    enable: false
+    username: zhangsan
+    password: 123456

@@ -3,6 +3,7 @@ package com.swagger.bootstrap.ui.demo.config;
 
 import com.github.xiaoymin.swaggerbootstrapui.annotations.EnableSwaggerBootstrapUI;
 import com.google.common.collect.Lists;
+import com.swagger.bootstrap.ui.demo.domain.resp192.AddModel;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -56,6 +57,7 @@ public class SwaggerConfiguration {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.group"))
                 .paths(PathSelectors.any())
+
                 .build().securityContexts(Lists.newArrayList(securityContext(),securityContext1())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey(),apiKey1()));
     }
 
