@@ -7,7 +7,6 @@
 
 package com.swagger.bootstrap.ui.demo.group;
 
-import com.alibaba.fastjson.JSON;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.resp190.*;
 import io.swagger.annotations.Api;
@@ -41,7 +40,7 @@ public class Api190Controller {
 
     @ApiImplicitParams({@ApiImplicitParam(value = "b",name = "body",dataType = "__Json",dataTypeClass = BInfoVo.class)})
     @PostMapping("/reatA233")
-    @ApiOperation(value = "请求泛型T")
+    @ApiOperation(value = "请求泛型T1")
     public Rest<BInfoVo> r33r(RequestInfo requestInfo,String body){
         Rest<BInfoVo> r=new Rest<>();
         System.out.println(body);

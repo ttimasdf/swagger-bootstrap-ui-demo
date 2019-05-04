@@ -45,7 +45,7 @@ public class GroupController {
     }
 
     @PostMapping("/responseListRest")
-    @ApiOperation(value = "responseListRest",notes = "responseListRest类型参数",tags = {"测试用例","分组测试"})
+    @ApiOperation(value = "responseListRest",notes = "responseListRest类型参数",tags = {"测试用例测试用例测试用例测试用例测试用例测试用例测试用例测试用例测试用例测试用例","分组测试"})
     public Rest<ResponseList> responseListRest(){
         Rest<ResponseList> r=new Rest<>();
 

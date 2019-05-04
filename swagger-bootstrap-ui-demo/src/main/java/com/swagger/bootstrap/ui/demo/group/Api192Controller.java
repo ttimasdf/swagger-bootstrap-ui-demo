@@ -13,6 +13,7 @@ import com.swagger.bootstrap.ui.demo.domain.resp192.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -44,6 +45,33 @@ public class Api192Controller {
         Rest<List<Integer>> r=new Rest<List<Integer>>();
         r.setData(Arrays.asList(arr));
         return r;
+    }
+
+    @ApiOperation(value = "interger参数")
+    @PostMapping("/aar")
+    public Rest<Integer> rr(@RequestParam(value = "num") Integer num){
+        Rest<Integer> a=new Rest<>();
+        a.setData(num);
+
+        return a;
+    }
+
+    @ApiImplicitParam(value = "数字",name = "num",dataTypeClass = Integer.class)
+    @ApiOperation(value = "interger参数1")
+    @PostMapping("/aar1")
+    public Rest<Integer> rr1(@RequestParam(value = "num") Integer num){
+        Rest<Integer> a=new Rest<>();
+        a.setData(num);
+
+        return a;
+    }
+    @ApiOperation(value = "interger参数2")
+    @PostMapping("/aar2")
+    public Rest<Integer> rr2(@ApiParam(value = "数字") @RequestParam(value = "num") Integer num){
+        Rest<Integer> a=new Rest<>();
+        a.setData(num);
+
+        return a;
     }
     @ApiOperation(value = "数组请求Integer1")
     @PostMapping("/arrReques-Integer1")

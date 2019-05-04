@@ -31,7 +31,7 @@ import java.util.List;
 @RequestMapping(value = "/api/new184/")
 public class Api184Controller {
 
-    @ApiOperation(value = "RequestParam参数类型请求")
+    @ApiOperation(value = "RequestParam参数类型请7求")
     @PostMapping("/requestParam")
     public Rest<String> RequestParam(@RequestParam(name = "key") String key,
                                       @RequestParam(value = "name") String name){

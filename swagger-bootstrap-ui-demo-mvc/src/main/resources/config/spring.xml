@@ -18,6 +18,11 @@
 
 	<bean id="SwaggerConfig" class="com.xiaominfo.swagger.config.SwaggerConfiguration"></bean>
 
+	<!--注入自定义文档的bean-->
+	<bean id="markdownFiles" class="io.swagger.models.MarkdownFiles" init-method="init">
+		<property name="basePath" value="classpath:markdown/*"></property>
+	</bean>
+
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
