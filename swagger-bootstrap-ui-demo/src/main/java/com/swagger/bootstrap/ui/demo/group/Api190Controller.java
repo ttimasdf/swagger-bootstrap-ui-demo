@@ -144,7 +144,7 @@ public class Api190Controller {
         String fileName=new Random().nextInt(1000)+".txt";
         try {
             response.setContentType("text/plain;charset=UTF-8;");
-            response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);
+            response.addHeader("Content-Disposition", "attachment;FileName=" + fileName);
             ByteArrayOutputStream by=new ByteArrayOutputStream();
             String content="This test Download File Api,哈哈哈,我是中文,我是无敌的,我的名字是："+name;
             by.write(content.getBytes());
