@@ -10,13 +10,11 @@ package com.swagger.bootstrap.ui.demo.advice;
 import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.Rest;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolation;
@@ -34,6 +32,7 @@ public class GlobalExceptionAdvice{
 
     @ResponseBody
     @ExceptionHandler(Exception.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public Rest globalException(Exception e, HttpServletResponse response){
         Rest restfulMessage=new Rest();
         //参数校验未通过异常 @RequestBody参数校验失败

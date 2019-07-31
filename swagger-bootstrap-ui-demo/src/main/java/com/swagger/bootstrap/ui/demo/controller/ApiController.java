@@ -5,7 +5,7 @@
  * Developer Web Site: http://open.xiaominfo.com.
  */
 
-package com.swagger.bootstrap.ui.demo.group;
+package com.swagger.bootstrap.ui.demo.controller;
 
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.common.RestMessage;

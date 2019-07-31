@@ -5,10 +5,9 @@
  * Developer Web Site: http://open.xiaominfo.com.
  */
 
-package com.swagger.bootstrap.ui.demo.group;
+package com.swagger.bootstrap.ui.demo.x190;
 
 import com.alibaba.fastjson.JSONObject;
-import com.google.gson.JsonObject;
 import com.swagger.bootstrap.ui.demo.annotation.DynamicField;
 import com.swagger.bootstrap.ui.demo.annotation.DynamicFields;
 import com.swagger.bootstrap.ui.demo.common.ErrorCode;
@@ -24,7 +23,6 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -58,7 +56,6 @@ public class Api194Controller {
     @PostMapping("/createOr33der")
     @ApiOperationSupport(author = "张三",order = 2,params = @DynamicParameters(name = "",properties = {
     }))
-    @ApiOperation(value = "创建订单",position = 2)
     public Rest<Order> createOrdetr(@RequestBody Order order,@ApiIgnore HttpSession httpSession){
         Rest<Order> r=new Rest<>();
         r.setData(order);

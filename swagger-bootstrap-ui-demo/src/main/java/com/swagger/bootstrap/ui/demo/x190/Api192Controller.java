@@ -5,7 +5,7 @@
  * Developer Web Site: http://open.xiaominfo.com.
  */
 
-package com.swagger.bootstrap.ui.demo.group;
+package com.swagger.bootstrap.ui.demo.x190;
 
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.resp189.ModelMoreField;
@@ -24,7 +24,6 @@ import java.io.*;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 
 /***

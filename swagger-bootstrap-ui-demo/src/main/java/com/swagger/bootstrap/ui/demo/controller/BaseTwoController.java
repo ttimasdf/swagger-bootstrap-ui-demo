@@ -5,12 +5,20 @@
  * Developer Web Site: http://open.xiaominfo.com.
  */
 
-package com.swagger.bootstrap.ui.demo.group;
+package com.swagger.bootstrap.ui.demo.controller;
 
+import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.BaseController;
+import com.swagger.bootstrap.ui.demo.common.Rest;
+import com.swagger.bootstrap.ui.demo.domain.resp186.Model186;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 /***
  *
@@ -19,6 +27,8 @@ import org.springframework.web.bind.annotation.RestController;
  * 2018/11/07 22:33
  */
 @RestController
-@Api(tags = "B2B计划单")
-public class BaseOneController extends BaseController {
+@Api(tags = "B2B退货单")
+public class BaseTwoController extends BaseController {
+
+
 }

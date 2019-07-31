@@ -80,14 +80,27 @@ public class SwaggerConfiguration {
         //SpringAddtionalModel springAddtionalModel= springAddtionalModelService.scan("com.swagger.bootstrap.ui.demo.extend");
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(groupApiInfo())
-                .groupName("分组接口")
+                .groupName("1.8.X版本接口")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.group"))
+                .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.x180"))
                 .paths(PathSelectors.any())
                 .build()
                 .additionalModels(typeResolver.resolve(DeveloperApiInfo.class)).extensions(Lists.newArrayList(new OrderExtensions(2))).securityContexts(Lists.newArrayList(securityContext(),securityContext1())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey(),apiKey1()));
     }
+    @Bean(value = "groupRestApi1")
+    public Docket groupRestApi1() {
+        List<ResolvedType> list=Lists.newArrayList();
 
+        //SpringAddtionalModel springAddtionalModel= springAddtionalModelService.scan("com.swagger.bootstrap.ui.demo.extend");
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(groupApiInfo())
+                .groupName("1.9.X版本接口")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.x190"))
+                .paths(PathSelectors.any())
+                .build()
+                .additionalModels(typeResolver.resolve(DeveloperApiInfo.class)).extensions(Lists.newArrayList(new OrderExtensions(2))).securityContexts(Lists.newArrayList(securityContext(),securityContext1())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey(),apiKey1()));
+    }
     private ApiInfo groupApiInfo(){
         DeveloperApiInfoExtension apiInfoExtension=new DeveloperApiInfoExtension();
 

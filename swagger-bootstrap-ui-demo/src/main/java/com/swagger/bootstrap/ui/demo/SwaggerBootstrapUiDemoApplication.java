@@ -89,6 +89,7 @@ public class SwaggerBootstrapUiDemoApplication  implements WebMvcConfigurer{
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry resourceHandlerRegistry) {
+		WebMvcConfigurer.super.addResourceHandlers(resourceHandlerRegistry);
 
 	}
 

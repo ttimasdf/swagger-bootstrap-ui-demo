@@ -5,30 +5,28 @@
  * Developer Web Site: http://open.xiaominfo.com.
  */
 
-package com.swagger.bootstrap.ui.demo.group;
+package com.swagger.bootstrap.ui.demo.controller;
 
-import com.google.common.collect.Lists;
-import com.swagger.bootstrap.ui.demo.common.BaseController;
-import com.swagger.bootstrap.ui.demo.common.Rest;
-import com.swagger.bootstrap.ui.demo.domain.resp186.Model186;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.math.BigDecimal;
-import java.util.List;
 
 /***
  *
  * @since:swagger-bootstrap-ui 1.0
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
- * 2018/11/07 22:33
+ * 2018/08/14 9:36
  */
+@Api(value = "基础类型",tags = "基础类型")
 @RestController
-@Api(tags = "B2B退货单")
-public class BaseTwoController extends BaseController {
+@RequestMapping("/api/single")
+public class SingleTypeController {
 
-
+    @GetMapping(value = "/apiboole")
+    @ApiOperation(value = "Boolean类型返回")
+    public Boolean booleanapi(){
+        return false;
+    }
 }

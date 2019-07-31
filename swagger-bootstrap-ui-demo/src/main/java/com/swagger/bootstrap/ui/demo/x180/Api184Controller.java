@@ -5,7 +5,7 @@
  * Developer Web Site: http://open.xiaominfo.com.
  */
 
-package com.swagger.bootstrap.ui.demo.group;
+package com.swagger.bootstrap.ui.demo.x180;
 
 import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.Rest;
