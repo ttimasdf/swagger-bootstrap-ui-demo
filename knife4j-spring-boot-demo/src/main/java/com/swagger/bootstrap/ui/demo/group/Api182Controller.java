@@ -7,13 +7,13 @@
 
 package com.swagger.bootstrap.ui.demo.group;
 
+import com.github.xiaoymin.knife4j.annotations.ApiSort;
 import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.ErrorCode;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.old.ActInteger;
 import com.swagger.bootstrap.ui.demo.domain.old.Domain182T1;
 import com.swagger.bootstrap.ui.demo.domain.old.MulRequest;
-import com.xiaominfo.knife4j.annotations.ApiSort;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

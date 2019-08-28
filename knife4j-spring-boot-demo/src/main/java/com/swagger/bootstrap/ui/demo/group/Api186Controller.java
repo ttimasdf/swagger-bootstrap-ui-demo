@@ -7,13 +7,13 @@
 
 package com.swagger.bootstrap.ui.demo.group;
 
+import com.github.xiaoymin.knife4j.annotations.ApiSort;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.resp185.Model1851;
 import com.swagger.bootstrap.ui.demo.domain.resp185.Test1Model;
 import com.swagger.bootstrap.ui.demo.domain.resp185.Test2Model;
 import com.swagger.bootstrap.ui.demo.domain.resp186.Model186;
 import com.swagger.bootstrap.ui.demo.domain.resp186.Model1861;
-import com.xiaominfo.knife4j.annotations.ApiSort;
 import io.swagger.annotations.*;
 import io.swagger.models.Model;
 import org.springframework.web.bind.annotation.*;

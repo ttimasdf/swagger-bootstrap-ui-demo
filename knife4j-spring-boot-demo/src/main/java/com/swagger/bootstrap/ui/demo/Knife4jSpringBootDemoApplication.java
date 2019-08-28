@@ -27,11 +27,6 @@ import java.util.List;
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class Knife4jSpringBootDemoApplication implements WebMvcConfigurer{
 
-	/*@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("doc.html").addResourceLocations("classpath*:/META-INF/resources/");
-		registry.addResourceHandler("/webjars/**").addResourceLocations("classpath*:/META-INF/resources/webjars/");
-	}*/
 
 	private static Logger logger= LoggerFactory.getLogger(Knife4jSpringBootDemoApplication.class);
 
@@ -85,8 +80,9 @@ public class Knife4jSpringBootDemoApplication implements WebMvcConfigurer{
 	}
 
 	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry resourceHandlerRegistry) {
-
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		/*registry.addResourceHandler("doc.html").addResourceLocations("classpath*:/META-INF/resources/");
+		registry.addResourceHandler("/webjars/**").addResourceLocations("classpath*:/META-INF/resources/webjars/");*/
 	}
 
 	@Override

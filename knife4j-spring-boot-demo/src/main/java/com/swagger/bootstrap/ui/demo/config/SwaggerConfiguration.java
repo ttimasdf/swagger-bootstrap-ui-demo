@@ -3,12 +3,10 @@ package com.swagger.bootstrap.ui.demo.config;
 
 import com.fasterxml.classmate.ResolvedType;
 import com.fasterxml.classmate.TypeResolver;
+import com.github.xiaoymin.knife4j.spring.annotations.EnableSwaggerBootstrapUi;
 import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.extend.DeveloperApiInfo;
 import com.swagger.bootstrap.ui.demo.extend.DeveloperApiInfoExtension;
-import com.xiaominfo.knife4j.spring.annotations.EnableKnife4jSpring;
-import com.xiaominfo.knife4j.spring.model.OrderExtensions;
-import com.xiaominfo.knife4j.spring.service.SpringAddtionalModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,12 +24,11 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger2
-@EnableKnife4jSpring
+@EnableSwaggerBootstrapUi
 @Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfiguration {
 
-    @Autowired
-    SpringAddtionalModelService springAddtionalModelService;
+
 
 
     private final TypeResolver typeResolver;
@@ -65,7 +62,7 @@ public class SwaggerConfiguration {
                 .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.controller"))
                 //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
-                .build().extensions(Lists.newArrayList(new OrderExtensions(1))).globalOperationParameters(parameters)
+                .build().globalOperationParameters(parameters)
                 .securityContexts(Lists.newArrayList(securityContext())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey()));
         return docket;
     }
@@ -81,7 +78,7 @@ public class SwaggerConfiguration {
                 .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.group"))
                 .paths(PathSelectors.any())
                 .build()
-                .additionalModels(typeResolver.resolve(DeveloperApiInfo.class)).extensions(Lists.newArrayList(new OrderExtensions(2))).securityContexts(Lists.newArrayList(securityContext(),securityContext1())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey(),apiKey1()));
+                .additionalModels(typeResolver.resolve(DeveloperApiInfo.class)).securityContexts(Lists.newArrayList(securityContext(),securityContext1())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey(),apiKey1()));
     }
 
     private ApiInfo groupApiInfo(){

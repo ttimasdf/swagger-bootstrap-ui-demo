@@ -8,7 +8,8 @@
 package com.swagger.bootstrap.ui.demo.test;
 
 
-import com.xiaominfo.knife4j.io.ResourceUtil;
+
+import com.github.xiaoymin.knife4j.core.io.ResourceUtil;
 
 import java.util.Set;
 

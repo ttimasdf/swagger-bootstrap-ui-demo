@@ -8,6 +8,10 @@
 package com.swagger.bootstrap.ui.demo.group;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSort;
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
+import com.github.xiaoymin.knife4j.annotations.DynamicParameter;
+import com.github.xiaoymin.knife4j.annotations.DynamicParameters;
 import com.swagger.bootstrap.ui.demo.annotation.DynamicField;
 import com.swagger.bootstrap.ui.demo.annotation.DynamicFields;
 import com.swagger.bootstrap.ui.demo.common.ErrorCode;
@@ -16,10 +20,6 @@ import com.swagger.bootstrap.ui.demo.domain.resp192.Order;
 import com.swagger.bootstrap.ui.demo.domain.resp192.OrderStatus;
 import com.swagger.bootstrap.ui.demo.domain.resp194.OrderList;
 import com.swagger.bootstrap.ui.demo.domain.resp194.OrderXml;
-import com.xiaominfo.knife4j.annotations.ApiOperationSort;
-import com.xiaominfo.knife4j.annotations.ApiOperationSupport;
-import com.xiaominfo.knife4j.annotations.DynamicParameter;
-import com.xiaominfo.knife4j.annotations.DynamicParameters;
 import io.swagger.annotations.*;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;

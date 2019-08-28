@@ -7,11 +7,11 @@
 
 package com.swagger.bootstrap.ui.demo.group;
 
+import com.github.xiaoymin.knife4j.annotations.ApiSort;
 import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.old.MulRequest;
 import com.swagger.bootstrap.ui.demo.domain.resp183.CombineResponse;
-import com.xiaominfo.knife4j.annotations.ApiSort;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
