@@ -199,6 +199,25 @@ public class Api195Controller {
         return jsonObject;
     }
 
+    @ApiOperationSupport(params = @DynamicParameters(name = "CreateOrderModel3",properties = {
+            @DynamicParameter(name = "id3",value = "注解id3",example = "X000111",required = true,dataTypeClass = Integer.class),
+            @DynamicParameter(name = "name3",value = "订单编号3",required = false),
+            @DynamicParameter(name = "sub3",value = "包含子类3",dataTypeClass = OrderDate.class),
+    })
+            ,responses = @DynamicResponseParameters(properties = {
+            @DynamicParameter(value = "编号99",name = "id3"),
+            @DynamicParameter(value = "名称99",name = "name3"),
+            @DynamicParameter(value = "订单99",name = "deptName")
+    })
+    )
+    @ApiOperation(value = "响应JSONObject类型-String")
+    @PostMapping("/jsonObjectString")
+    public String jsonObjectxxxxString(@RequestBody Map map){
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("name","xx");
+        return jsonObject.toJSONString();
+    }
+
     @ApiOperationSupport(
             responses = @DynamicResponseParameters(properties = {
                     @DynamicParameter(value = "编号",name = "id"),

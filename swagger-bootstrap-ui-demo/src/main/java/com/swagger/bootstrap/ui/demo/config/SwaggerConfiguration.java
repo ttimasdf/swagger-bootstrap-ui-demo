@@ -45,9 +45,9 @@ public class SwaggerConfiguration {
         this.typeResolver = typeResolver;
     }
 
-    /*@Bean
+   /* @Bean
     public UiConfiguration uiConfiguration(){
-        return UiConfigurationBuilder.builder().supportedSubmitMethods(new String[]{})
+        return UiConfigurationBuilder.builder().supportedSubmitMethods(new String[]{"get"})
                 .displayOperationId(true)
                 .build();
     }*/
