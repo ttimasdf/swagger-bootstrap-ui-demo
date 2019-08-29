@@ -1,7 +1,7 @@
 
 package com.xiaominfo.swagger.service.order.config;
 
-import com.github.xiaoymin.swaggerbootstrapui.annotations.EnableSwaggerBootstrapUI;
+import com.github.xiaoymin.knife4j.spring.annotations.EnableSwaggerBootstrapUi;
 import com.google.common.collect.Lists;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +22,7 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger2
-@EnableSwaggerBootstrapUI
+@EnableSwaggerBootstrapUi
 @Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfiguration {
 
