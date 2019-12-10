@@ -91,7 +91,7 @@ public class Api196Controller {
         String fileName="中文需求 - 副本.xlsx";
         try {
             //此文件为本机测试
-            File excelFile=new File("C:\\Users\\xiaoymin\\Desktop\\中文需求 - 副本.xlsx");
+            File excelFile=new File("C:\\Users\\xiaoymin\\Desktop\\abc.xlsx");
             response.setContentType("application/vnd.ms-excel;charset=UTF-8;");
             response.addHeader("Content-Disposition", "attachment;FileName=" + URLEncoder.encode(fileName,"utf-8"));
             FileInputStream fis=new FileInputStream(excelFile);

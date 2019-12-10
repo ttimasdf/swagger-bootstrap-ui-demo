@@ -32,7 +32,7 @@ public class Api183Controller {
 
 
     @PostMapping("/deepResponseModel")
-    @ApiOperation(value = "多层model不显示bug")
+    @ApiOperation(value = "多层model不显示bug",notes = "我是说明,我是说明")
     public Rest<CombineResponse> mulrequest(@RequestBody CombineResponse mulRequest){
         Rest<CombineResponse> r=new Rest<>();
         r.setData(mulRequest);
@@ -63,7 +63,7 @@ public class Api183Controller {
     }
 
     @PostMapping(value = "/formdata",consumes = "multipart/form-data")
-    @ApiOperation(value = "formdata参数类型请求")
+    @ApiOperation(value = "formdata参数类型请求",notes = "1、我是说明,我是说明我是说明,我是说明我是说明,我是说明<br />2、我是说明,我是说明我是说明,我是说明<br />3、我是说明,我是说明我是说明,我是说明我是说明,我是说明我是说明,我是说明<br />4、我是说明,我是说明我是说明,我是说明我是说明,我是说明<br />5、我是说明,我是说明我是说明,我是说明")
     public Rest<String> formdata(@RequestParam(name = "key") String key,
                                       @RequestParam(value = "name") String name){
         Rest<String> r=new Rest<>();

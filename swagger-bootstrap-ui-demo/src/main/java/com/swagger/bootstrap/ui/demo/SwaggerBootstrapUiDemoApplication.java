@@ -89,8 +89,10 @@ public class SwaggerBootstrapUiDemoApplication  implements WebMvcConfigurer{
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry resourceHandlerRegistry) {
-		WebMvcConfigurer.super.addResourceHandlers(resourceHandlerRegistry);
-
+		//WebMvcConfigurer.super.addResourceHandlers(resourceHandlerRegistry);
+		/*resourceHandlerRegistry.addResourceHandler("doc.html").addResourceLocations("classpath*:/META-INF/resources/");
+		resourceHandlerRegistry.addResourceHandler("/webjars/**").addResourceLocations("classpath*:/META-INF/resources/webjars/");*/
+		resourceHandlerRegistry.addResourceHandler("/api/doc/webjars/*").addResourceLocations("classpath*:/META-INF/resources/webjars/");
 	}
 
 	@Override

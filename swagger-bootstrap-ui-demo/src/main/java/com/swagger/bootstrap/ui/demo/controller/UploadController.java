@@ -40,9 +40,28 @@ public class UploadController {
 
     @ApiOperation(value = "文件素材上传Model接口")
     @PostMapping("/uploadModel")
-    public RestMessage uploadModel(UploadModel uploadModel){
+    @ResponseBody
+    public RestMessage uploadModel(HttpServletRequest request,UploadModel uploadModel){
+        System.out.println("model名称："+uploadModel.getName());
+        List<MultipartFile> a=Lists.newArrayList();
+        a.add(uploadModel.getFile());
+        List<Map> uploadFiles= upload(request,a.toArray(new MultipartFile[]{}));
+        RestMessage rm=new RestMessage();
+        rm.setData(uploadFiles);
+        return rm;
+    }
 
-        return null;
+    @ApiOperation(value = "文件素材上传Model接口-path")
+    @PostMapping("/uploadModelpath/{userid}")
+    @ResponseBody
+    public RestMessage uploadModelpath(HttpServletRequest request,@PathVariable("userid") String userid,UploadModel uploadModel){
+        System.out.println("model名称："+uploadModel.getName()+"userId:"+userid);
+        List<MultipartFile> a=Lists.newArrayList();
+        a.add(uploadModel.getFile());
+        List<Map> uploadFiles= upload(request,a.toArray(new MultipartFile[]{}));
+        RestMessage rm=new RestMessage();
+        rm.setData(uploadFiles);
+        return rm;
     }
 
 

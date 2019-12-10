@@ -3,7 +3,7 @@ package com.swagger.bootstrap.ui.demo.config;
 
 import com.fasterxml.classmate.ResolvedType;
 import com.fasterxml.classmate.TypeResolver;
-import com.github.xiaoymin.knife4j.spring.annotations.EnableSwaggerBootstrapUi;
+import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.extend.DeveloperApiInfo;
 import com.swagger.bootstrap.ui.demo.extend.DeveloperApiInfoExtension;
@@ -24,7 +24,7 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger2
-@EnableSwaggerBootstrapUi
+@EnableKnife4j
 @Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfiguration {
 

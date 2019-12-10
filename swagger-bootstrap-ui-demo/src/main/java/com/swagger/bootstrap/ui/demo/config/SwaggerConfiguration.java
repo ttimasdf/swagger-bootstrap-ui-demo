@@ -51,7 +51,22 @@ public class SwaggerConfiguration {
                 .displayOperationId(true)
                 .build();
     }*/
+   @Bean(value = "defaultApix")
+   public Docket defaultApixx() {
+       ParameterBuilder parameterBuilder=new ParameterBuilder();
+       List<Parameter> parameters= Lists.newArrayList();
 
+       Docket docket=new Docket(DocumentationType.SWAGGER_2)
+               .apiInfo(apiInfo())
+               .groupName("默认接口-swaggermodels")
+               .select()
+               .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.x200"))
+               //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+               .paths(PathSelectors.any())
+               .build().extensions(Lists.newArrayList(new OrderExtensions(1))).globalOperationParameters(parameters)
+               .securityContexts(Lists.newArrayList(securityContext())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey()));
+       return docket;
+   }
 
     @Bean(value = "defaultApi")
     public Docket defaultApi() {
@@ -132,7 +147,7 @@ public class SwaggerConfiguration {
         return new ApiKey("BearerToken", "Authorization", "header");
     }
     private ApiKey apiKey1() {
-        return new ApiKey("BearerToken1", "Authorization-x", "header");
+        return new ApiKey("BearerToken1", "Authorization-c", "header");
     }
 
     private SecurityContext securityContext() {

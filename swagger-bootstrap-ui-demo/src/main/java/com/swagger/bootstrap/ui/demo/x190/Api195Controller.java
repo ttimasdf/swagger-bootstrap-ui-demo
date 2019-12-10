@@ -17,6 +17,7 @@ import io.swagger.annotations.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -42,6 +43,10 @@ public class Api195Controller {
                     @ResponseHeader(name = "x-per-page",description = "大小",response = Long.class)
             })
     )
+    @ApiImplicitParams({
+            @ApiImplicitParam(value = "日期",dataTypeClass = Date.class,name = "date",required = true),
+            @ApiImplicitParam(value = "名称",name = "name",required = true)
+    })
     @ApiOperationSupport(order = 1)
     public Rest<String> headerShow(@RequestParam(value = "name") String name, @RequestParam(value = "date") Date date){
         Rest<String> r=new Rest<>();
@@ -141,7 +146,9 @@ public class Api195Controller {
             @DynamicParameter(name = "name3",value = "订单编号-gson"),
             @DynamicParameter(name = "name1",value = "订单编号1-gson"),
     })
-    public Rest<HashMap> createOrder1235332(@RequestBody HashMap map){
+    public Rest<HashMap> createOrder1235332(HttpServletRequest request, @RequestBody HashMap map){
+        String token=request.getHeader("token");
+        System.out.println("token:"+token);
         Rest<HashMap> r=new Rest<>();
         r.setData(map);
         return r;
