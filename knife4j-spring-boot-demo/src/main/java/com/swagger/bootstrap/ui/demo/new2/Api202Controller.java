@@ -9,8 +9,13 @@ package com.swagger.bootstrap.ui.demo.new2;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.swagger.bootstrap.ui.demo.common.Rest;
+import com.swagger.bootstrap.ui.demo.common.RestMessage;
+import com.swagger.bootstrap.ui.demo.domain.old.UploadModel;
 import com.swagger.bootstrap.ui.demo.domain.resp196.IgnoreP1;
 import com.swagger.bootstrap.ui.demo.domain.resp196.LongUser;
+import com.swagger.bootstrap.ui.demo.domain.resp202.Knife4jUab;
+import com.swagger.bootstrap.ui.demo.domain.resp202.Knife4jUser;
+import com.swagger.bootstrap.ui.demo.domain.resp202.UploadEnum;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -77,6 +82,39 @@ public class Api202Controller {
     public Rest<List<LongUser>> findAll4(@RequestBody List<LongUser> longUsers) {
         Rest<List<LongUser>> r=new Rest<>();
         r.setData(longUsers);
+        return r;
+    }
+
+    @ApiOperation(value = "url-form类型枚举下拉框显示-简单枚举")
+    @PostMapping("/Knife4jUser")
+    public Rest<Knife4jUser> findAll5(Knife4jUser knife4jUser) {
+        Rest<Knife4jUser> r=new Rest<>();
+        r.setData(knife4jUser);
+        return r;
+    }
+    @ApiOperation(value = "url-form类型枚举下拉框显示-复杂枚举")
+    @PostMapping("/Knife4jUser1")
+    public Rest<Knife4jUab> findAll6(Knife4jUab knife4jUab) {
+        Rest<Knife4jUab> r=new Rest<>();
+        r.setData(knife4jUab);
+        return r;
+    }
+
+    @ApiOperation(value = "formdata上传附带枚举参数")
+    @PostMapping("/uploadModel")
+    public RestMessage uploadModel(UploadEnum uploadEnum){
+        RestMessage r=new RestMessage();
+        String content="name:"+uploadEnum.getName()+",enum:"+uploadEnum.getKnife4jType().toString();
+        r.setData(content);
+        return r;
+    }
+
+    @ApiOperation(value = "raw-form类型枚举下拉框显示-复杂枚举")
+    @PostMapping("/Knife4jUser7")
+    public Rest<Knife4jUab> findAll7(Knife4jUab knife4jUab,@RequestBody Knife4jUser knife4jUser) {
+        Rest<Knife4jUab> r=new Rest<>();
+        r.setData(knife4jUab);
+        System.out.println("user:"+knife4jUser.getName()+",type:"+knife4jUser.getKnife4jType().toString());
         return r;
     }
 
