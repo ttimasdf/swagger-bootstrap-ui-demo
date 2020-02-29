@@ -38,13 +38,20 @@ public class SwaggerConfiguration {
         this.typeResolver = typeResolver;
     }
 
-    /*@Bean
-    public UiConfiguration uiConfiguration(){
-        return UiConfigurationBuilder.builder().supportedSubmitMethods(new String[]{})
-                .displayOperationId(true)
-                .build();
-    }*/
 
+    @Bean(value = "defaultApi2")
+    public Docket defaultApi2() {
+        Docket docket=new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .groupName("2.X版本")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.new2"))
+                //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+                .paths(PathSelectors.any())
+                .build()
+                .securityContexts(Lists.newArrayList(securityContext())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey()));
+        return docket;
+    }
 
     @Bean(value = "defaultApi")
     public Docket defaultApi() {

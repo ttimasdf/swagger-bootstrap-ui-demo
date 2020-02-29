@@ -9,6 +9,9 @@ package com.swagger.bootstrap.ui.demo.domain.resp196;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotNull;
+import java.util.List;
+
 /***
  *
  * @since:swagger-bootstrap-ui 1.0
@@ -17,12 +20,24 @@ import io.swagger.annotations.ApiModelProperty;
  */
 public class LongUser {
 
-    @ApiModelProperty(value = "主键id")
+    @ApiModelProperty(value = "主键id",example = "12")
     private Long id;
 
+    @ApiModelProperty(value = "教师 id 列表。", required = true)
+    @NotNull(message = "请选择教师")
+    private List<Long> ids;
 
-    @ApiModelProperty(value = "姓名")
+
+    @ApiModelProperty(value = "姓名",example = "ABBB")
     private String name;
+
+    public List<Long> getIds() {
+        return ids;
+    }
+
+    public void setIds(List<Long> ids) {
+        this.ids = ids;
+    }
 
     public Long getId() {
         return id;

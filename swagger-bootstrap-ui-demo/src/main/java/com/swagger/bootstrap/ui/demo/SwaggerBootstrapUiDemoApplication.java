@@ -3,6 +3,7 @@ package com.swagger.bootstrap.ui.demo;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import com.swagger.bootstrap.ui.demo.config.LoginInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -84,7 +85,7 @@ public class SwaggerBootstrapUiDemoApplication  implements WebMvcConfigurer{
 
 	@Override
 	public void addInterceptors(InterceptorRegistry interceptorRegistry) {
-
+		//interceptorRegistry.addInterceptor(new LoginInterceptor()).excludePathPatterns("/swagger-resources","/v2/api-docs","/v2/api-docs-ext");
 	}
 
 	@Override

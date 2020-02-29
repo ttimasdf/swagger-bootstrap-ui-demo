@@ -8,8 +8,10 @@
 package com.swagger.bootstrap.ui.demo.advice;
 
 import cn.hutool.core.util.StrUtil;
+import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.Rest;
+import com.swagger.bootstrap.ui.demo.exception.UserNotLoginException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 /***
@@ -30,10 +34,9 @@ import java.util.List;
 @ControllerAdvice(annotations = RestController.class)
 public class GlobalExceptionAdvice{
 
-    @ResponseBody
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    public Rest globalException(Exception e, HttpServletResponse response){
+    @ExceptionHandler({Exception.class, UserNotLoginException.class})
+    @ResponseStatus(value = HttpStatus.OK)
+    public void globalException(Exception e, HttpServletResponse response){
         Rest restfulMessage=new Rest();
         //参数校验未通过异常 @RequestBody参数校验失败
         if (e instanceof MethodArgumentNotValidException) {
@@ -67,7 +70,17 @@ public class GlobalExceptionAdvice{
             restfulMessage.setErrCode(10500);
             restfulMessage.setMessage(e.getMessage());
         }
-        return restfulMessage;
+        response.setContentType("application/json;charset=utf-8");
+        response.setCharacterEncoding("utf-8");
+        PrintWriter printWriter= null;
+        try {
+            printWriter = response.getWriter();
+            printWriter.write(JSON.toJSONString(restfulMessage));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }finally {
+            printWriter.close();
+        }
 
 
     }
