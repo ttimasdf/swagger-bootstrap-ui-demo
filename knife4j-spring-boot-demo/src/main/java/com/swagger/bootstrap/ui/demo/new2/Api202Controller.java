@@ -13,15 +13,10 @@ import com.swagger.bootstrap.ui.demo.common.RestMessage;
 import com.swagger.bootstrap.ui.demo.domain.old.UploadModel;
 import com.swagger.bootstrap.ui.demo.domain.resp196.IgnoreP1;
 import com.swagger.bootstrap.ui.demo.domain.resp196.LongUser;
-import com.swagger.bootstrap.ui.demo.domain.resp202.Knife4jUab;
-import com.swagger.bootstrap.ui.demo.domain.resp202.Knife4jUser;
-import com.swagger.bootstrap.ui.demo.domain.resp202.UploadEnum;
+import com.swagger.bootstrap.ui.demo.domain.resp202.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -48,7 +43,7 @@ public class Api202Controller {
         return r;
     }
 
-    @ApiOperationSupport(ignoreParameters = {"ignoreLabels[0].code","longUser.ids"})
+    @ApiOperationSupport(ignoreParameters = {"ignoreLabels","longUser.ids"})
     @ApiOperation(value = "忽略参数值-Form类型1")
     @PostMapping("/ex1")
     public Rest<IgnoreP1> findAll12(IgnoreP1 ignoreP1) {
@@ -117,5 +112,57 @@ public class Api202Controller {
         System.out.println("user:"+knife4jUser.getName()+",type:"+knife4jUser.getKnife4jType().toString());
         return r;
     }
+
+    @ApiOperationSupport(ignoreParameters = {"createTimes[0]"})
+    @ApiOperation(value = "忽略数组类型的参数")
+    @PostMapping("/Knife4jUser11")
+    public Rest<Knife4jTime> findAll16(Knife4jTime knife4jTime) {
+        Rest<Knife4jTime> r=new Rest<>();
+        r.setData(knife4jTime);
+        return r;
+    }
+
+    @ApiOperation(value = "忽略数组类型的参数-不忽略")
+    @PostMapping("/Knife4jUser12")
+    public Rest<Knife4jTime> findAll18(Knife4jTime knife4jTime) {
+        Rest<Knife4jTime> r=new Rest<>();
+        r.setData(knife4jTime);
+        return r;
+    }
+
+    @ApiOperation(value = "GET请求参数编码处理")
+    @GetMapping("/getUser")
+    public Rest<GetArray> getUser(GetArray getArray){
+        Rest<GetArray> r=new Rest<>();
+        r.setData(getArray);
+        return r;
+    }
+
+    @ApiOperation(value = "GET请求参数编码处理1")
+    @GetMapping("/getUser1")
+    public Rest<GetArray> getUse1r(GetArray getArray){
+        Rest<GetArray> r=new Rest<>();
+        r.setData(getArray);
+        return r;
+    }
+
+    @ApiOperation(value = "忽略参数")
+    @ApiOperationSupport(ignoreParameters = {"nodes[0]"})
+    @GetMapping("/getUser221")
+    public Rest<KDto> getUse1rx(KDto kDto){
+        Rest<KDto> r=new Rest<>();
+        r.setData(kDto);
+        return r;
+    }
+
+    @ApiOperation(value = "忽略参数xx1-json")
+    @ApiOperationSupport(ignoreParameters = {"kDto.nodes[0]"})
+    @GetMapping("/getUser221x")
+    public Rest<KDto> getUse1rx1(@RequestBody KDto kDto){
+        Rest<KDto> r=new Rest<>();
+        r.setData(kDto);
+        return r;
+    }
+
 
 }
