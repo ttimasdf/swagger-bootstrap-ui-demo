@@ -8,6 +8,7 @@
 package com.swagger.bootstrap.ui.demo.new2;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
+import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.common.RestMessage;
 import com.swagger.bootstrap.ui.demo.domain.old.UploadModel;
@@ -19,6 +20,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 /***
@@ -80,14 +82,14 @@ public class Api202Controller {
         return r;
     }
 
-    @ApiOperation(value = "url-form类型枚举下拉框显示-简单枚举")
+    @ApiOperation(value = "url-form类型枚举下拉框显示-简单枚举11")
     @PostMapping("/Knife4jUser")
     public Rest<Knife4jUser> findAll5(Knife4jUser knife4jUser) {
         Rest<Knife4jUser> r=new Rest<>();
         r.setData(knife4jUser);
         return r;
     }
-    @ApiOperation(value = "url-form类型枚举下拉框显示-复杂枚举")
+    @ApiOperation(value = "url-form类型枚举下拉框显示-复杂枚举22")
     @PostMapping("/Knife4jUser1")
     public Rest<Knife4jUab> findAll6(Knife4jUab knife4jUab) {
         Rest<Knife4jUab> r=new Rest<>();
@@ -164,5 +166,70 @@ public class Api202Controller {
         return r;
     }
 
+    @ApiOperation(value = "Get无刷新请求")
+    @GetMapping("/getParams")
+    public Rest<GetParam> getUse1rx1(){
+        Rest<GetParam> r=new Rest<>();
+        r.setData(new GetParam());
+        return r;
+    }
+    @ApiOperation(value = "Get无刷新请求1")
+    @GetMapping("/getParams1")
+    public Rest<GetParam> getUse1rx111(){
+        Rest<GetParam> r=new Rest<>();
+        r.setData(new GetParam());
+        return r;
+    }
+    @ApiOperationSupport(author = "xiaoymin@foxmail.com")
+    @ApiOperation(value = "Get无刷新请求1777722222")
+    @GetMapping("/getParams21")
+    public Rest<GetParam> getUse1rx1113(){
+        Rest<GetParam> r=new Rest<>();
+        r.setData(new GetParam());
+        return r;
+    }
 
+
+    @ApiOperationSupport(author = "xiaoymin@foxmail.com")
+    @ApiOperation(value = "测试Loading效果")
+    @GetMapping("/getLoading")
+    public Rest<GetParam> getLoading(){
+        Rest<GetParam> r=new Rest<>();
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        r.setData(new GetParam());
+        return r;
+    }
+
+
+    @ApiOperationSupport(author = "xiaoymin@foxmail.com")
+    @ApiOperation(value = "写文档注释我是认真的")
+    @GetMapping("/getRealDoc")
+    public Rest<RealDescription> getRealDoc(){
+        Rest<RealDescription> r=new Rest<>();
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        r.setData(new RealDescription());
+        return r;
+    }
+
+    @ApiOperationSupport(author = "xiaoymin@foxmail.com")
+    @ApiOperation(value = "写文档注释我是认真的-array")
+    @GetMapping("/getRealDocarr")
+    public Rest<List<RealDescription>> getRealDoc1(){
+        Rest<List<RealDescription>> r=new Rest<>();
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        r.setData(Lists.newArrayList(new RealDescription()));
+        return r;
+    }
 }
