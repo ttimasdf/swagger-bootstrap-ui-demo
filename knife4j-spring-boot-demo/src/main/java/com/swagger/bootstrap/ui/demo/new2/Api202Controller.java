@@ -7,6 +7,7 @@
 
 package com.swagger.bootstrap.ui.demo.new2;
 
+import cn.hutool.core.util.RandomUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.Rest;
@@ -230,6 +231,38 @@ public class Api202Controller {
             e.printStackTrace();
         }
         r.setData(Lists.newArrayList(new RealDescription()));
+        return r;
+    }
+
+
+    @ApiOperationSupport(author = "xiaoymin@foxmail.com")
+    @ApiOperation(value = "响应数据太长不换行")
+    @GetMapping("/getRealDocarrx")
+    public Rest<List<RealDescription>> getRealDoc3(){
+        Rest<List<RealDescription>> r=new Rest<>();
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        RealDescription rd=new RealDescription();
+        rd.setName(RandomUtil.randomNumbers(300));
+        r.setData(Lists.newArrayList(new RealDescription(),rd));
+        return r;
+    }
+
+
+    @ApiOperationSupport(author = "xiaoymin@foxmail.com")
+    @ApiOperation(value = "字段太多了属性不显示?")
+    @GetMapping("/getKdes")
+    public Rest<KDescrption> getKdes(){
+        Rest<KDescrption> r=new Rest<>();
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        r.setData(new KDescrption());
         return r;
     }
 }
