@@ -4,7 +4,7 @@ spring:
   application:
     name: SwaggerBootstrapUi-Demo
 knife4j:
-  enable: false
+  enable: true
   markdowns: classpath:markdown/*
   basic:
     enable: false
