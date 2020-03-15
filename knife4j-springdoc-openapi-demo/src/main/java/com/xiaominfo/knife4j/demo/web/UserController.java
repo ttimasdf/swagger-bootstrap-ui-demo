@@ -7,12 +7,11 @@
 
 package com.xiaominfo.knife4j.demo.web;
 
+import com.xiaominfo.knife4j.demo.model.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /***
  *
@@ -30,5 +29,11 @@ public class UserController {
     @GetMapping("/create")
     public ResponseEntity<String> create(String name){
         return ResponseEntity.ok(name);
+    }
+
+    @Operation(summary = "创建用户-createOne",description = "根据姓名创建用户1")
+    @PostMapping("/createOne")
+    public ResponseEntity<User> createOne(@RequestBody User user){
+        return ResponseEntity.ok(user);
     }
 }
