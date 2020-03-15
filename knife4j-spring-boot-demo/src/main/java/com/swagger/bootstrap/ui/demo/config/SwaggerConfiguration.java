@@ -8,10 +8,10 @@ import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.extend.DeveloperApiInfo;
 import com.swagger.bootstrap.ui.demo.extend.DeveloperApiInfoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.*;
 import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.*;
@@ -25,10 +25,15 @@ import java.util.List;
 @Configuration
 @EnableSwagger2
 @EnableKnife4j
-@Import(BeanValidatorPluginsConfiguration.class)
+@ConditionalOnProperty(value = {"knife4j.enable"}, matchIfMissing = true)
 public class SwaggerConfiguration {
 
-
+   /* @Bean
+    public UiConfiguration uiConfiguration(){
+        return UiConfigurationBuilder.builder()
+                .supportedSubmitMethods(new String[]{})
+                .build();
+    }*/
 
 
     private final TypeResolver typeResolver;
@@ -101,7 +106,7 @@ public class SwaggerConfiguration {
                 .termsOfServiceUrl("http://www.group.com/")
                 .contact("group@qq.com")
                 .version("1.0")
-                .extensions(Lists.newArrayList(apiInfoExtension))
+                //.extensions(Lists.newArrayList(apiInfoExtension))
                 .build();
     }
 

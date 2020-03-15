@@ -33,7 +33,6 @@ public class ModeValidl187 implements Serializable{
     @DecimalMax(value = "9999999999999999999999999999",message = "资金必须小于9999999999999999999999999999")
     private BigDecimal total;
 
-    @NotEmpty
     @NotNull
     @ApiModelProperty(value = "名称",example = "dx")
     @Length(min = 0,max = 255,message = "长度必须在0-255之间")
@@ -58,7 +57,6 @@ public class ModeValidl187 implements Serializable{
     @Range(min = 15L,max = 50L)
     private Integer rangeNum;
 
-    @Email(regexp = ".*@qq.com")
     private String email;
 
     @ApiModelProperty(hidden = true)

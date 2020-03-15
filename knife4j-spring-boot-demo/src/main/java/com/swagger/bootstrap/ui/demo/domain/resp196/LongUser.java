@@ -28,7 +28,7 @@ public class LongUser {
     private List<Long> ids;
 
 
-    @ApiModelProperty(value = "姓名",example = "ABBB")
+    @ApiModelProperty(value = "姓名")
     private String name;
 
     public List<Long> getIds() {

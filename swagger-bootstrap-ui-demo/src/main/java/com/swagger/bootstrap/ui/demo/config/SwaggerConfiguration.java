@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.HttpHeaders;
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.*;
 import springfox.documentation.schema.ModelRef;
@@ -144,6 +145,7 @@ public class SwaggerConfiguration {
     }
 
     private ApiKey apiKey() {
+        //HttpHeaders.AUTHORIZATION
         return new ApiKey("BearerToken", "Authorization", "header");
     }
     private ApiKey apiKey1() {
