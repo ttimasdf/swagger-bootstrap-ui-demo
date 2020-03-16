@@ -10,6 +10,7 @@ package com.swagger.bootstrap.ui.demo.new2;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.resp196.LongUser;
+import com.swagger.bootstrap.ui.demo.domain.resp202.KDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +36,15 @@ public class Api203Constroller {
     public Rest<LongUser> findAll(LongUser longUser) {
         Rest<LongUser> r=new Rest<>();
         r.setData(longUser);
+        return r;
+    }
+
+    @ApiOperation(value = "忽略参数")
+    @ApiOperationSupport(ignoreParameters = {"nodes[0].knife4jUsers"})
+    @GetMapping("/getUser221")
+    public Rest<KDto> getUse1rx(KDto kDto){
+        Rest<KDto> r=new Rest<>();
+        r.setData(kDto);
         return r;
     }
 
