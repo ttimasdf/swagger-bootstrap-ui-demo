@@ -9,6 +9,9 @@ package com.swagger.bootstrap.ui.demo.new2;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.google.common.collect.ImmutableMap;
@@ -18,6 +21,7 @@ import com.swagger.bootstrap.ui.demo.domain.resp196.LongUser;
 import com.swagger.bootstrap.ui.demo.domain.resp202.KDto;
 import com.swagger.bootstrap.ui.demo.domain.resp202.KDtoInfo;
 import com.swagger.bootstrap.ui.demo.domain.resp202.KDtoObject;
+import com.swagger.bootstrap.ui.demo.domain.resp203.InsureXmlReq;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +44,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/nxew203")
 public class Api203Constroller {
+
+    @ApiOperation(value = "XML请求")
+    @PostMapping(value = "/xml",produces = "application/xml",consumes = "application/xml")
+    public String xml(@RequestBody InsureXmlReq insureXmlReq){
+        ObjectMapper objectMapper = new XmlMapper();
+        try {
+            String result=objectMapper.writeValueAsString(insureXmlReq);
+            System.out.println("result:");
+            System.out.println(result   );
+            return result;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
 
     @ApiOperation(value = "根据内容响应不同HTTP状态码",notes = "1、code为10001时响应404<br /> 2、code为10002时状态码为201 <br/> 3、其他情况状态码为200 <br /> 4、See https://gitee.com/xiaoym/knife4j/issues/I1BKRH")
     @GetMapping("/writeResponseCodeByBusiness")
