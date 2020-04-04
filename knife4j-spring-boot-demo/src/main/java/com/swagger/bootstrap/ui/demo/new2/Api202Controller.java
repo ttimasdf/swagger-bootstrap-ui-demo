@@ -37,7 +37,7 @@ public class Api202Controller {
 
 
 
-    @ApiOperationSupport(ignoreParameters = "ids")
+    @ApiOperationSupport(order = 33,ignoreParameters = "ids")
     @ApiOperation(value = "忽略参数值-Form类型")
     @PostMapping("/ex")
     public Rest<LongUser> findAll(LongUser longUser) {
@@ -84,7 +84,7 @@ public class Api202Controller {
     }
 
     @ApiOperation(value = "url-form类型枚举下拉框显示-简单枚举11")
-    @PostMapping("/Knife4jUser")
+    @PostMapping(value = "/Knife4jUser",consumes = "application/x-www-form-urlencoded")
     public Rest<Knife4jUser> findAll5(Knife4jUser knife4jUser) {
         Rest<Knife4jUser> r=new Rest<>();
         r.setData(knife4jUser);
