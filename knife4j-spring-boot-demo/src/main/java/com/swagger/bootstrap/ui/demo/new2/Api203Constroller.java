@@ -39,8 +39,8 @@ import java.util.List;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
  * 2020/03/12 9:04
  */
-@Api(tags = "2.0.3版本-20200312",position = 285)
-@ApiSupport(author = "xiaoymin@foxmail.com")
+@Api(tags = "2.0.3版本-20200312")
+@ApiSupport(author = "xiaoymin@foxmail.com",order = 284)
 @RestController
 @RequestMapping("/api/nxew203")
 public class Api203Constroller {
@@ -101,7 +101,7 @@ public class Api203Constroller {
     }
 
 
-    @ApiOperationSupport(ignoreParameters = "ids")
+    @ApiOperationSupport(ignoreParameters = "ids",author = "张飞")
     @ApiOperation(value = "GET请求参数出现NULL的情况啊")
     @GetMapping("/ex")
     public Rest<LongUser> findAll(HttpServletRequest request,LongUser longUser) {
@@ -111,7 +111,7 @@ public class Api203Constroller {
     }
 
     @ApiOperation(value = "忽略参数")
-    @ApiOperationSupport(ignoreParameters = {"nodes[0].knife4jUsers"})
+    @ApiOperationSupport(ignoreParameters = {"nodes[0].knife4jUsers"},includeParameters = {"key","value"})
     @GetMapping(value = "/getUser221",consumes = "application/x-www-form-urlencoded;charset=utf-8")
     public Rest<KDto> getUse1rx(KDto kDto){
         Rest<KDto> r=new Rest<>();
@@ -132,6 +132,14 @@ public class Api203Constroller {
     @ApiOperationSupport(ignoreParameters = {"nodes[0].knife4jUsers","obj"})
     @GetMapping(value = "/getUse1rxobj1",consumes = "application/x-www-form-urlencoded;charset=utf-8")
     public Rest<KDtoInfo> getUse1s1rxobj(KDtoInfo kDtoObject){
+        Rest<KDtoInfo> r=new Rest<>();
+        r.setData(kDtoObject);
+        return r;
+    }
+    @ApiOperation(value = "包含参数-Object1")
+    @ApiOperationSupport(includeParameters = {"nodes[0].knife4jUsers","obj"})
+    @GetMapping(value = "/getUse1rxobj1c",consumes = "application/x-www-form-urlencoded;charset=utf-8")
+    public Rest<KDtoInfo> getUse1s1rxobjx(KDtoInfo kDtoObject){
         Rest<KDtoInfo> r=new Rest<>();
         r.setData(kDtoObject);
         return r;

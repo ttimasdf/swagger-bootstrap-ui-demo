@@ -54,6 +54,14 @@ public class Api202Controller {
         r.setData(ignoreP1);
         return r;
     }
+    @ApiOperationSupport(includeParameters = {"ignoreLabels","longUser.ids"})
+    @ApiOperation(value = "包含参数值-Form类型1")
+    @PostMapping("/ex1c")
+    public Rest<IgnoreP1> findAllc12(IgnoreP1 ignoreP1) {
+        Rest<IgnoreP1> r=new Rest<>();
+        r.setData(ignoreP1);
+        return r;
+    }
 
 
     @ApiOperationSupport(ignoreParameters = "longUser.ids")
@@ -65,10 +73,27 @@ public class Api202Controller {
         return r;
     }
 
+    @ApiOperationSupport(includeParameters = "ongUser.ids")
+    @ApiOperation(value = "包含参数值-JSON类型")
+    @PostMapping("/exc2")
+    public Rest<LongUser> findAllc1(@RequestBody LongUser ongUser) {
+        Rest<LongUser> r=new Rest<>();
+        r.setData(ongUser);
+        return r;
+    }
+
     @ApiOperationSupport(ignoreParameters = {"ignoreP1.ignoreLabels[0].code","ignoreP1.longUser.ids"})
     @ApiOperation(value = "忽略参数值-JSON类型1")
     @PostMapping("/ex3")
     public Rest<IgnoreP1> findAll3(@RequestBody IgnoreP1 ignoreP1) {
+        Rest<IgnoreP1> r=new Rest<>();
+        r.setData(ignoreP1);
+        return r;
+    }
+    @ApiOperationSupport(includeParameters = {"ignoreP1.ignoreLabels[0].code","ignoreP1.longUser.ids"})
+    @ApiOperation(value = "包含参数值-JSON类型1")
+    @PostMapping("/exc3")
+    public Rest<IgnoreP1> findAllc3(@RequestBody IgnoreP1 ignoreP1) {
         Rest<IgnoreP1> r=new Rest<>();
         r.setData(ignoreP1);
         return r;
