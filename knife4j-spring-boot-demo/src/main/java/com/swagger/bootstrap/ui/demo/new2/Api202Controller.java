@@ -12,7 +12,6 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.common.RestMessage;
-import com.swagger.bootstrap.ui.demo.domain.old.UploadModel;
 import com.swagger.bootstrap.ui.demo.domain.resp196.IgnoreP1;
 import com.swagger.bootstrap.ui.demo.domain.resp196.LongUser;
 import com.swagger.bootstrap.ui.demo.domain.resp202.*;
