@@ -51,7 +51,7 @@ public class Api202Controller {
         return r;
     }
     @ApiOperation(value = "忽略参数xx1-json")
-    @ApiOperationSupport(order = 27,ignoreParameters = {"kDto.nodes[0]"})
+    @ApiOperationSupport(order = 27,ignoreParameters = {"kDto.nodes"})
     @GetMapping("/getUser221x")
     public Rest<KDto> getUse1rx1(@RequestBody KDto kDto){
         Rest<KDto> r=new Rest<>();
