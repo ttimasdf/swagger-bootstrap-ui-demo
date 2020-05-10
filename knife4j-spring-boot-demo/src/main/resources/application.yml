@@ -2,7 +2,7 @@ server:
   port: 8999
 spring:
   application:
-    name: SwaggerBootstrapUi-Demo
+    name: Knife4j-Demo
 knife4j:
   enable: true
   markdowns: classpath:markdown/*

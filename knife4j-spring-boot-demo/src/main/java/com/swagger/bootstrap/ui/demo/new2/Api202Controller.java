@@ -85,6 +85,14 @@ public class Api202Controller {
         r.setData(ignoreP1);
         return r;
     }
+    @ApiOperationSupport(order = 30,ignoreParameters = {"ignoreP1.ignoreLabels","ignoreP1.longUser.ids"})
+    @ApiOperation(value = "忽略参数值-JSON类型2")
+    @PostMapping("/ex322")
+    public Rest<IgnoreP1> findAll3223(@RequestBody IgnoreP1 ignoreP1) {
+        Rest<IgnoreP1> r=new Rest<>();
+        r.setData(ignoreP1);
+        return r;
+    }
 
     @ApiOperationSupport(order = 31,ignoreParameters = "longUser.ids")
     @ApiOperation(value = "忽略参数值-JSON类型")
