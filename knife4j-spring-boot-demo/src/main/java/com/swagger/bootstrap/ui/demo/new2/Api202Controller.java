@@ -144,7 +144,7 @@ public class Api202Controller {
     }
 
 
-    @ApiOperationSupport(order = 42,includeParameters = {"ignoreP1.ignoreLabels[0].code","ignoreP1.longUser.ids"})
+    @ApiOperationSupport(order = 42,includeParameters = {"ignoreP1.ignoreLabels.code","ignoreP1.longUser.ids"})
     @ApiOperation(value = "包含参数值-JSON类型1")
     @PostMapping("/exc3")
     public Rest<IgnoreP1> findAllc3(@RequestBody IgnoreP1 ignoreP1) {
