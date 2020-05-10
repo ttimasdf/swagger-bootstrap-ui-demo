@@ -42,7 +42,14 @@ public class Api202Controller {
         r.setData(kDto);
         return r;
     }
-
+    @ApiOperation(value = "忽略参数1")
+    @ApiOperationSupport(order = 26,ignoreParameters = {"nodes[0].name"})
+    @GetMapping("/getUser22121")
+    public Rest<KDto> getUse1r13x(KDto kDto){
+        Rest<KDto> r=new Rest<>();
+        r.setData(kDto);
+        return r;
+    }
     @ApiOperation(value = "忽略参数xx1-json")
     @ApiOperationSupport(order = 27,ignoreParameters = {"kDto.nodes[0]"})
     @GetMapping("/getUser221x")
