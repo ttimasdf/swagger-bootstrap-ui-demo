@@ -7,6 +7,7 @@
 
 package com.swagger.bootstrap.ui.demo.new2;
 
+import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -22,12 +23,17 @@ import com.swagger.bootstrap.ui.demo.domain.resp202.KDto;
 import com.swagger.bootstrap.ui.demo.domain.resp202.KDtoInfo;
 import com.swagger.bootstrap.ui.demo.domain.resp202.KDtoObject;
 import com.swagger.bootstrap.ui.demo.domain.resp203.InsureXmlReq;
+import com.swagger.bootstrap.ui.demo.domain.resp203.TechModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -180,4 +186,71 @@ public class Api203Constroller {
         r.setData(paramArrs);
         return r;
     }
+
+    /**
+     * https://gitee.com/xiaoym/knife4j/issues/I1GLPJ
+     * @param response
+     * @param name
+     * @return
+     */
+    @ApiOperation(value = "在某些特殊情况下不响应数据或响应text数据-文档显示异常")
+    @PostMapping("/urp2")
+    public Rest<LongUser> getParam2s(HttpServletResponse response,@RequestParam(value = "name")String name){
+        Rest<LongUser> r=new Rest<>();
+        int romd=RandomUtil.randomInt(10);
+        if (romd>5){
+            LongUser longUser=new LongUser();
+            longUser.setName(name);
+            r.setData(longUser);
+        }else{
+            try{
+                response.setContentType("text/plain");
+                response.setCharacterEncoding("UTF-8");
+                response.setStatus(200);
+                PrintWriter printWriter=response.getWriter();
+                printWriter.write("随机WriteText数据-random:"+romd);
+                printWriter.close();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return r;
+    }
+
+    /**
+     * https://gitee.com/xiaoym/knife4j/issues/I1GJ2O
+     * @param techModel
+     * @return
+     */
+    @ApiOperation(value = "example属性为长数字时-页面显示为科学计数法")
+    @ApiOperationSupport(ignoreParameters = "techModel.allInfomationWebVo.id")
+    @PostMapping("/tech")
+    public Rest<TechModel> tech(@RequestBody TechModel techModel){
+        return Rest.data(techModel);
+    }
+
+    @ApiOperation(value = "下载zip文件")
+    @GetMapping(value = "/download",produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public void downloadZip(HttpServletResponse response,@RequestParam(value = "fileName") String fileName){
+        try{
+            File file=new File("D:\\"+fileName);
+            if (file.exists()){
+                response.setContentType("application/zip");
+                response.addHeader("Content-Disposition","attachement;filename="+RandomUtil.randomString(4)+".zip");
+                OutputStream outputStream= response.getOutputStream();
+                FileInputStream fileInputStream=new FileInputStream(file);
+                int i=-1;
+                byte[] b=new byte[1024*1024];
+                while ((i=fileInputStream.read(b))!=-1){
+                    outputStream.write(b,0,i);
+                }
+                IoUtil.close(fileInputStream);
+                IoUtil.close(outputStream);
+            }
+        }catch (Exception e){
+
+        }
+
+    }
+
 }

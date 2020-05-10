@@ -57,4 +57,13 @@ public class Rest<T> {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    public static <T> Rest<T> data(T data){
+        Rest<T> rest=new Rest<>();
+        rest.setData(data);
+        rest.setErrCode(8200);
+        rest.setSuccess(true);
+        rest.setMessage("操作成功");
+        return rest;
+    }
 }
