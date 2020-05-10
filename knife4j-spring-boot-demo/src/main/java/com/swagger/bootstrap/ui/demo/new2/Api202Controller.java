@@ -152,7 +152,14 @@ public class Api202Controller {
         r.setData(ignoreP1);
         return r;
     }
-
+    @ApiOperationSupport(order = 43,includeParameters = {"ignoreP1.ignoreLabels.code","ignoreP1.longUser"})
+    @ApiOperation(value = "包含参数值-JSON类型2")
+    @PostMapping("/exc323")
+    public Rest<IgnoreP1> findAllc333(@RequestBody IgnoreP1 ignoreP1) {
+        Rest<IgnoreP1> r=new Rest<>();
+        r.setData(ignoreP1);
+        return r;
+    }
 
 
     @ApiOperation(value = "url-form类型枚举下拉框显示-简单枚举11")
