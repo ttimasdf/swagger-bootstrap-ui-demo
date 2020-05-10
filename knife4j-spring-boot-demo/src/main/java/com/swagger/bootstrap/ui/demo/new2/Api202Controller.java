@@ -34,7 +34,69 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/api/nxew202")
 public class Api202Controller {
 
+    @ApiOperation(value = "忽略参数")
+    @ApiOperationSupport(order = 26,ignoreParameters = {"nodes[0]"})
+    @GetMapping("/getUser221")
+    public Rest<KDto> getUse1rx(KDto kDto){
+        Rest<KDto> r=new Rest<>();
+        r.setData(kDto);
+        return r;
+    }
 
+    @ApiOperation(value = "忽略参数xx1-json")
+    @ApiOperationSupport(order = 27,ignoreParameters = {"kDto.nodes[0]"})
+    @GetMapping("/getUser221x")
+    public Rest<KDto> getUse1rx1(@RequestBody KDto kDto){
+        Rest<KDto> r=new Rest<>();
+        r.setData(kDto);
+        return r;
+    }
+
+    @ApiOperationSupport(order = 28,ignoreParameters = {"createTimes[0]"})
+    @ApiOperation(value = "忽略数组类型的参数")
+    @PostMapping("/Knife4jUser11")
+    public Rest<Knife4jTime> findAll16(Knife4jTime knife4jTime) {
+        Rest<Knife4jTime> r=new Rest<>();
+        r.setData(knife4jTime);
+        return r;
+    }
+
+    @ApiOperationSupport(order = 29,ignoreParameters = "longUsers.ids")
+    @ApiOperation(value = "忽略参数值-数组类型")
+    @PostMapping("/ex4")
+    public Rest<List<LongUser>> findAll4(@RequestBody List<LongUser> longUsers) {
+        Rest<List<LongUser>> r=new Rest<>();
+        r.setData(longUsers);
+        return r;
+    }
+
+    @ApiOperationSupport(order = 30,ignoreParameters = {"ignoreP1.ignoreLabels[0].code","ignoreP1.longUser.ids"})
+    @ApiOperation(value = "忽略参数值-JSON类型1")
+    @PostMapping("/ex3")
+    public Rest<IgnoreP1> findAll3(@RequestBody IgnoreP1 ignoreP1) {
+        Rest<IgnoreP1> r=new Rest<>();
+        r.setData(ignoreP1);
+        return r;
+    }
+
+    @ApiOperationSupport(order = 31,ignoreParameters = "longUser.ids")
+    @ApiOperation(value = "忽略参数值-JSON类型")
+    @PostMapping("/ex2")
+    public Rest<LongUser> findAll1(@RequestBody LongUser longUser) {
+        Rest<LongUser> r=new Rest<>();
+        r.setData(longUser);
+        return r;
+    }
+
+
+    @ApiOperationSupport(order = 32,ignoreParameters = {"ignoreLabels","longUser.ids"})
+    @ApiOperation(value = "忽略参数值-Form类型1")
+    @PostMapping("/ex1")
+    public Rest<IgnoreP1> findAll12(IgnoreP1 ignoreP1) {
+        Rest<IgnoreP1> r=new Rest<>();
+        r.setData(ignoreP1);
+        return r;
+    }
 
     @ApiOperationSupport(order = 33,ignoreParameters = "ids")
     @ApiOperation(value = "忽略参数值-Form类型")
@@ -45,15 +107,8 @@ public class Api202Controller {
         return r;
     }
 
-    @ApiOperationSupport(ignoreParameters = {"ignoreLabels","longUser.ids"})
-    @ApiOperation(value = "忽略参数值-Form类型1")
-    @PostMapping("/ex1")
-    public Rest<IgnoreP1> findAll12(IgnoreP1 ignoreP1) {
-        Rest<IgnoreP1> r=new Rest<>();
-        r.setData(ignoreP1);
-        return r;
-    }
-    @ApiOperationSupport(includeParameters = {"ignoreLabels","longUser.ids"})
+
+    @ApiOperationSupport(order = 40,includeParameters = {"ignoreLabels","longUser.ids"})
     @ApiOperation(value = "包含参数值-Form类型1")
     @PostMapping("/ex1c")
     public Rest<IgnoreP1> findAllc12(IgnoreP1 ignoreP1) {
@@ -63,16 +118,8 @@ public class Api202Controller {
     }
 
 
-    @ApiOperationSupport(ignoreParameters = "longUser.ids")
-    @ApiOperation(value = "忽略参数值-JSON类型")
-    @PostMapping("/ex2")
-    public Rest<LongUser> findAll1(@RequestBody LongUser longUser) {
-        Rest<LongUser> r=new Rest<>();
-        r.setData(longUser);
-        return r;
-    }
 
-    @ApiOperationSupport(includeParameters = "ongUser.ids")
+    @ApiOperationSupport(order = 41,includeParameters = "ongUser.ids")
     @ApiOperation(value = "包含参数值-JSON类型")
     @PostMapping("/exc2")
     public Rest<LongUser> findAllc1(@RequestBody LongUser ongUser) {
@@ -81,15 +128,8 @@ public class Api202Controller {
         return r;
     }
 
-    @ApiOperationSupport(ignoreParameters = {"ignoreP1.ignoreLabels[0].code","ignoreP1.longUser.ids"})
-    @ApiOperation(value = "忽略参数值-JSON类型1")
-    @PostMapping("/ex3")
-    public Rest<IgnoreP1> findAll3(@RequestBody IgnoreP1 ignoreP1) {
-        Rest<IgnoreP1> r=new Rest<>();
-        r.setData(ignoreP1);
-        return r;
-    }
-    @ApiOperationSupport(includeParameters = {"ignoreP1.ignoreLabels[0].code","ignoreP1.longUser.ids"})
+
+    @ApiOperationSupport(order = 42,includeParameters = {"ignoreP1.ignoreLabels[0].code","ignoreP1.longUser.ids"})
     @ApiOperation(value = "包含参数值-JSON类型1")
     @PostMapping("/exc3")
     public Rest<IgnoreP1> findAllc3(@RequestBody IgnoreP1 ignoreP1) {
@@ -98,14 +138,7 @@ public class Api202Controller {
         return r;
     }
 
-    @ApiOperationSupport(ignoreParameters = "longUsers.ids")
-    @ApiOperation(value = "忽略参数值-数组类型")
-    @PostMapping("/ex4")
-    public Rest<List<LongUser>> findAll4(@RequestBody List<LongUser> longUsers) {
-        Rest<List<LongUser>> r=new Rest<>();
-        r.setData(longUsers);
-        return r;
-    }
+
 
     @ApiOperation(value = "url-form类型枚举下拉框显示-简单枚举11")
     @PostMapping(value = "/Knife4jUser",consumes = "application/x-www-form-urlencoded")
@@ -140,14 +173,7 @@ public class Api202Controller {
         return r;
     }
 
-    @ApiOperationSupport(ignoreParameters = {"createTimes[0]"})
-    @ApiOperation(value = "忽略数组类型的参数")
-    @PostMapping("/Knife4jUser11")
-    public Rest<Knife4jTime> findAll16(Knife4jTime knife4jTime) {
-        Rest<Knife4jTime> r=new Rest<>();
-        r.setData(knife4jTime);
-        return r;
-    }
+
 
     @ApiOperation(value = "忽略数组类型的参数-不忽略")
     @PostMapping("/Knife4jUser12")
@@ -173,23 +199,6 @@ public class Api202Controller {
         return r;
     }
 
-    @ApiOperation(value = "忽略参数")
-    @ApiOperationSupport(ignoreParameters = {"nodes[0]"})
-    @GetMapping("/getUser221")
-    public Rest<KDto> getUse1rx(KDto kDto){
-        Rest<KDto> r=new Rest<>();
-        r.setData(kDto);
-        return r;
-    }
-
-    @ApiOperation(value = "忽略参数xx1-json")
-    @ApiOperationSupport(ignoreParameters = {"kDto.nodes[0]"})
-    @GetMapping("/getUser221x")
-    public Rest<KDto> getUse1rx1(@RequestBody KDto kDto){
-        Rest<KDto> r=new Rest<>();
-        r.setData(kDto);
-        return r;
-    }
 
     @ApiOperation(value = "Get无刷新请求")
     @GetMapping("/getParams")
