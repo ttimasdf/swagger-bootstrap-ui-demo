@@ -118,7 +118,7 @@ public class Api203Constroller {
 
     @ApiOperation(value = "忽略参数")
     @ApiOperationSupport(ignoreParameters = {"nodes[0].knife4jUsers"},includeParameters = {"key","value"})
-    @GetMapping(value = "/getUser221",consumes = "application/x-www-form-urlencoded;charset=utf-8")
+    @GetMapping(value = "/getUser221",consumes = "application/x-www-form-urlencoded")
     public Rest<KDto> getUse1rx(KDto kDto){
         Rest<KDto> r=new Rest<>();
         r.setData(kDto);
