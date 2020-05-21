@@ -29,6 +29,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -227,6 +228,20 @@ public class Api203Constroller {
     @PostMapping("/tech")
     public Rest<TechModel> tech(@RequestBody TechModel techModel){
         return Rest.data(techModel);
+    }
+
+
+    @ApiOperation(value = "获取Cookie")
+    @GetMapping("/getCookie")
+    public Rest<String> getCookie(@RequestHeader("Cookie")String cookie,HttpServletRequest request){
+        Cookie[] cookies=request.getCookies();
+        if (cookies!=null){
+            System.out.println("cookie不为空");
+            for (Cookie cookie1:cookies){
+                System.out.println("cooke:"+cookie1.getName()+",value:"+cookie1.getValue());
+            }
+        }
+        return Rest.data(cookie);
     }
 
     @ApiOperation(value = "下载zip文件")
