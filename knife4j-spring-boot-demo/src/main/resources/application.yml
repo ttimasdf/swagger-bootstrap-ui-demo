@@ -1,9 +1,15 @@
 server:
   port: 8999
+  servlet:
+    context-path: /
 spring:
   application:
     name: Knife4j-Demo
 knife4j:
+  cloud:
+    accessKey: xiaoymin@foxmail.com
+    code: APITest
+    server: http://127.0.0.1:19011
   enable: true
   markdowns: classpath:markdown2x/*
   basic:

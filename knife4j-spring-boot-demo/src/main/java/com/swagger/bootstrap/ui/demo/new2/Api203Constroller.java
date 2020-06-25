@@ -24,10 +24,12 @@ import com.swagger.bootstrap.ui.demo.domain.resp202.KDtoInfo;
 import com.swagger.bootstrap.ui.demo.domain.resp202.KDtoObject;
 import com.swagger.bootstrap.ui.demo.domain.resp203.InsureXmlReq;
 import com.swagger.bootstrap.ui.demo.domain.resp203.TechModel;
+import com.swagger.bootstrap.ui.demo.domain.resp203.UploadBody;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -266,6 +268,11 @@ public class Api203Constroller {
 
         }
 
+    }
+
+    @PostMapping("/testupload")
+    public void testupload(@RequestParam(value = "file")MultipartFile multipartFile,@RequestBody UploadBody uploadBody){
+        System.out.println("test");
     }
 
 }

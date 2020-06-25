@@ -1,5 +1,6 @@
 package com.swagger.bootstrap.ui.demo;
 
+import com.github.xiaoymin.knife4j.discovery.annotation.EnableKnife4jCloudDiscovery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -22,6 +23,10 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.List;
 
+/**
+ * @author xiaoymin
+ */
+@EnableKnife4jCloudDiscovery
 @SpringBootApplication
 @ConditionalOnClass(SpringfoxWebMvcConfiguration.class)
 @EnableAspectJAutoProxy(proxyTargetClass = true)
@@ -76,7 +81,6 @@ public class Knife4jSpringBootDemoApplication implements WebMvcConfigurer{
 
 	@Override
 	public void addInterceptors(InterceptorRegistry interceptorRegistry) {
-
 	}
 
 	@Override
@@ -87,7 +91,6 @@ public class Knife4jSpringBootDemoApplication implements WebMvcConfigurer{
 
 	@Override
 	public void addCorsMappings(CorsRegistry corsRegistry) {
-
 	}
 
 	@Override

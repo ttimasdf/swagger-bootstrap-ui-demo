@@ -41,7 +41,11 @@
 	</dependencyManagement>
 
 	<dependencies>
-
+		<dependency>
+			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>knife4j-discovery-spring-boot-starter</artifactId>
+			<version>1.0</version>
+		</dependency>
 	   <dependency>
 			<groupId>com.github.xiaoymin</groupId>
 			<artifactId>knife4j-spring-boot-starter</artifactId>
