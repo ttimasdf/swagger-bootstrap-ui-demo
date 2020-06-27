@@ -23,7 +23,7 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 public class CrossConfiguration {
 
-    @Bean
+    /*@Bean
     public CorsFilter corsFilter(){
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration corsConfiguration=new CorsConfiguration();
@@ -35,5 +35,5 @@ public class CrossConfiguration {
         source.registerCorsConfiguration("/**",corsConfiguration);
         CorsFilter corsFilter=new CorsFilter(source);
         return corsFilter;
-    }
+    }*/
 }

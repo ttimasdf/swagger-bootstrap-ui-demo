@@ -11,6 +11,7 @@ knife4j:
     code: APITest
     server: http://127.0.0.1:19011
   enable: true
+  cors: true
   markdowns: classpath:markdown2x/*
   basic:
     enable: false
