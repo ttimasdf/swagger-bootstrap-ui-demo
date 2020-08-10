@@ -27,6 +27,11 @@
         <appender-ref ref="STDOUT" />
     </root>
 
+    <!--禁用SpringFox项目的Info日志-->
+    <logger name="springfox.documentation" level="WARN">
+        <appender-ref ref="syslog" />
+    </logger>
+
     <logger name="com.swagger.bootstrap.ui.demo" level="INFO" additivity="true">
         <appender-ref ref="syslog"/>
     </logger>
