@@ -19,7 +19,7 @@
 
 	<mvc:resources location="classpath:/META-INF/resources/" mapping="doc.html"/>
 	<mvc:resources location="classpath:/META-INF/resources/webjars/" mapping="/webjars/**"/>
-	<bean id="SwaggerConfig" class="com.xiaominfo.knife4j.config.SwaggerConfiguration"></bean>
+	<!--<bean id="SwaggerConfig" class="com.xiaominfo.knife4j.config.SwaggerConfiguration"></bean>-->
 	<!--注入自定义文档的bean-->
 	<bean id="markdownFiles" class="com.github.xiaoymin.knife4j.spring.model.MarkdownFiles" init-method="init">
 		<property name="basePath" value="classpath:markdown/*"></property>

@@ -82,7 +82,7 @@
     <servlet-name>knife4jDemoMvc</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-  <!-- 配置knife4j-bootstrap-ui的url请求路径-->
+  <!-- 配置knife4j的url请求路径-->
   <servlet-mapping>
     <servlet-name>knife4jDemoMvc</servlet-name>
     <url-pattern>/v2/api-docs</url-pattern>
