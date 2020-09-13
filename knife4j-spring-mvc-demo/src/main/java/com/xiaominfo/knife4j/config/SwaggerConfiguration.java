@@ -4,7 +4,6 @@ package com.xiaominfo.knife4j.config;
 import com.google.common.collect.Lists;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Import;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.ParameterBuilder;
@@ -21,7 +20,6 @@ import java.util.List;
 
 @EnableSwagger2
 @Import(BeanValidatorPluginsConfiguration.class)
-@EnableWebMvc
 public class SwaggerConfiguration {
 
 
