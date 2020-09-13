@@ -16,6 +16,8 @@ import com.xiaominfo.jfinal.controller.SwaggerController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 /**
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
  * 2020/09/01 20:05
@@ -30,9 +32,21 @@ public class Knife4jJfinalConfig extends JFinalConfig {
 
     @Override
     public void configRoute(Routes routes) {
+        //创建JFinalSwaggerDocument
+        JFinalDocument jFinalDocument=new JFinalDocument.Builder().basePath("/")
+                .name("测试").description("JFinal整合Knife4j文档")
+                .title("JFinal整合Knife4j文档")
+                .order(1).contact("xiaoymin@foxmail.com")
+                .build();
+
         //添加路由
         routes.add("/", SwaggerController.class);
         routes.add("/ab", HelloController.class);
+        routes.getRouteItemList().forEach(route -> {
+            jFinalDocument.addController(route.getControllerKey(),route.getControllerClass());
+        });
+
+        JFinalSwagger.me.addDocs(jFinalDocument);
     }
 
     @Override
@@ -59,12 +73,12 @@ public class Knife4jJfinalConfig extends JFinalConfig {
     @Override
     public void onStart() {
         logger.info("启动回调");
-        JFinalSwagger.me.addDocs(new JFinalDocument.Builder().basePath("/")
+        /*JFinalSwagger.me.addDocs(new JFinalDocument.Builder().basePath("/")
                 .name("测试").description("JFinal整合Knife4j文档")
                 .title("JFinal整合Knife4j文档")
                 .paths("com.xiaominfo.jfinal.controller")
                 .order(1).contact("xiaoymin@foxmail.com")
-                .build());
+                .build());*/
         JFinalSwagger.me.start();
     }
 }

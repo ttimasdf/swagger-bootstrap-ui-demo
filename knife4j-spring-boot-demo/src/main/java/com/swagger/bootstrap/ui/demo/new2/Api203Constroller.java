@@ -49,7 +49,7 @@ import java.util.List;
  * 2020/03/12 9:04
  */
 @Api(tags = "2.0.3版本-20200312")
-@ApiSupport(author = "xiaoymin@foxmail.com",order = 284)
+@ApiSupport(author = "xiaoymin@foxmail.com",order = 285)
 @RestController
 @RequestMapping("/api/nxew203")
 public class Api203Constroller {

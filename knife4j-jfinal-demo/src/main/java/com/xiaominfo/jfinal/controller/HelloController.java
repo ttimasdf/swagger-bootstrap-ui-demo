@@ -7,8 +7,11 @@
 
 package com.xiaominfo.jfinal.controller;
 
+import cn.hutool.core.map.MapBuilder;
 import com.jfinal.core.Controller;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
 /**
@@ -22,5 +25,17 @@ public class HelloController extends Controller {
     @ApiOperation(value = "欢迎语")
     public void index(){
         renderText("Hello");
+    }
+
+    @ApiOperation(value = "响应json")
+    @ApiImplicitParams({
+            @ApiImplicitParam(value = "姓名",name = "name"),
+            @ApiImplicitParam(name = "address",value = "地址")
+    })
+    public void json(){
+        System.out.println("123");
+        getRawData()
+        renderJson(MapBuilder.create().put("name",getPara("name")).put("address",getPara("address")).build());
+        System.out.println("abc");
     }
 }

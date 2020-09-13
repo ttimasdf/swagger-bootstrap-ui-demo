@@ -73,7 +73,7 @@ public class SwaggerConfiguration {
 
         Docket docket=new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                .groupName("默认接口")
+                .groupName("3.默认接口")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.controller"))
                 //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
@@ -89,7 +89,7 @@ public class SwaggerConfiguration {
         //SpringAddtionalModel springAddtionalModel= springAddtionalModelService.scan("com.swagger.bootstrap.ui.demo.extend");
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(groupApiInfo())
-                .groupName("分组接口")
+                .groupName("4.分组接口")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.group"))
                 .paths(PathSelectors.any())
@@ -116,7 +116,7 @@ public class SwaggerConfiguration {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("swagger-bootstrap-ui-demo RESTful APIs")
+                //.title("swagger-bootstrap-ui-demo RESTful APIs")
                 .description("# swagger-bootstrap-ui-demo RESTful APIs")
                 .termsOfServiceUrl("http://www.xx.com/")
                 .contact("xx@qq.com")
