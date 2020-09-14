@@ -14,12 +14,10 @@ import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.resp189.ModelMoreField;
 import com.swagger.bootstrap.ui.demo.domain.resp196.LongUser;
-import com.swagger.bootstrap.ui.demo.domain.resp205.RequestArr;
-import com.swagger.bootstrap.ui.demo.domain.resp205.RequestEnumArr;
-import com.swagger.bootstrap.ui.demo.domain.resp205.RequestGetArr;
-import com.swagger.bootstrap.ui.demo.domain.resp205.ResponseToMap;
+import com.swagger.bootstrap.ui.demo.domain.resp205.*;
 import com.swagger.bootstrap.ui.demo.grn.MapInfo;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -248,4 +246,36 @@ public class Api205Controller {
         } catch (IOException e) {
         }
     }
+
+    @ApiOperation(value = "长精度丢失的问题")
+    @GetMapping("/reqLong")
+    public Rest<ReqLong> reqLongRest(){
+        ReqLong reqLong=new ReqLong();
+        reqLong.setName("name"+RandomUtil.randomNumbers(5));
+        reqLong.setValue(System.currentTimeMillis());
+        reqLong.setValue(Long.parseLong("1293385365155090452"));
+        logger.info("当前返回对象:{}",reqLong.toString());
+        return Rest.data(reqLong);
+    }
+
+    @ApiOperation(value = "请求参数说明显示默认值")
+    @GetMapping("/reqLong1")
+    public Rest<ReqLong> reqLongRest1(@RequestBody ReqLong reqLong){
+        logger.info("当前返回对象:{}",reqLong.toString());
+        return Rest.data(reqLong);
+    }
+
+    @ApiOperation(value = "请求参数说明显示默认值2")
+    @ApiImplicitParam(name = "name",value = "名称",example = "AAAAAAAAAAAAAAAA")
+    @GetMapping("/reqLong2")
+    public Rest<ReqLong> reqLongRest2(@RequestParam(value = "name") String name){
+        ReqLong reqLong=new ReqLong();
+        reqLong.setName(name);
+        reqLong.setValue(System.currentTimeMillis());
+        logger.info("当前返回对象:{}",reqLong.toString());
+        return Rest.data(reqLong);
+    }
+
+
+
 }

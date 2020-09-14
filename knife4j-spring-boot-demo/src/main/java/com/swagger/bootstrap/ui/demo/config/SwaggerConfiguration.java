@@ -32,12 +32,12 @@ import java.util.List;
 @ConditionalOnProperty(value = {"knife4j.enable"}, matchIfMissing = true)
 public class SwaggerConfiguration {
 
-   @Bean
+   /*@Bean
     public UiConfiguration uiConfiguration(){
         return UiConfigurationBuilder.builder()
-                .supportedSubmitMethods(new String[]{})
+                .supportedSubmitMethods(new String[]{"GET"})
                 .build();
-    }
+    }*/
 
 
     private final TypeResolver typeResolver;
