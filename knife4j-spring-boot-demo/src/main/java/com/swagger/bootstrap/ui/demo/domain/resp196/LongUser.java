@@ -54,4 +54,13 @@ public class LongUser {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "LongUser{" +
+                "id=" + id +
+                ", ids=" + ids +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

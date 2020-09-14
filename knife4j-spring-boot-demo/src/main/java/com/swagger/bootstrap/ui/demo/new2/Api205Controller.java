@@ -21,11 +21,21 @@ import com.swagger.bootstrap.ui.demo.domain.resp205.ResponseToMap;
 import com.swagger.bootstrap.ui.demo.grn.MapInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 /***
@@ -39,6 +49,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/nxew205")
 public class Api205Controller {
+
+    Logger logger= LoggerFactory.getLogger(Api205Controller.class);
 
     @ApiOperation(value = "描述支持markdown",notes = "# 访问此接口返回Hello语句<br />## 二级标题 你好Markdown`markdown`是一个不错的")
     @GetMapping("/description")
@@ -173,5 +185,67 @@ public class Api205Controller {
     public Rest<String> reqGetArr2(@RequestParam String[] codes){
         String codeArr=StrUtil.join(",",codes);
         return Rest.data(codeArr);
+    }
+
+    @ApiOperation(value = "POST请求下载文件",position = 1)
+    @PostMapping(value = "/downloadFile",produces = "application/octet-stream")
+    public void postRequest2(HttpServletRequest request, HttpServletResponse response){
+        String fileName="中文需求.xlsx";
+        try {
+            //此文件为本机测试
+            File excelFile=new File("C:\\Users\\xiaoymin\\Desktop\\高德地图城市编码.xlsx");
+            response.setContentType("application/vnd.ms-excel;charset=UTF-8;");
+            response.addHeader("Content-Disposition", "attachment;FileName=" + URLEncoder.encode(fileName,"utf-8"));
+            FileInputStream fis=new FileInputStream(excelFile);
+            byte[] b=new byte[1024*1024];
+            int r=-1;
+            while ((r=fis.read(b))!=-1){
+                response.getOutputStream().write(b,0,r);
+            }
+            response.getOutputStream().flush();
+        } catch (IOException e) {
+        }
+    }
+
+    @ApiOperation(value = "POST请求下载文件-JSON请求-Text",position = 1)
+    @PostMapping(value = "/downloadTextFile",produces = "application/octet-stream")
+    public void postRequest2json(@RequestBody LongUser longUser, HttpServletResponse response){
+        logger.info("接收JSON参数：{}",longUser.toString());
+        String fileName="中文需求.txt";
+        try {
+            //此文件为本机测试
+            File excelFile=new File("C:\\Users\\xiaoymin\\Desktop\\test.txt");
+            response.setContentType("text/plain;charset=UTF-8;");
+            response.addHeader("Content-Disposition", "attachment;FileName=" + URLEncoder.encode(fileName,"utf-8"));
+            FileInputStream fis=new FileInputStream(excelFile);
+            byte[] b=new byte[1024*1024];
+            int r=-1;
+            while ((r=fis.read(b))!=-1){
+                response.getOutputStream().write(b,0,r);
+            }
+            response.getOutputStream().flush();
+        } catch (IOException e) {
+        }
+    }
+
+    @ApiOperation(value = "POST请求下载文件-Excel",position = 1)
+    @PostMapping(value = "/downloadJsonFile2",produces = "application/octet-stream")
+    public void postRequest3(@RequestBody LongUser longUser, HttpServletRequest request, HttpServletResponse response){
+        logger.info("接收JSON参数：{}",longUser.toString());
+        String fileName="中文需求.xlsx";
+        try {
+            //此文件为本机测试
+            File excelFile=new File("C:\\Users\\xiaoymin\\Desktop\\t1.xlsx");
+            response.setContentType("application/vnd.ms-excel;charset=UTF-8;");
+            response.addHeader("Content-Disposition", "attachment;FileName=" + URLEncoder.encode(fileName,"utf-8"));
+            FileInputStream fis=new FileInputStream(excelFile);
+            byte[] b=new byte[1024*1024];
+            int r=-1;
+            while ((r=fis.read(b))!=-1){
+                response.getOutputStream().write(b,0,r);
+            }
+            response.getOutputStream().flush();
+        } catch (IOException e) {
+        }
     }
 }

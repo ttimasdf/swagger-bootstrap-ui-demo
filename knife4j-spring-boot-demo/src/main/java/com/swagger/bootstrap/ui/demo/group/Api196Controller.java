@@ -90,7 +90,7 @@ public class Api196Controller {
         return r;
     }
 
-    @ApiOperation(value = "下载文件-excel文件类型下载测试",position = 1)
+    @ApiOperation(value = "下载文件-文件类型下载测试",position = 1)
     @GetMapping(value = "/downloadExcelFile",produces = "application/octet-stream")
     public void postRequest332(HttpServletRequest request, HttpServletResponse response){
         String fileName="中文需求 - 副本.xlsx";
