@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class LongUser {
 
-    @ApiModelProperty(value = "主键id",example = "12")
+    @ApiModelProperty(value = "主键id",example = "12",required =true)
     private Long id;
 
     @ApiModelProperty(value = "教师 id 列表。", required = true)

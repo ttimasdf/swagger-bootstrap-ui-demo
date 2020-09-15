@@ -16,6 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 public class ReqLong {
 
+    @ApiModelProperty(value = "主键id",example = "1293385365155090452")
     private Long value;
     @ApiModelProperty(value = "名称",example = "测试")
     private String name;
