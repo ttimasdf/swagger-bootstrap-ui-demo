@@ -276,6 +276,12 @@ public class Api205Controller {
         return Rest.data(reqLong);
     }
 
+    @ApiOperation(value = "json-consumes")
+    @PostMapping(value = "po1",consumes = "application/json")
+    public Rest<String> po1(){
+        return Rest.data(RandomUtil.randomString(32));
+    }
+
 
 
 }
