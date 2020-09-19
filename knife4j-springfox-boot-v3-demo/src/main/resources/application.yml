@@ -1,0 +1,5 @@
+server:
+  port: 18568
+spring:
+  application:
+    name: knife4j-springfox-boot-v3
