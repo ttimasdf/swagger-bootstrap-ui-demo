@@ -27,15 +27,42 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class Knife4jConfig {
 
+    @Bean(value = "defaultApi3")
+    public Docket defaultApi3() {
+        Docket docket=new Docket(DocumentationType.OAS_30)
+                .apiInfo(apiInfo())
+                //分组名称
+                .groupName("3.测试分组")
+                .select()
+                //这里指定Controller扫描包路径
+                .apis(RequestHandlerSelectors.basePackage("com.xiaominfo.knife4j.controller"))
+                .paths(PathSelectors.any())
+                .build();
+        return docket;
+    }
+
+    @Bean(value = "defaultApi1")
+    public Docket defaultApi1() {
+        Docket docket=new Docket(DocumentationType.OAS_30)
+                .apiInfo(apiInfo())
+                //分组名称
+                .groupName("1.2.x")
+                .select()
+                //这里指定Controller扫描包路径
+                .apis(RequestHandlerSelectors.basePackage("com.xiaominfo.knife4j.new2"))
+                .paths(PathSelectors.any())
+                .build();
+        return docket;
+    }
     @Bean(value = "defaultApi2")
     public Docket defaultApi2() {
         Docket docket=new Docket(DocumentationType.OAS_30)
                 .apiInfo(apiInfo())
                 //分组名称
-                .groupName("测试分组")
+                .groupName("2.2.x")
                 .select()
                 //这里指定Controller扫描包路径
-                .apis(RequestHandlerSelectors.basePackage("com.xiaominfo.knife4j.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.xiaominfo.knife4j.group"))
                 .paths(PathSelectors.any())
                 .build();
         return docket;
