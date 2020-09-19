@@ -7,7 +7,7 @@
 
 package com.xiaominfo.knife4j.domain.resp195;
 
-import com.swagger.bootstrap.ui.demo.domain.resp194.OrderDate;
+import com.xiaominfo.knife4j.domain.resp194.OrderDate;
 import io.swagger.annotations.ApiModelProperty;
 
 /***

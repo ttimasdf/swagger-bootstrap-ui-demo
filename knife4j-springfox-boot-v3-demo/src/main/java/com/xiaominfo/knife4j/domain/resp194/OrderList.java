@@ -7,8 +7,8 @@
 
 package com.xiaominfo.knife4j.domain.resp194;
 
-import com.swagger.bootstrap.ui.demo.common.ErrorCode;
-import com.swagger.bootstrap.ui.demo.domain.resp192.OrderStatus;
+import com.xiaominfo.knife4j.common.ErrorCode;
+import com.xiaominfo.knife4j.domain.resp192.OrderStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 

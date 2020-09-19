@@ -7,7 +7,8 @@
 
 package com.xiaominfo.knife4j.domain.resp189;
 
-import com.swagger.bootstrap.ui.demo.domain.resp187.MetaModel;
+
+import com.xiaominfo.knife4j.domain.resp187.MetaModel;
 
 import java.util.List;
 

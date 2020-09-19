@@ -6,12 +6,11 @@
  */
 
 package com.xiaominfo.knife4j.domain.resp203;
-
-import com.swagger.bootstrap.ui.demo.domain.resp189.ModelNumberInvalid;
-import com.swagger.bootstrap.ui.demo.domain.resp190.AccountDetail;
-import com.swagger.bootstrap.ui.demo.domain.resp196.AllInfomationWebVo;
-import com.swagger.bootstrap.ui.demo.domain.resp196.AllInfomationWebVo1;
-import com.swagger.bootstrap.ui.demo.domain.resp196.TaskOrEventWebVo;
+import com.xiaominfo.knife4j.domain.resp189.ModelNumberInvalid;
+import com.xiaominfo.knife4j.domain.resp190.AccountDetail;
+import com.xiaominfo.knife4j.domain.resp196.AllInfomationWebVo;
+import com.xiaominfo.knife4j.domain.resp196.AllInfomationWebVo1;
+import com.xiaominfo.knife4j.domain.resp196.TaskOrEventWebVo;
 import io.swagger.annotations.ApiModelProperty;
 
 /***

@@ -7,7 +7,6 @@
 
 package com.xiaominfo.knife4j.domain.old;
 
-import com.swagger.bootstrap.ui.demo.domain.old.ReqEntity;
 import io.swagger.annotations.ApiModelProperty;
 
 /***

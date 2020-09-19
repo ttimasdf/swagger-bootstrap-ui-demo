@@ -1,7 +1,8 @@
 package com.xiaominfo.knife4j.annotation;
 
 
-import com.swagger.bootstrap.ui.demo.core.VersionOperator;
+
+import com.xiaominfo.knife4j.core.VersionOperator;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

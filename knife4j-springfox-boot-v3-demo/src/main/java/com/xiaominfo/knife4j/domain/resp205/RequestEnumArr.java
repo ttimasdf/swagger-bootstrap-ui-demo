@@ -7,7 +7,7 @@
 
 package com.xiaominfo.knife4j.domain.resp205;
 
-import com.swagger.bootstrap.ui.demo.common.ErrorCode;
+import com.xiaominfo.knife4j.common.ErrorCode;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;

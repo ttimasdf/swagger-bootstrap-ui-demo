@@ -7,8 +7,8 @@
 
 package com.xiaominfo.knife4j.domain.old;
 
-import com.swagger.bootstrap.ui.demo.common.ErrorCode;
-import com.swagger.bootstrap.ui.demo.common.Language;
+import com.xiaominfo.knife4j.common.ErrorCode;
+import com.xiaominfo.knife4j.common.Language;
 
 /***
  * ref类包含枚举属性

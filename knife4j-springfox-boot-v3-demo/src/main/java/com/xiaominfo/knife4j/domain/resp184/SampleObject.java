@@ -7,7 +7,8 @@
 
 package com.xiaominfo.knife4j.domain.resp184;
 
-import com.swagger.bootstrap.ui.demo.domain.old.Menu;
+
+import com.xiaominfo.knife4j.domain.old.Menu;
 
 /***
  *
