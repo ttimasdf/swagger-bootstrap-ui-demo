@@ -3,3 +3,5 @@ server:
 spring:
   application:
     name: knife4j-springfox-boot-v3
+
+key: abcd
