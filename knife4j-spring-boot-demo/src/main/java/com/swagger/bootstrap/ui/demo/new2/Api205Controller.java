@@ -284,4 +284,10 @@ public class Api205Controller {
 
 
 
+    @ApiOperation(value = "请求参数说明显示默认值1222")
+    @GetMapping("/reqLong1222")
+    public Rest<ReqLong> reqLongRest22221(@RequestBody ReqLong reqLong){
+        logger.info("当前返回对象:{}",reqLong.toString());
+        return Rest.data(reqLong);
+    }
 }

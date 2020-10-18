@@ -4,7 +4,9 @@ package com.swagger.bootstrap.ui.demo.config;
 import com.fasterxml.classmate.ResolvedType;
 import com.fasterxml.classmate.TypeResolver;
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
+import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
 import com.swagger.bootstrap.ui.demo.extend.DeveloperApiInfo;
 import com.swagger.bootstrap.ui.demo.extend.DeveloperApiInfoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.*;
+import springfox.documentation.schema.Example;
 import springfox.documentation.schema.ModelRef;
+import springfox.documentation.schema.ModelReference;
 import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
@@ -23,6 +27,7 @@ import springfox.documentation.swagger.web.UiConfiguration;
 import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
@@ -50,9 +55,20 @@ public class SwaggerConfiguration {
 
     @Bean(value = "defaultApi2")
     public Docket defaultApi2() {
+        List<Parameter> parameters=new ArrayList<>();
+        Parameter parameter=new Parameter(
+                "token","请求 token","ab",true,
+        false,false,null,Optional.absent(),null,
+        "query","",false,null,null,
+        0,null,null,null);
+        parameters.add(parameter);
+
+
         Docket docket=new Docket(DocumentationType.SWAGGER_2)
+                .host("https://www.baidu.com")
                 .apiInfo(apiInfo())
                 .groupName("2.X版本")
+                .globalOperationParameters(parameters)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.new2"))
                 //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))

@@ -10,12 +10,15 @@ package com.xiaominfo.knife4j.new2;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.xiaominfo.knife4j.common.Rest;
 import com.xiaominfo.knife4j.domain.resp196.LongUser;
+import com.xiaominfo.knife4j.domain.resp205.CommonPay;
+import com.xiaominfo.knife4j.domain.resp205.CommonRequestPay;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -32,7 +35,7 @@ public class Api206Controller {
 
     @ApiOperation(value = "body+parameter类型")
     @PostMapping("/reqbody")
-    public Rest<LongUser> reqJson(@RequestBody LongUser longUser,@RequestParam(value = "code",required = false) String code){
+    public Rest<LongUser> reqJson(@RequestBody LongUser longUser, @RequestParam(value = "code",required = false) String code, HttpServletRequest request){
         logger.info("code:{}",code);
         return Rest.data(longUser);
     }
@@ -41,5 +44,11 @@ public class Api206Controller {
     public Rest< List<LongUser>> reqJsoarryn(@RequestBody List<LongUser> longUsers, @RequestParam(value = "code",required = false) String code){
         logger.info("code:{}",code);
         return Rest.data(longUsers);
+    }
+
+    @ApiOperation(value = "枚举请求")
+    @PostMapping("/pay")
+    public Rest<CommonRequestPay> pay(CommonRequestPay commonRequestPay){
+        return Rest.data(commonRequestPay);
     }
 }
