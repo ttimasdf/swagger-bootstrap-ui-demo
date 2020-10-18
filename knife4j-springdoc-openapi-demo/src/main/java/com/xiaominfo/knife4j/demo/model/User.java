@@ -7,6 +7,8 @@
 
 package com.xiaominfo.knife4j.demo.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 /***
  *
  * @since:knife4j-springdoc-openapi-demo 1.0
@@ -15,8 +17,10 @@ package com.xiaominfo.knife4j.demo.model;
  */
 public class User {
 
+    @Schema(description = "主键id",defaultValue = "1")
     private String id;
 
+    @Schema(description = "名称",defaultValue = "张飞")
     private String name;
 
     public String getId() {

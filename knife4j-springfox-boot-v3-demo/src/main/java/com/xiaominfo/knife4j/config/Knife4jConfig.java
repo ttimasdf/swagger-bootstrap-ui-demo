@@ -7,6 +7,7 @@
 
 package com.xiaominfo.knife4j.config;
 
+import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -24,12 +25,13 @@ import springfox.documentation.spring.web.plugins.Docket;
  * @since:knife4j-spring-boot2-demo 1.0
  */
 @EnableOpenApi
+@EnableKnife4j
 @Configuration
 public class Knife4jConfig {
 
     @Bean(value = "defaultApi3")
     public Docket defaultApi3() {
-        Docket docket=new Docket(DocumentationType.SWAGGER_2)
+        Docket docket=new Docket(DocumentationType.OAS_30)
                 .apiInfo(apiInfo())
                 //分组名称
                 .groupName("3.测试分组")
@@ -43,7 +45,7 @@ public class Knife4jConfig {
 
     @Bean(value = "defaultApi1")
     public Docket defaultApi1() {
-        Docket docket=new Docket(DocumentationType.SWAGGER_2)
+        Docket docket=new Docket(DocumentationType.OAS_30)
                 .apiInfo(apiInfo())
                 //分组名称
                 .groupName("1.2.x")
@@ -56,7 +58,7 @@ public class Knife4jConfig {
     }
     @Bean(value = "defaultApi2")
     public Docket defaultApi2() {
-        Docket docket=new Docket(DocumentationType.SWAGGER_2)
+        Docket docket=new Docket(DocumentationType.OAS_30)
                 .apiInfo(apiInfo())
                 //分组名称
                 .groupName("2.2.x")

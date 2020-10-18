@@ -26,7 +26,7 @@ public class SwaggerConfig {
 
     @Bean
     public GroupedOpenApi userApi(){
-        String[] paths = { "/user/**" };
+        String[] paths = { "/**" };
         String[] packagedToMatch = { "com.xiaominfo.knife4j.demo.web" };
         return GroupedOpenApi.builder().setGroup("用户模块")
                 .pathsToMatch(paths)

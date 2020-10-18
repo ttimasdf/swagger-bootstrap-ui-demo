@@ -9,6 +9,7 @@ package com.xiaominfo.knife4j.new2;
 
 import cn.hutool.core.util.RandomUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
+import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.google.common.collect.Lists;
 
 import com.xiaominfo.knife4j.common.Rest;
@@ -18,6 +19,8 @@ import com.xiaominfo.knife4j.domain.resp196.LongUser;
 import com.xiaominfo.knife4j.domain.resp202.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,7 +33,8 @@ import java.util.concurrent.TimeUnit;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
  * 2019/12/16 19:42
  */
-@Api(tags = "2.0.2版本-20200226",position = 286)
+@Api(tags = "2.0.2版本-20200226")
+@ApiSupport(author = "xiaoymin@foxmail.com",order = 283)
 @RestController
 @RequestMapping("/api/nxew202")
 public class Api202Controller {
@@ -135,7 +139,7 @@ public class Api202Controller {
 
 
 
-    @ApiOperationSupport(order = 41,includeParameters = "ongUser.ids")
+    @ApiOperationSupport(order = 41)
     @ApiOperation(value = "包含参数值-JSON类型")
     @PostMapping("/exc2")
     public Rest<LongUser> findAllc1(@RequestBody LongUser ongUser) {
@@ -145,7 +149,7 @@ public class Api202Controller {
     }
 
 
-    @ApiOperationSupport(order = 42,includeParameters = {"ignoreP1.ignoreLabels.code","ignoreP1.longUser.ids"})
+    @ApiOperationSupport(order = 42)
     @ApiOperation(value = "包含参数值-JSON类型1")
     @PostMapping("/exc3")
     public Rest<IgnoreP1> findAllc3(@RequestBody IgnoreP1 ignoreP1) {
@@ -153,7 +157,7 @@ public class Api202Controller {
         r.setData(ignoreP1);
         return r;
     }
-    @ApiOperationSupport(order = 43,includeParameters = {"ignoreP1.ignoreLabels.code","ignoreP1.longUser"})
+    @ApiOperationSupport(order = 43)
     @ApiOperation(value = "包含参数值-JSON类型2")
     @PostMapping("/exc323")
     public Rest<IgnoreP1> findAllc333(@RequestBody IgnoreP1 ignoreP1) {
@@ -163,7 +167,7 @@ public class Api202Controller {
     }
 
 
-    @ApiOperation(value = "url-form类型枚举下拉框显示-简单枚举11")
+    @Operation(summary = "url-form类型枚举下拉框显示-简单枚举11")
     @PostMapping(value = "/Knife4jUser",consumes = "application/x-www-form-urlencoded")
     public Rest<Knife4jUser> findAll5(Knife4jUser knife4jUser) {
         Rest<Knife4jUser> r=new Rest<>();

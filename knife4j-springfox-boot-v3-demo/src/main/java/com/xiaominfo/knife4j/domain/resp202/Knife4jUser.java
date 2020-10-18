@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 public class Knife4jUser {
 
-    @ApiModelProperty(value = "主键id",example = "12")
+    @ApiModelProperty(value = "主键id",example = "12",required = true)
     private Long id;
 
 

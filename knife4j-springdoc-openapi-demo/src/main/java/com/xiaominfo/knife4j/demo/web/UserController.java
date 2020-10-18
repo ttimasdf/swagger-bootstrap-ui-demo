@@ -36,4 +36,10 @@ public class UserController {
     public ResponseEntity<User> createOne(@RequestBody User user){
         return ResponseEntity.ok(user);
     }
+
+    @Operation(summary = "创建用户1",description = "根据姓名创建用户1")
+    @PostMapping("/createOne1")
+    public ResponseEntity<User> createOne1(User user){
+        return ResponseEntity.ok(user);
+    }
 }

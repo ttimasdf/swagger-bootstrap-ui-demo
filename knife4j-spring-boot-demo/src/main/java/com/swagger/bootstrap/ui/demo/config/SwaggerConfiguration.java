@@ -55,20 +55,10 @@ public class SwaggerConfiguration {
 
     @Bean(value = "defaultApi2")
     public Docket defaultApi2() {
-        List<Parameter> parameters=new ArrayList<>();
-        Parameter parameter=new Parameter(
-                "token","请求 token","ab",true,
-        false,false,null,Optional.absent(),null,
-        "query","",false,null,null,
-        0,null,null,null);
-        parameters.add(parameter);
-
-
         Docket docket=new Docket(DocumentationType.SWAGGER_2)
                 .host("https://www.baidu.com")
                 .apiInfo(apiInfo())
                 .groupName("2.X版本")
-                .globalOperationParameters(parameters)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.new2"))
                 //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
