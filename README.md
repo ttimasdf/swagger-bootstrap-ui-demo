@@ -1,5 +1,12 @@
 # swagger-bootstarp-ui & knife4j集成web框架示例项目
 
+>大家好,我在GitChat中开了一篇关于[《Knife4j 及 Swagger 在企业开发中的实践》](https://gitbook.cn/gitchat/activity/5f86b4cb1772090f20e13b03)
+>地址：[https://gitbook.cn/gitchat/activity/5f86b4cb1772090f20e13b03](https://gitbook.cn/gitchat/activity/5f86b4cb1772090f20e13b03)
+>
+>欢迎对 SpringFox、Swagger、Knife4j 感兴趣以及想了解的人员一起来chat 
+>
+
+
 `swagger-bootstrap-ui`自1.9.6版本后,正式更名为`knife4j`
 
 为了契合当前微服务架构的发展,将后端Java代码和前端Ui界面进行了分离,项目的使用上也有了稍微的区别,主要分一下几种情况
