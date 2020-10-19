@@ -31,7 +31,7 @@ public class Knife4jConfig {
 
     @Bean(value = "defaultApi3")
     public Docket defaultApi3() {
-        Docket docket=new Docket(DocumentationType.OAS_30)
+        Docket docket=new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 //分组名称
                 .groupName("3.测试分组")
@@ -45,7 +45,7 @@ public class Knife4jConfig {
 
     @Bean(value = "defaultApi1")
     public Docket defaultApi1() {
-        Docket docket=new Docket(DocumentationType.OAS_30)
+        Docket docket=new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 //分组名称
                 .groupName("1.2.x")
@@ -58,7 +58,7 @@ public class Knife4jConfig {
     }
     @Bean(value = "defaultApi2")
     public Docket defaultApi2() {
-        Docket docket=new Docket(DocumentationType.OAS_30)
+        Docket docket=new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 //分组名称
                 .groupName("2.2.x")
