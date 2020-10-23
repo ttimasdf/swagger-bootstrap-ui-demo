@@ -7,8 +7,8 @@
 
 package com.swagger.bootstrap.ui.demo.group;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiSort;
-import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.ErrorCode;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.old.ActInteger;
@@ -47,7 +47,7 @@ public class Api182Controller {
         Rest<Domain182T1> r=new Rest<>();
         Domain182T1 d=new Domain182T1();
         d.setName(name);
-        d.setLabels(Lists.newArrayList(arrs));
+        d.setLabels(CollectionUtil.newArrayList(arrs));
         r.setData(d);
         return r;
     }
@@ -58,8 +58,8 @@ public class Api182Controller {
         Rest<List<Domain182T1>> r=new Rest<>();
         Domain182T1 d=new Domain182T1();
         d.setName(name);
-        d.setLabels(Lists.newArrayList(arrs));
-        r.setData(Lists.newArrayList(d));
+        d.setLabels(CollectionUtil.newArrayList(arrs));
+        r.setData(CollectionUtil.newArrayList(d));
         return r;
     }
 

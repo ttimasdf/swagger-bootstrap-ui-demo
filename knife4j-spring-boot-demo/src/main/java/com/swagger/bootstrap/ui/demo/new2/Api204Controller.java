@@ -7,10 +7,10 @@
 
 package com.swagger.bootstrap.ui.demo.new2;
 
+import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.grn.MapInfo;
@@ -74,7 +74,7 @@ public class Api204Controller {
             }else{
                 response.setContentType("application/json");
                 response.setStatus(200);
-                printWriter.write(new Gson().toJson(ImmutableMap.of("code",code,"name", RandomUtil.randomString(32))));
+                printWriter.write(new Gson().toJson(MapUtil.builder("code",code).put("name", RandomUtil.randomString(32)).build()));
                 printWriter.close();
             }
         }catch (Exception e){

@@ -7,8 +7,8 @@
 
 package com.swagger.bootstrap.ui.demo.advice;
 
+import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.StrUtil;
-import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
@@ -41,7 +41,7 @@ public class GlobalExceptionAdvice{
             MethodArgumentNotValidException exception = (MethodArgumentNotValidException) e;
             List<ObjectError> errors = exception.getBindingResult().getAllErrors();
             StringBuffer sb = new StringBuffer();
-            List<String> errorArr= Lists.newArrayList();
+            List<String> errorArr= CollectionUtil.newArrayList();
             for (ObjectError error : errors) {
                 if (error instanceof FieldError){
                     FieldError fieldError=(FieldError)error;
@@ -57,7 +57,7 @@ public class GlobalExceptionAdvice{
             //@RequestParam 参数校验失败
             ConstraintViolationException exception = (ConstraintViolationException) e;
             StringBuffer sb = new StringBuffer();
-            List<String> errorArr = Lists.newArrayList();
+            List<String> errorArr = CollectionUtil.newArrayList();
             for (ConstraintViolation constraint : exception.getConstraintViolations()) {
                 errorArr.add(constraint.getInvalidValue() + "非法" + constraint.getMessage());
                 //sb.append(constraint.getInvalidValue()).append("值不正确,").append(constraint.getMessage()).append(";");

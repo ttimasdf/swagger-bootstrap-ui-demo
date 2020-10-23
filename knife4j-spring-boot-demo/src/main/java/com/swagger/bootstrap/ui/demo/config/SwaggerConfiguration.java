@@ -1,12 +1,10 @@
 
 package com.swagger.bootstrap.ui.demo.config;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.fasterxml.classmate.ResolvedType;
 import com.fasterxml.classmate.TypeResolver;
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
-import com.google.common.base.Optional;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Multimap;
 import com.swagger.bootstrap.ui.demo.extend.DeveloperApiInfo;
 import com.swagger.bootstrap.ui.demo.extend.DeveloperApiInfoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,22 +14,18 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.*;
-import springfox.documentation.schema.Example;
 import springfox.documentation.schema.ModelRef;
-import springfox.documentation.schema.ModelReference;
 import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger.web.UiConfiguration;
-import springfox.documentation.swagger.web.UiConfigurationBuilder;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
-@EnableSwagger2
+@EnableSwagger2WebMvc
 @EnableKnife4j
 @Import(BeanValidatorPluginsConfiguration.class)
 @ConditionalOnProperty(value = {"knife4j.enable"}, matchIfMissing = true)
@@ -55,6 +49,10 @@ public class SwaggerConfiguration {
 
     @Bean(value = "defaultApi2")
     public Docket defaultApi2() {
+        List<ExtendFile> extendFiles=new ArrayList<>();
+        extendFiles.add(new ExtendFile("张三","骠骑将军"));
+        extendFiles.add(new ExtendFile("刘备","豫州牧"));
+        TestVendensiong testVendensiong=new TestVendensiong("x-markdown",extendFiles);
         Docket docket=new Docket(DocumentationType.SWAGGER_2)
                 .host("https://www.baidu.com")
                 .apiInfo(apiInfo())
@@ -64,14 +62,15 @@ public class SwaggerConfiguration {
                 //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build()
-                .securityContexts(Lists.newArrayList(securityContext())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey()));
+                .extensions(CollectionUtil.newArrayList(testVendensiong))
+                .securityContexts(CollectionUtil.newArrayList(securityContext())).securitySchemes(CollectionUtil.newArrayList(apiKey()));
         return docket;
     }
 
     @Bean(value = "defaultApi")
     public Docket defaultApi() {
         ParameterBuilder parameterBuilder=new ParameterBuilder();
-        List<Parameter> parameters= Lists.newArrayList();
+        List<Parameter> parameters= CollectionUtil.newArrayList();
         parameterBuilder.name("token").description("token令牌").modelRef(new ModelRef("String"))
                 .parameterType("header")
                 .required(true).build();
@@ -85,12 +84,12 @@ public class SwaggerConfiguration {
                 //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build().globalOperationParameters(parameters)
-                .securityContexts(Lists.newArrayList(securityContext())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey()));
+                .securityContexts(CollectionUtil.newArrayList(securityContext())).securitySchemes(CollectionUtil.newArrayList(apiKey()));
         return docket;
     }
     @Bean(value = "groupRestApi")
     public Docket groupRestApi() {
-        List<ResolvedType> list=Lists.newArrayList();
+        List<ResolvedType> list=CollectionUtil.newArrayList();
 
         //SpringAddtionalModel springAddtionalModel= springAddtionalModelService.scan("com.swagger.bootstrap.ui.demo.extend");
         return new Docket(DocumentationType.SWAGGER_2)
@@ -100,7 +99,7 @@ public class SwaggerConfiguration {
                 .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.group"))
                 .paths(PathSelectors.any())
                 .build()
-                .additionalModels(typeResolver.resolve(DeveloperApiInfo.class)).securityContexts(Lists.newArrayList(securityContext(),securityContext1())).securitySchemes(Lists.<SecurityScheme>newArrayList(apiKey(),apiKey1()));
+                .additionalModels(typeResolver.resolve(DeveloperApiInfo.class)).securityContexts(CollectionUtil.newArrayList(securityContext(),securityContext1())).securitySchemes(CollectionUtil.newArrayList(apiKey(),apiKey1()));
     }
 
     private ApiInfo groupApiInfo(){
@@ -154,13 +153,13 @@ public class SwaggerConfiguration {
         AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
         authorizationScopes[0] = authorizationScope;
-        return Lists.newArrayList(new SecurityReference("BearerToken", authorizationScopes));
+        return CollectionUtil.newArrayList(new SecurityReference("BearerToken", authorizationScopes));
     }
     List<SecurityReference> defaultAuth1() {
         AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
         authorizationScopes[0] = authorizationScope;
-        return Lists.newArrayList(new SecurityReference("BearerToken1", authorizationScopes));
+        return CollectionUtil.newArrayList(new SecurityReference("BearerToken1", authorizationScopes));
     }
 
 }

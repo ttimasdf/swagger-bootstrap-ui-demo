@@ -7,8 +7,8 @@
 
 package com.swagger.bootstrap.ui.demo.group;
 
+import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.date.DateTime;
-import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.resp189.Model189;
 import com.swagger.bootstrap.ui.demo.domain.resp189.ModelElement;
@@ -131,7 +131,7 @@ public class Api189Controller {
         img.setElementName("image");
         img.setValue("<img src=\"http://www.xiaominfo.com/image/swaggerbui.jpg\" />");
 
-        List<ModelElement> list= Lists.newArrayList();
+        List<ModelElement> list= CollectionUtil.newArrayList();
         list.add(img);
 
         list.add(new ModelElement("div","<div>我是div元素</div>"));

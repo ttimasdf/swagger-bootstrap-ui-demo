@@ -7,7 +7,7 @@
 
 package com.swagger.bootstrap.ui.demo.controller;
 
-import com.google.common.collect.Maps;
+import cn.hutool.core.map.MapUtil;
 import com.google.gson.Gson;
 import com.swagger.bootstrap.ui.demo.domain.old.Menu;
 import io.swagger.annotations.Api;
@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.schema.Maps;
 
 import java.util.Map;
 
@@ -35,7 +36,7 @@ public class RespController {
     @PostMapping("/test")
     @ApiOperation(value = "响应泛型类型为String类型",notes = "针对ResponseEntity<String>")
     public ResponseEntity<String> test(){
-        Map<String,Object> map= Maps.newHashMap();
+        Map<String,Object> map= MapUtil.newHashMap();
         map.put("message","保存成功");
         map.put("success",true);
         String json=new Gson().toJson(map);

@@ -7,8 +7,8 @@
 
 package com.swagger.bootstrap.ui.demo.group;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiSort;
-import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.resp186.Model186;
 import com.swagger.bootstrap.ui.demo.domain.resp187.Model187;
@@ -46,7 +46,7 @@ public class Api187Controller {
     @PostMapping("/responseMulti")
     public Rest<List<Model186>> paramTooLong(String name){
         Rest<List<Model186>> r=new Rest<>();
-        List<Model186> model186List= Lists.newArrayList();
+        List<Model186> model186List= CollectionUtil.newArrayList();
         for (int i=0;i<100 ;i++){
             Model186 m=new Model186();
             m.setName(name+"i");

@@ -8,6 +8,7 @@
 package com.swagger.bootstrap.ui.demo.new2;
 
 import cn.hutool.core.io.IoUtil;
+import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -15,7 +16,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.resp196.LongUser;
@@ -89,7 +89,7 @@ public class Api203Constroller {
             }else{
                  response.setStatus(200);
                  PrintWriter printWriter=response.getWriter();
-                 printWriter.write(new Gson().toJson(ImmutableMap.of("code",code,"name", RandomUtil.randomString(32))));
+                 printWriter.write(new Gson().toJson(MapUtil.builder("code",code).put("name", RandomUtil.randomString(32)).build()));
                  printWriter.close();
              }
         }catch (Exception e){

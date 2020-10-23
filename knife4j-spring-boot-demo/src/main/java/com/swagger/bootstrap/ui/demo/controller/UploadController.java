@@ -7,8 +7,7 @@
 
 package com.swagger.bootstrap.ui.demo.controller;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import cn.hutool.core.collection.CollectionUtil;
 import com.swagger.bootstrap.ui.demo.common.RestMessage;
 import com.swagger.bootstrap.ui.demo.domain.old.UploadModel;
 import io.swagger.annotations.Api;
@@ -19,9 +18,11 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import springfox.documentation.schema.Maps;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -52,7 +53,7 @@ public class UploadController {
         if (!realFile.exists()){
             realFile.mkdirs();
         }
-        List<Map> uploadFiles= Lists.newArrayList();
+        List<Map> uploadFiles= CollectionUtil.newArrayList();
         System.out.println("进入图片上传接口:"+files.length +"张");
         for (MultipartFile file : files) {
             File targetFile=new File(realFile,file.getOriginalFilename());
@@ -71,7 +72,7 @@ public class UploadController {
                 closeQuilty(ins);
                 closeQuilty(fileOutputStream);
             }
-            Map fileInfo= Maps.newHashMap();
+            Map fileInfo= new HashMap();
             fileInfo.put("id", UUID.randomUUID().toString());
             fileInfo.put("url",targetFile.getPath());
             fileInfo.put("original_name",targetFile.getName());
@@ -105,7 +106,7 @@ public class UploadController {
     @ResponseBody
     public RestMessage uploadMaterial2(@RequestParam(value="file",required = true) MultipartFile file,@RequestParam(value = "title") String title, HttpServletRequest request) throws IOException {
         //int mul=1*1024*1024;
-        List<MultipartFile> a=Lists.newArrayList();
+        List<MultipartFile> a=CollectionUtil.newArrayList();
         a.add(file);
         List<Map> uploadFiles= upload(request,a.toArray(new MultipartFile[]{}));
         RestMessage rm=new RestMessage();

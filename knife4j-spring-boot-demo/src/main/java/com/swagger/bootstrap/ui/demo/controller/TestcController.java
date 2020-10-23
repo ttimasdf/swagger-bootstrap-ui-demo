@@ -7,7 +7,7 @@
 
 package com.swagger.bootstrap.ui.demo.controller;
 
-import com.google.common.collect.ImmutableMap;
+import cn.hutool.core.map.MapUtil;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.common.RestMessage;
 import com.swagger.bootstrap.ui.demo.domain.old.ReqEntity;
@@ -54,7 +54,7 @@ public class TestcController {
     })
     public RestMessage reqbody3(@RequestHeader(value = "headerparam") String headerparam,@RequestParam(value = "code") String code,
                                 @RequestParam(value = "page") int page,@RequestParam(value = "page1") Long page1){
-        return new RestMessage(ImmutableMap.of("code",code,"header",headerparam,"page",page,"page1",page1));
+        return new RestMessage(MapUtil.builder("code",code).put("header",headerparam).put("page",String.valueOf(page)).put("page1",String.valueOf(page1)).build());
     }
 
     @DeleteMapping(value = "/xdf/{code}")

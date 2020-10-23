@@ -7,9 +7,9 @@
 
 package com.swagger.bootstrap.ui.demo.new2;
 
+import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.RandomUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
-import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.common.RestMessage;
 import com.swagger.bootstrap.ui.demo.domain.resp196.IgnoreP1;
@@ -285,7 +285,7 @@ public class Api202Controller {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        r.setData(Lists.newArrayList(new RealDescription()));
+        r.setData(CollectionUtil.newArrayList(new RealDescription()));
         return r;
     }
 
@@ -302,7 +302,7 @@ public class Api202Controller {
         }
         RealDescription rd=new RealDescription();
         rd.setName(RandomUtil.randomNumbers(300));
-        r.setData(Lists.newArrayList(new RealDescription(),rd));
+        r.setData(CollectionUtil.newArrayList(new RealDescription(),rd));
         return r;
     }
 

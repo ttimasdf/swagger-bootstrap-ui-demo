@@ -7,8 +7,8 @@
 
 package com.swagger.bootstrap.ui.demo.group;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiSort;
-import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.old.MulRequest;
 import com.swagger.bootstrap.ui.demo.domain.resp183.CombineResponse;
@@ -48,7 +48,7 @@ public class Api183Controller {
     @ApiOperation(value = "泛型返回List类型")
     public Rest<List<MulRequest>> mulListResponse(@RequestBody MulRequest mulRequest){
         Rest<List<MulRequest>> m=new Rest<>();
-        List<MulRequest> list=Lists.newArrayList(mulRequest);
+        List<MulRequest> list= CollectionUtil.newArrayList(mulRequest);
         m.setData(list);
         return m;
     }

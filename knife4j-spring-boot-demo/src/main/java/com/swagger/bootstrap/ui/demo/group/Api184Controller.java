@@ -7,8 +7,8 @@
 
 package com.swagger.bootstrap.ui.demo.group;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiSort;
-import com.google.common.collect.Lists;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.old.Domain182T1;
 import com.swagger.bootstrap.ui.demo.domain.resp184.*;
@@ -134,7 +134,7 @@ public class Api184Controller {
     public Rest<Domain182T1> stringarr(String name, int[] arrs){
         Rest<Domain182T1> r=new Rest<>();
         Domain182T1 d=new Domain182T1();
-        List<String> arrStrs=Lists.newArrayList();
+        List<String> arrStrs= CollectionUtil.newArrayList();
         for (int i=0;i<arrs.length;i++){
             arrStrs.add(arrs[i]+"");
         }
@@ -153,7 +153,7 @@ public class Api184Controller {
     public Rest<Domain182T1> Integerarr1(String name, int[] arrs){
         Rest<Domain182T1> r=new Rest<>();
         Domain182T1 d=new Domain182T1();
-        List<String> arrStrs=Lists.newArrayList();
+        List<String> arrStrs=CollectionUtil.newArrayList();
         for (int i=0;i<arrs.length;i++){
             arrStrs.add(arrs[i]+"");
         }
@@ -169,7 +169,7 @@ public class Api184Controller {
     public Rest<Domain182T1> stringarr(String name, ArrayList<Integer> arrs){
         Rest<Domain182T1> r=new Rest<>();
         Domain182T1 d=new Domain182T1();
-        List<String> arrStrs=Lists.newArrayList();
+        List<String> arrStrs=CollectionUtil.newArrayList();
         for (int i=0;i<arrs.size();i++){
             arrStrs.add(arrs.get(i)+"");
         }
