@@ -4,11 +4,8 @@ package com.swagger.bootstrap.ui.demo.config;
 import cn.hutool.core.collection.CollectionUtil;
 import com.fasterxml.classmate.ResolvedType;
 import com.fasterxml.classmate.TypeResolver;
-import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
-import com.swagger.bootstrap.ui.demo.extend.DeveloperApiInfo;
-import com.swagger.bootstrap.ui.demo.extend.DeveloperApiInfoExtension;
+import com.github.xiaoymin.knife4j.spring.extension.OpenApiExtensionResolver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -26,9 +23,7 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger2WebMvc
-@EnableKnife4j
 @Import(BeanValidatorPluginsConfiguration.class)
-@ConditionalOnProperty(value = {"knife4j.enable"}, matchIfMissing = true)
 public class SwaggerConfiguration {
 
    /*@Bean
@@ -39,31 +34,67 @@ public class SwaggerConfiguration {
     }*/
 
 
-    private final TypeResolver typeResolver;
+   private final TypeResolver typeResolver;
+   private final OpenApiExtensionResolver openApiExtensionResolver;
 
     @Autowired
-    public SwaggerConfiguration(TypeResolver typeResolver) {
+    public SwaggerConfiguration(TypeResolver typeResolver, OpenApiExtensionResolver openApiExtensionResolver) {
         this.typeResolver = typeResolver;
+        this.openApiExtensionResolver = openApiExtensionResolver;
     }
 
 
     @Bean(value = "defaultApi2")
     public Docket defaultApi2() {
-        List<ExtendFile> extendFiles=new ArrayList<>();
-        extendFiles.add(new ExtendFile("张三","骠骑将军"));
-        extendFiles.add(new ExtendFile("刘备","豫州牧"));
-        TestVendensiong testVendensiong=new TestVendensiong("x-markdown",extendFiles);
+        //schema
+        List<GrantType> grantTypes=new ArrayList<>();
+        //简单模式implicit
+        ImplicitGrant implicitGrant=new ImplicitGrant(new LoginEndpoint("http://localhost:8999/oauth/authorize"),"access_token");
+        //grantTypes.add(implicitGrant);
+        //授权码模式AuthorizationCodeGrant
+        TokenRequestEndpoint tokenRequestEndpoint=new TokenRequestEndpoint("http://localhost:8999/oauth/authorize","app1","123");
+        TokenEndpoint tokenEndpoint=new TokenEndpoint("http://192.168.1.10:8080/oauth/token","access_token");
+        //TokenEndpoint tokenEndpoint=new TokenEndpoint("http://localhost:8999/oauth/token","access_token");
+        AuthorizationCodeGrant authorizationCodeGrant=new AuthorizationCodeGrant(tokenRequestEndpoint,tokenEndpoint);
+        //grantTypes.add(authorizationCodeGrant);
+        //密码模式
+        //String passwordTokenUrl="http://localhost:8999/oauth/token";
+        String passwordTokenUrl="http://192.168.1.10:8080/oauth/token";
+        ResourceOwnerPasswordCredentialsGrant resourceOwnerPasswordCredentialsGrant=new ResourceOwnerPasswordCredentialsGrant(passwordTokenUrl);
+        //grantTypes.add(resourceOwnerPasswordCredentialsGrant);
+        //客户端模式（client credentials）
+        //String clientTokenUrl="http://localhost:8999/oauth/token";
+        String clientTokenUrl="http://192.168.1.10:8080/oauth/token";
+        ClientCredentialsGrant clientCredentialsGrant=new ClientCredentialsGrant(clientTokenUrl);
+        grantTypes.add(clientCredentialsGrant);
+
+
+        OAuth oAuth=new OAuthBuilder().name("oauth2")
+                .grantTypes(grantTypes).build();
+        //context
+        //scope方位
+        List<AuthorizationScope> scopes=new ArrayList<>();
+        scopes.add(new AuthorizationScope("read","read all resources"));
+        SecurityReference securityReference=new SecurityReference("oauth2",scopes.toArray(new AuthorizationScope[]{}));
+        SecurityContext securityContext=new SecurityContext(CollectionUtil.newArrayList(securityReference),PathSelectors.ant("/api/**"));
+        //schemas
+        List<SecurityScheme> securitySchemes=CollectionUtil.newArrayList(oAuth);
+        //securyContext
+        List<SecurityContext> securityContexts=CollectionUtil.newArrayList(securityContext);
+
+        String groupName="2.X版本";
         Docket docket=new Docket(DocumentationType.SWAGGER_2)
                 .host("https://www.baidu.com")
                 .apiInfo(apiInfo())
-                .groupName("2.X版本")
+                .groupName(groupName)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.new2"))
                 //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build()
-                .extensions(CollectionUtil.newArrayList(testVendensiong))
-                .securityContexts(CollectionUtil.newArrayList(securityContext())).securitySchemes(CollectionUtil.newArrayList(apiKey()));
+                .extensions(openApiExtensionResolver.buildExtensions(groupName))
+                .securityContexts(securityContexts).securitySchemes(securitySchemes);
+                //.securityContexts(CollectionUtil.newArrayList(securityContext())).securitySchemes(CollectionUtil.newArrayList(apiKey()));
         return docket;
     }
 
@@ -83,7 +114,8 @@ public class SwaggerConfiguration {
                 .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.controller"))
                 //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
-                .build().globalOperationParameters(parameters)
+                .build()
+                .extensions(openApiExtensionResolver.buildExtensions("3.默认接口")).globalOperationParameters(parameters)
                 .securityContexts(CollectionUtil.newArrayList(securityContext())).securitySchemes(CollectionUtil.newArrayList(apiKey()));
         return docket;
     }
@@ -98,24 +130,16 @@ public class SwaggerConfiguration {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.swagger.bootstrap.ui.demo.group"))
                 .paths(PathSelectors.any())
-                .build()
-                .additionalModels(typeResolver.resolve(DeveloperApiInfo.class)).securityContexts(CollectionUtil.newArrayList(securityContext(),securityContext1())).securitySchemes(CollectionUtil.newArrayList(apiKey(),apiKey1()));
+                .build();
     }
 
     private ApiInfo groupApiInfo(){
-        DeveloperApiInfoExtension apiInfoExtension=new DeveloperApiInfoExtension();
-
-        apiInfoExtension.addDeveloper(new DeveloperApiInfo("张三","zhangsan@163.com","Java"))
-        .addDeveloper(new DeveloperApiInfo("李四","lisi@163.com","Java"));
-
-
         return new ApiInfoBuilder()
                 .title("swagger-bootstrap-ui很棒~~~！！！")
                 .description("<div style='font-size:14px;color:red;'>swagger-bootstrap-ui-demo RESTful APIs</div>")
                 .termsOfServiceUrl("http://www.group.com/")
                 .contact("group@qq.com")
                 .version("1.0")
-                //.extensions(Lists.newArrayList(apiInfoExtension))
                 .build();
     }
 

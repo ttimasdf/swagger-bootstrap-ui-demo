@@ -5,17 +5,24 @@ server:
 spring:
   application:
     name: Knife4j-Demo
-knife4j:
-  cloud:
-    accessKey: xiaoymin@foxmail.com
-    code: APITest
-    server: http://127.0.0.1:19011
-  enable: true
-  cors: true
-  markdowns: classpath:markdown2x/*
-  basic:
-    enable: false
-    username: zhangsan
-    password: 123456
+
 logging:
   config: classpath:logback-spring.xml
+knife4j:
+  enable: true
+  documents:
+    -
+      group: 2.X版本
+      name: 接口签名
+      locations: classpath:sign/sign1.md
+    -
+      group: 2.X版本
+      name: 另外文档分组请看这里
+      locations: classpath:markdown/*
+    -
+      group: 3.默认接口
+      name: 我是另外一个分组的文档
+      locations: classpath:markdown/*
+  setting:
+    language: zh-CN
+    enableSwaggerModels: true

@@ -7,26 +7,28 @@
 
 package com.swagger.bootstrap.ui.demo.new2;
 
-import cn.hutool.core.io.FileUtil;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
-import java.io.File;
-import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
- * 2020/10/19 12:47
+ * 2020/10/25 9:43
  * @since:knife4j-spring-boot-demo 1.0
  */
-@RestController
 @ApiIgnore
-@RequestMapping("/test")
-public class DataController {
-    @GetMapping("/json")
-    public String json()  {
-        return FileUtil.readString(new File("D:\\Users\\xiaoymin\\code\\oschina\\swagger-bootstrap-ui-demo\\knife4j-spring-boot-demo\\src\\main\\resources\\test1.json"),"UTF-8");
+@RestController
+@RequestMapping("/data")
+public class CallBackController {
+
+    Logger logger= LoggerFactory.getLogger(CallBackController.class);
+    @RequestMapping("/callback")
+    public void callback(HttpServletRequest request, HttpServletResponse response){
+        logger.info("callback");
     }
 }

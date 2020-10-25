@@ -10,6 +10,8 @@ package com.swagger.bootstrap.ui.demo.new2;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.resp196.LongUser;
+import com.swagger.bootstrap.ui.demo.domain.resp206.ReqModelBigDecimal;
+import com.swagger.bootstrap.ui.demo.domain.resp206.ReqModelJson;
 import com.swagger.bootstrap.ui.demo.domain.resp206.RequestDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,7 +28,7 @@ import java.util.List;
  * @since:knife4j-springfox-boot-v3-demo 1.0
  */
 @Api(tags = "2.0.6版本-20200919")
-@ApiSupport(author = "xiaoymin@foxmail.com",order = 283)
+@ApiSupport(author = "xiaoymin@foxmail.com",order = 282)
 @RestController
 @RequestMapping("/api/nxew206")
 public class Api206Controller {
@@ -51,4 +53,15 @@ public class Api206Controller {
         return Rest.data(requestDTO);
     }
 
+    @ApiOperation(value = "请求实体example是json",notes = "[https://github.com/xiaoymin/swagger-bootstrap-ui/issues/233](https://github.com/xiaoymin/swagger-bootstrap-ui/issues/233)")
+    @PostMapping("/reqJsont")
+    public Rest<ReqModelJson> reqjsonexmp(@RequestBody ReqModelJson reqModelJson){
+        return Rest.data(reqModelJson);
+    }
+
+    @ApiOperation(value = "请求实体精度丢失",notes = "[https://github.com/xiaoymin/swagger-bootstrap-ui/issues/269](https://github.com/xiaoymin/swagger-bootstrap-ui/issues/269)")
+    @PostMapping("/reqJsontb")
+    public Rest<ReqModelBigDecimal> reqJsontb(@RequestBody ReqModelBigDecimal reqModelJson){
+        return Rest.data(reqModelJson);
+    }
 }
