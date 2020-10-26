@@ -26,3 +26,4 @@ knife4j:
   setting:
     language: zh-CN
     enableSwaggerModels: true
+    enableDocumentManage: false

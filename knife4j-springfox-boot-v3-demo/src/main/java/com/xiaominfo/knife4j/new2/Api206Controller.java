@@ -7,6 +7,7 @@
 
 package com.xiaominfo.knife4j.new2;
 
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.xiaominfo.knife4j.common.Rest;
 import com.xiaominfo.knife4j.domain.resp196.LongUser;
@@ -27,18 +28,20 @@ import java.util.List;
  * @since:knife4j-springfox-boot-v3-demo 1.0
  */
 @Api(tags = "2.0.6版本-20200919")
-@ApiSupport(author = "xiaoymin@foxmail.com",order = 283)
+@ApiSupport(author = "xiaoymin@foxmail.com",order = 282)
 @RestController
 @RequestMapping("/api/nxew206")
 public class Api206Controller {
     Logger logger= LoggerFactory.getLogger(Api206Controller.class);
 
+    @ApiOperationSupport(order = 2,author = "八一菜刀")
     @ApiOperation(value = "body+parameter类型")
     @PostMapping("/reqbody")
     public Rest<LongUser> reqJson(@RequestBody LongUser longUser, @RequestParam(value = "code",required = false) String code, HttpServletRequest request){
         logger.info("code:{}",code);
         return Rest.data(longUser);
     }
+    @ApiOperationSupport(order = 3)
     @ApiOperation(value = "body+parameter类型-arry")
     @PostMapping("/reqbodyarry")
     public Rest< List<LongUser>> reqJsoarryn(@RequestBody List<LongUser> longUsers, @RequestParam(value = "code",required = false) String code){
@@ -46,6 +49,7 @@ public class Api206Controller {
         return Rest.data(longUsers);
     }
 
+    @ApiOperationSupport(order = 4)
     @ApiOperation(value = "枚举请求")
     @PostMapping("/pay")
     public Rest<CommonRequestPay> pay(CommonRequestPay commonRequestPay){

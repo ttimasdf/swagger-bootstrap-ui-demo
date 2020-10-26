@@ -34,7 +34,7 @@ import java.util.concurrent.TimeUnit;
  * 2019/12/16 19:42
  */
 @Api(tags = "2.0.2版本-20200226")
-@ApiSupport(author = "xiaoymin@foxmail.com",order = 283)
+@ApiSupport(author = "xiaoymin@foxmail.com",order = 286)
 @RestController
 @RequestMapping("/api/nxew202")
 public class Api202Controller {

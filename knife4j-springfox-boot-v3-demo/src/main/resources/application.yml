@@ -3,5 +3,12 @@ server:
 spring:
   application:
     name: knife4j-springfox-boot-v3
-
-key: abcd
+knife4j:
+  enable: true
+  documents:
+    -
+      group: 1.2.x
+      name: 测试自定义标题分组
+      locations: classpath:md/*
+  setting:
+    enableSwaggerModels: true
