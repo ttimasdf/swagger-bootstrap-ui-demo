@@ -6,7 +6,7 @@
  */
 
 package com.swagger.bootstrap.ui.demo.security;
-
+/*
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,7 +24,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
  * @since:knife4j-spring-boot-demo 1.0
  */
 /*@Configuration
-@EnableAuthorizationServer*/
+@EnableAuthorizationServer
 @Order(404)
 public class AuthConfiguration extends AuthorizationServerConfigurerAdapter {
     private final AuthenticationManager authenticationManager;
@@ -68,3 +68,4 @@ public class AuthConfiguration extends AuthorizationServerConfigurerAdapter {
                 .allowFormAuthenticationForClients();
     }
 }
+*/

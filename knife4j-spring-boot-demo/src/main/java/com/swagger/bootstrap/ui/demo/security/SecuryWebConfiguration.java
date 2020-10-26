@@ -6,7 +6,7 @@
  */
 
 package com.swagger.bootstrap.ui.demo.security;
-
+/*
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -26,15 +26,15 @@ import java.util.List;
  * 2020/10/25 9:18
  * @since:knife4j-spring-boot-demo 1.0
  */
-/*@Configuration*/
+/*@Configuration
 @Order(300)
 public class SecuryWebConfiguration extends WebSecurityConfigurerAdapter {
     @Override
-    @Bean(name = BeanIds.AUTHENTICATION_MANAGER)
+    //@Bean(name = BeanIds.AUTHENTICATION_MANAGER)
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-    @Bean
+    //@Bean
     public NoOpPasswordEncoder passwordEncoder() {
         return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
     }
@@ -64,3 +64,4 @@ public class SecuryWebConfiguration extends WebSecurityConfigurerAdapter {
                 .withUser("user").password("1234").roles("ADMIN");
     }
 }
+*/
