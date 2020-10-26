@@ -23,8 +23,8 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
  * 2020/10/25 9:20
  * @since:knife4j-spring-boot-demo 1.0
  */
-@Configuration
-@EnableAuthorizationServer
+/*@Configuration
+@EnableAuthorizationServer*/
 @Order(404)
 public class AuthConfiguration extends AuthorizationServerConfigurerAdapter {
     private final AuthenticationManager authenticationManager;
@@ -55,7 +55,8 @@ public class AuthConfiguration extends AuthorizationServerConfigurerAdapter {
                 .authorizedGrantTypes("client_credentials")
                 .redirectUris("http://localhost:8999/data/callback",
                         "http://localhost:8999/webjars/springfox-swagger-ui/oauth2-redirect.html",
-                        "http://192.168.1.10:8080/oauth2.html")
+                        "http://192.168.1.10:8080/oauth/oauth2.html",
+                        "http://localhost:8999/webjars/oauth/oauth2.html")
                 .scopes("read","write","reads","writes");
     }
 

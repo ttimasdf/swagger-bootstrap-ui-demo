@@ -26,7 +26,7 @@ import java.util.List;
  * 2020/10/25 9:18
  * @since:knife4j-spring-boot-demo 1.0
  */
-@Configuration
+/*@Configuration*/
 @Order(300)
 public class SecuryWebConfiguration extends WebSecurityConfigurerAdapter {
     @Override
@@ -43,7 +43,7 @@ public class SecuryWebConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         List<String> permitAllResouces= new ArrayList<>();
         //Swagger资源
-        permitAllResouces.addAll(Arrays.asList("/data/**","/oauth/**", "/login/**", "/logout/**","/swaggger-ui.html","/doc.html", "/v2/**", "/swagger-resources", "/swagger-resources/**", "/webjars/**"));
+        permitAllResouces.addAll(Arrays.asList("/data/**","/oauth/**", "/login/**", "/logout/**","/test/**","/swaggger-ui.html","/doc.html", "/v2/**", "/swagger-resources", "/swagger-resources/**", "/webjars/**"));
         String[] resouceArray=permitAllResouces.toArray(new String[]{});
         http.csrf().disable();
         http

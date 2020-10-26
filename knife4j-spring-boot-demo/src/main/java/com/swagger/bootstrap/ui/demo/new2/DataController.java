@@ -27,6 +27,6 @@ import java.io.IOException;
 public class DataController {
     @GetMapping("/json")
     public String json()  {
-        return FileUtil.readString(new File("D:\\Users\\xiaoymin\\code\\oschina\\swagger-bootstrap-ui-demo\\knife4j-spring-boot-demo\\src\\main\\resources\\test1.json"),"UTF-8");
+        return FileUtil.readString(new File("C:\\Users\\xiaoymin\\Desktop\\test.json"),"UTF-8");
     }
 }

@@ -25,6 +25,15 @@ public class ReqModelBigDecimal {
     @ApiModelProperty(value = "标签",example = "200")
     private String label;
 
+    @Override
+    public String toString() {
+        return "ReqModelBigDecimal{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", label='" + label + '\'' +
+                '}';
+    }
+
     public String getLabel() {
         return label;
     }

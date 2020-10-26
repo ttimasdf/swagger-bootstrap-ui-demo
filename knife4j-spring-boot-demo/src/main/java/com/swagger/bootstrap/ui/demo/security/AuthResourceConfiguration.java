@@ -18,8 +18,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
  * 2020/10/25 9:45
  * @since:knife4j-spring-boot-demo 1.0
  */
-@Configuration
-@EnableResourceServer
+/*@Configuration
+@EnableResourceServer*/
 @Order(402)
 public class AuthResourceConfiguration extends ResourceServerConfigurerAdapter {
 

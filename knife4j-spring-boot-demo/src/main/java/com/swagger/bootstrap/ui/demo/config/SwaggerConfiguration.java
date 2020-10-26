@@ -53,18 +53,18 @@ public class SwaggerConfiguration {
         //grantTypes.add(implicitGrant);
         //授权码模式AuthorizationCodeGrant
         TokenRequestEndpoint tokenRequestEndpoint=new TokenRequestEndpoint("http://localhost:8999/oauth/authorize","app1","123");
-        TokenEndpoint tokenEndpoint=new TokenEndpoint("http://192.168.1.10:8080/oauth/token","access_token");
-        //TokenEndpoint tokenEndpoint=new TokenEndpoint("http://localhost:8999/oauth/token","access_token");
+        //TokenEndpoint tokenEndpoint=new TokenEndpoint("http://192.168.1.10:8080/oauth/token","access_token");
+        TokenEndpoint tokenEndpoint=new TokenEndpoint("http://localhost:8999/oauth/token","access_token");
         AuthorizationCodeGrant authorizationCodeGrant=new AuthorizationCodeGrant(tokenRequestEndpoint,tokenEndpoint);
         //grantTypes.add(authorizationCodeGrant);
         //密码模式
-        //String passwordTokenUrl="http://localhost:8999/oauth/token";
-        String passwordTokenUrl="http://192.168.1.10:8080/oauth/token";
+        String passwordTokenUrl="http://localhost:8999/oauth/token";
+        //String passwordTokenUrl="http://192.168.1.10:8080/oauth/token";
         ResourceOwnerPasswordCredentialsGrant resourceOwnerPasswordCredentialsGrant=new ResourceOwnerPasswordCredentialsGrant(passwordTokenUrl);
         //grantTypes.add(resourceOwnerPasswordCredentialsGrant);
         //客户端模式（client credentials）
-        //String clientTokenUrl="http://localhost:8999/oauth/token";
-        String clientTokenUrl="http://192.168.1.10:8080/oauth/token";
+        String clientTokenUrl="http://localhost:8999/oauth/token";
+        //String clientTokenUrl="http://192.168.1.10:8080/oauth/token";
         ClientCredentialsGrant clientCredentialsGrant=new ClientCredentialsGrant(clientTokenUrl);
         grantTypes.add(clientCredentialsGrant);
 
@@ -93,8 +93,8 @@ public class SwaggerConfiguration {
                 .paths(PathSelectors.any())
                 .build()
                 .extensions(openApiExtensionResolver.buildExtensions(groupName))
-                .securityContexts(securityContexts).securitySchemes(securitySchemes);
-                //.securityContexts(CollectionUtil.newArrayList(securityContext())).securitySchemes(CollectionUtil.newArrayList(apiKey()));
+                //.securityContexts(securityContexts).securitySchemes(securitySchemes);
+                .securityContexts(CollectionUtil.newArrayList(securityContext())).securitySchemes(CollectionUtil.newArrayList(apiKey()));
         return docket;
     }
 
