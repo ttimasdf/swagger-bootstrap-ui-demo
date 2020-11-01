@@ -81,7 +81,15 @@ public class SwaggerConfiguration {
         List<SecurityScheme> securitySchemes=CollectionUtil.newArrayList(oAuth);
         //securyContext
         List<SecurityContext> securityContexts=CollectionUtil.newArrayList(securityContext);
-
+        List<Parameter> parameters=new ArrayList<>();
+        parameters.add(new ParameterBuilder()
+                .name("token").modelRef(new ModelRef("string"))
+                .parameterType("header")
+                .required(true).description("请求Token权限").build());
+        parameters.add(new ParameterBuilder()
+                .name("token1").modelRef(new ModelRef("string"))
+                .parameterType("header")
+                .required(true).description("请求Token权限1").build());
         String groupName="2.X版本";
         Docket docket=new Docket(DocumentationType.SWAGGER_2)
                 .host("https://www.baidu.com")
@@ -92,9 +100,11 @@ public class SwaggerConfiguration {
                 //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build()
+                .enableUrlTemplating(true)
                 .extensions(openApiExtensionResolver.buildExtensions(groupName))
+                .globalOperationParameters(parameters);
                 //.securityContexts(securityContexts).securitySchemes(securitySchemes);
-                .securityContexts(CollectionUtil.newArrayList(securityContext())).securitySchemes(CollectionUtil.newArrayList(apiKey()));
+                //.securityContexts(CollectionUtil.newArrayList(securityContext())).securitySchemes(CollectionUtil.newArrayList(apiKey()));
         return docket;
     }
 

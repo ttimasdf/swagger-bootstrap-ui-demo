@@ -98,6 +98,23 @@ public class UploadController {
     }
 
     @Order(value = 2)
+    @ApiOperation(value = "单文件File上传22")
+    @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,dataType = "__file"),
+            @ApiImplicitParam(name = "title", value = "title", required = true)}
+    )
+    @RequestMapping(value="/uploadMaterial22",method = RequestMethod.POST)
+    @ResponseBody
+    public RestMessage uploadMaterial22(@RequestParam(value="file",required = true) MultipartFile file,@RequestParam(value = "title") String title, HttpServletRequest request) throws IOException {
+        //int mul=1*1024*1024;
+        List<MultipartFile> a=CollectionUtil.newArrayList();
+        a.add(file);
+        List<Map> uploadFiles= upload(request,a.toArray(new MultipartFile[]{}));
+        RestMessage rm=new RestMessage();
+        rm.setData(uploadFiles);
+        return rm;
+    }
+
+    @Order(value = 2)
     @ApiOperation(value = "单文件File上传")
     @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,dataType = "__File"),
             @ApiImplicitParam(name = "title", value = "title", required = true)}

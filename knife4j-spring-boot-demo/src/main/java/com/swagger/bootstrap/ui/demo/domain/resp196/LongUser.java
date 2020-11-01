@@ -24,7 +24,6 @@ public class LongUser {
     private Long id;
 
     @ApiModelProperty(value = "教师 id 列表。", required = true)
-    @NotNull(message = "请选择教师")
     private List<Long> ids;
 
 

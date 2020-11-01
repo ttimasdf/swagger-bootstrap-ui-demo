@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 public class ReqModelBigDecimal {
 
-    @ApiModelProperty(value = "奖金名称",example = "MVP奖杯")
+    @ApiModelProperty(value = "奖金名称,记住:<br /><span style=\"color:red\">我很重要</span>",example = "MVP奖杯")
     private String name;
 
     @ApiModelProperty(value = "主键id", example="1293385365155090452")
