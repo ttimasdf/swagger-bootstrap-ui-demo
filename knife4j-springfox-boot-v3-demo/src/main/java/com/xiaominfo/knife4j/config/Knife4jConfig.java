@@ -12,10 +12,7 @@ import com.github.xiaoymin.knife4j.spring.extension.OpenApiExtensionResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.OAuthBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.builders.*;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
@@ -24,6 +21,7 @@ import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -42,22 +40,21 @@ public class Knife4jConfig {
         this.openApiExtensionResolver = openApiExtensionResolver;
     }
 
-    @Bean(value = "defaultApi3")
-    public Docket defaultApi3() {
-        Docket docket=new Docket(DocumentationType.OAS_30)
-                .apiInfo(apiInfo())
-                //分组名称
-                .groupName("3.测试分组")
-                .select()
-                //这里指定Controller扫描包路径
-                .apis(RequestHandlerSelectors.basePackage("com.xiaominfo.knife4j.controller"))
-                .paths(PathSelectors.any())
-                .build();
-        return docket;
-    }
-
     @Bean(value = "defaultApi1")
     public Docket defaultApi1() {
+        List<SecurityScheme> securitySchemes=Arrays.asList(new ApiKey("Authorization", "Authorization", "header"));
+
+        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
+        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+        authorizationScopes[0] = authorizationScope;
+
+        List<SecurityContext> securityContexts=Arrays.asList(SecurityContext.builder()
+                .securityReferences(CollectionUtil.newArrayList(new SecurityReference("Authorization", authorizationScopes)))
+                .forPaths(PathSelectors.regex("/.*"))
+                .build());
+        List<RequestParameter> requestParameters=new ArrayList<>();
+        requestParameters.add(new RequestParameterBuilder().name("test").description("测试").in(ParameterType.QUERY).required(true).build());
+
         Docket docket=new Docket(DocumentationType.OAS_30)
                 .apiInfo(apiInfo())
                 //分组名称
@@ -66,7 +63,9 @@ public class Knife4jConfig {
                 //这里指定Controller扫描包路径
                 .apis(RequestHandlerSelectors.basePackage("com.xiaominfo.knife4j.new2"))
                 .paths(PathSelectors.any())
-                .build().extensions(openApiExtensionResolver.buildExtensions("1.2.x"));
+                .build().globalRequestParameters(requestParameters).
+                        extensions(openApiExtensionResolver.buildExtensions("1.2.x"))
+            .securityContexts(securityContexts).securitySchemes(securitySchemes);
         return docket;
     }
     @Bean(value = "defaultApi2")
@@ -82,6 +81,20 @@ public class Knife4jConfig {
                 .build();
         return docket;
     }
+
+    @Bean(value = "defaultApi3")
+    public Docket defaultApi3() {
+        Docket docket=new Docket(DocumentationType.OAS_30)
+                .apiInfo(apiInfo())
+                //分组名称
+                .groupName("3.测试分组")
+                .select()
+                //这里指定Controller扫描包路径
+                .apis(RequestHandlerSelectors.basePackage("com.xiaominfo.knife4j.controller"))
+                .paths(PathSelectors.any())
+                .build();
+        return docket;
+    }
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
                 .title("swagger-bootstrap-ui很棒~~~！！！")
@@ -90,5 +103,38 @@ public class Knife4jConfig {
                 .contact(new Contact("八一菜刀","http://gitee.com/xiaoymin","xiaoymin@foxmail.com"))
                 .version("1.0")
                 .build();
+    }
+
+    private ApiKey apiKey() {
+        return new ApiKey("BearerToken", "Authorization", "header");
+    }
+    private ApiKey apiKey1() {
+        return new ApiKey("BearerToken1", "Authorization-x", "header");
+    }
+
+    private SecurityContext securityContext() {
+        return SecurityContext.builder()
+                .securityReferences(defaultAuth())
+                .forPaths(PathSelectors.regex("/.*"))
+                .build();
+    }
+    private SecurityContext securityContext1() {
+        return SecurityContext.builder()
+                .securityReferences(defaultAuth1())
+                .forPaths(PathSelectors.regex("/.*"))
+                .build();
+    }
+
+    List<SecurityReference> defaultAuth() {
+        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
+        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+        authorizationScopes[0] = authorizationScope;
+        return CollectionUtil.newArrayList(new SecurityReference("BearerToken", authorizationScopes));
+    }
+    List<SecurityReference> defaultAuth1() {
+        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
+        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+        authorizationScopes[0] = authorizationScope;
+        return CollectionUtil.newArrayList(new SecurityReference("BearerToken1", authorizationScopes));
     }
 }

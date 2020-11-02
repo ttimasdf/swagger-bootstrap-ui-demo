@@ -1,5 +1,7 @@
 server:
   port: 18568
+  servlet:
+    context-path: /
 spring:
   application:
     name: knife4j-springfox-boot-v3
@@ -12,3 +14,18 @@ knife4j:
       locations: classpath:md/*
   setting:
     enableSwaggerModels: true
+    enableDocumentManage: true
+    enableHost: false
+    enableHostText: http://localhost:999
+    enableRequestCache: true
+    enableFilterMultipartApis: false
+    enableFilterMultipartApiMethodType: POST
+    language: zh-CN
+    enableAfterScript: true
+    swaggerModelName: 实体类别图
+  cors: false
+  production: false
+  basic:
+    enable: false
+    username: test
+    password: 123
