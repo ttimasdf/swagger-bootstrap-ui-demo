@@ -19,6 +19,7 @@ import com.github.xiaoymin.knife4j.annotations.DynamicParameter;
 import com.github.xiaoymin.knife4j.annotations.DynamicResponseParameters;
 import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.resp196.LongUser;
+import com.swagger.bootstrap.ui.demo.domain.resp206.ClientTime;
 import com.swagger.bootstrap.ui.demo.domain.resp206.ReqModelBigDecimal;
 import com.swagger.bootstrap.ui.demo.domain.resp206.ReqModelJson;
 import com.swagger.bootstrap.ui.demo.domain.resp206.RequestDTO;
@@ -81,4 +82,9 @@ public class Api207Controller {
         return Rest.data("name:"+name+",id:"+id+","+RandomUtil.randomString(32));
     }
 
+    @ApiOperation(value = "日期类型参数")
+    @PostMapping(value = "/clientTime")
+    public Rest<ClientTime> clientTimeRest(ClientTime clientTime){
+        return Rest.data(clientTime);
+    }
 }

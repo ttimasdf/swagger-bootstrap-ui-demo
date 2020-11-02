@@ -1,7 +1,7 @@
 server:
   port: 8999
   servlet:
-    context-path: /
+    context-path: /cc
 spring:
   application:
     name: Knife4j-Demo
@@ -29,3 +29,5 @@ knife4j:
     enableDocumentManage: true
     swaggerModelName: 实体类列表
     enableVersion: false
+    enableReloadCacheParameter: false
+    enableAfterScript: true
