@@ -1,0 +1,31 @@
+server:
+  port: 19081
+knife4j:
+  enableAggregation: true
+  cloud:
+    enable: false
+    routes:
+      - name: 用户体系
+        uri: knife4j.xiaominfo.com
+        location: /v2/api-docs?group=2.X版本
+        swaggerVersion: 2.0
+        servicePath: /test
+      - name: 订单体系
+        uri: knife4j.xiaominfo.com
+        location: /v2/api-docs?group=3.默认接口
+        swaggerVersion: 2.0
+        servicePath: /zfefi
+  eureka:
+    enable: true
+    serviceUrl: http://localhost:10000/eureka/
+    routes:
+      - name: 订单服务
+        serviceName: service-order
+        location: /v2/api-docs?group=default
+        swaggerVersion: 2.0
+        servicePath: /order
+      - name: 用户服务
+        serviceName: service-user
+        location: /aub/v2/api-docs?group=default
+        swaggerVersion: 2.0
+        servicePath: /user
