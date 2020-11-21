@@ -11,7 +11,9 @@ import cn.hutool.core.collection.CollectionUtil;
 import com.github.xiaoymin.knife4j.spring.extension.OpenApiExtensionResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
+import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.*;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.service.*;
@@ -23,7 +25,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
 
 /**
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
@@ -32,6 +33,7 @@ import java.util.function.Predicate;
  */
 @EnableOpenApi
 @Configuration
+@Import(BeanValidatorPluginsConfiguration.class)
 public class Knife4jConfig {
 
     private final OpenApiExtensionResolver openApiExtensionResolver;
@@ -63,8 +65,9 @@ public class Knife4jConfig {
                 //这里指定Controller扫描包路径
                 .apis(RequestHandlerSelectors.basePackage("com.xiaominfo.knife4j.new2"))
                 .paths(PathSelectors.any())
-                .build().globalRequestParameters(requestParameters).
-                        extensions(openApiExtensionResolver.buildExtensions("1.2.x"))
+                .build().globalRequestParameters(requestParameters)
+                //.extensions(openApiExtensionResolver.buildExtensions("1.2.x"))
+                .extensions(openApiExtensionResolver.buildSettingExtensions())
             .securityContexts(securityContexts).securitySchemes(securitySchemes);
         return docket;
     }

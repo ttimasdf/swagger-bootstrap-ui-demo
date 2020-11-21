@@ -21,8 +21,17 @@ knife4j:
     enableFilterMultipartApis: false
     enableFilterMultipartApiMethodType: POST
     language: zh-CN
-    enableAfterScript: true
+    enableAfterScript: false
     swaggerModelName: 实体类别图
+    enableHomeCustom: false
+    homeCustomLocation: classpath:test/home.md
+    enableFooter: true
+    enableFooterCustom: true
+    footerCustomContent: 八一菜刀研究中心
+    enableSearch: false
+    enableDebug: true
+    enableOpenApi: true
+    enableGroup: true
   cors: false
   production: false
   basic:

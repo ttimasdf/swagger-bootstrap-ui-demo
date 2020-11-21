@@ -1,7 +1,7 @@
 server:
   port: 8999
   servlet:
-    context-path: /cc
+    context-path: /abb
 spring:
   application:
     name: Knife4j-Demo
@@ -11,10 +11,6 @@ logging:
 knife4j:
   enable: true
   documents:
-    -
-      group: 2.X版本
-      name: 接口签名
-      locations: classpath:sign/sign1.md
     -
       group: 2.X版本
       name: 另外文档分组请看这里
@@ -31,3 +27,24 @@ knife4j:
     enableVersion: false
     enableReloadCacheParameter: false
     enableAfterScript: true
+    enableFilterMultipartApiMethodType: POST
+    enableFilterMultipartApis: false
+    enableRequestCache: true
+    enableHost: false
+    enableHostText: 192.168.0.193:8000
+    enableHomeCustom: true
+    homeCustomLocation: classpath:markdown/home.md
+    enableSearch: false
+    enableFooter: true
+    enableFooterCustom: true
+    footerCustomContent: Apache License 2.0 | Copyright  2019-[浙江八一菜刀股份有限公司](https://gitee.com/xiaoym/knife4j)
+    enableDynamicParameter: false
+    enableDebug: true
+    enableOpenApi: false
+    enableGroup: true
+  cors: false
+  production: false
+  basic:
+    enable: false
+    username: test
+    password: 12313

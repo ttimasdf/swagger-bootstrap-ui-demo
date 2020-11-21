@@ -3,18 +3,17 @@ server:
 knife4j:
   enableAggregation: true
   cloud:
-    enable: false
+    enable: true
     routes:
       - name: 用户体系
-        uri: knife4j.xiaominfo.com
+        uri: 192.168.0.152:8999
         location: /v2/api-docs?group=2.X版本
         swaggerVersion: 2.0
         servicePath: /abbb/ffe
-      - name: 订单体系
-        uri: knife4j.xiaominfo.com
-        location: /v2/api-docs?group=3.默认接口
-        swaggerVersion: 2.0
-        servicePath: /cccc/dd
+    routeAuth:
+      enable: true
+      username: test
+      password: 12313
   eureka:
     enable: false
     serviceUrl: http://localhost:10000/eureka/
@@ -30,7 +29,7 @@ knife4j:
         swaggerVersion: 2.0
         servicePath: /user
   disk:
-    enable: true
+    enable: false
     routes:
       - name: 用户
         location: classpath:openapi/user.json

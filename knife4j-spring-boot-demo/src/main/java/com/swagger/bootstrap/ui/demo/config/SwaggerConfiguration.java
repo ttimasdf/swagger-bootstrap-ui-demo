@@ -96,7 +96,7 @@ public class SwaggerConfiguration {
                 .required(true).description("测试").build());
         String groupName="2.X版本";
         Docket docket=new Docket(DocumentationType.SWAGGER_2)
-                .host("https://www.baidu.com")
+                //.host("https://www.baidu.com")
                 .apiInfo(apiInfo())
                 .groupName(groupName)
                 .select()
@@ -106,13 +106,15 @@ public class SwaggerConfiguration {
                 .build()
                 .enableUrlTemplating(false)
                 .extensions(openApiExtensionResolver.buildExtensions(groupName))
-                .globalOperationParameters(parameters)
+                //.extensions(openApiExtensionResolver.buildSettingExtensions())
+                //.globalOperationParameters(parameters)
                 //.securityContexts(securityContexts).securitySchemes(securitySchemes);
-                .securityContexts(CollectionUtil.newArrayList(securityContext())).securitySchemes(CollectionUtil.newArrayList(apiKey()));
+                .securityContexts(CollectionUtil.newArrayList(securityContext())).securitySchemes(CollectionUtil.newArrayList(apiKey()))
+                ;
         return docket;
     }
 
-    @Bean(value = "defaultApi")
+    /*@Bean(value = "defaultApi")*/
     public Docket defaultApi() {
         ParameterBuilder parameterBuilder=new ParameterBuilder();
         List<Parameter> parameters= CollectionUtil.newArrayList();
@@ -129,7 +131,9 @@ public class SwaggerConfiguration {
                 //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build()
-                .extensions(openApiExtensionResolver.buildExtensions("3.默认接口")).globalOperationParameters(parameters)
+                .extensions(openApiExtensionResolver.buildExtensions("3.默认接口"))
+                //.extensions(openApiExtensionResolver.buildSettingExtensions())
+                .globalOperationParameters(parameters)
                 .securityContexts(CollectionUtil.newArrayList(securityContext())).securitySchemes(CollectionUtil.newArrayList(apiKey()));
         return docket;
     }
@@ -177,7 +181,7 @@ public class SwaggerConfiguration {
     private SecurityContext securityContext() {
         return SecurityContext.builder()
                 .securityReferences(defaultAuth())
-                .forPaths(PathSelectors.regex("/.*"))
+                //.forPaths(PathSelectors.regex(".*?208.*$"))
                 .build();
     }
     private SecurityContext securityContext1() {
