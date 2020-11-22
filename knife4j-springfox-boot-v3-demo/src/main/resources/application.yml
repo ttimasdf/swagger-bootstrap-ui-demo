@@ -16,19 +16,18 @@ knife4j:
     enableSwaggerModels: true
     enableDocumentManage: true
     enableHost: false
-    enableHostText: http://localhost:999
+    enableHostText: http://localhost:18568
     enableRequestCache: true
     enableFilterMultipartApis: false
     enableFilterMultipartApiMethodType: POST
     language: zh-CN
     enableAfterScript: false
-    swaggerModelName: 实体类别图
     enableHomeCustom: false
     homeCustomLocation: classpath:test/home.md
-    enableFooter: true
+    enableFooter: false
     enableFooterCustom: true
     footerCustomContent: 八一菜刀研究中心
-    enableSearch: false
+    enableSearch: true
     enableDebug: true
     enableOpenApi: true
     enableGroup: true
