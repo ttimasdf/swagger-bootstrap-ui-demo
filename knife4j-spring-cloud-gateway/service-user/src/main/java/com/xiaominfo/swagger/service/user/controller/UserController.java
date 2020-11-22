@@ -7,7 +7,7 @@
 
 package com.xiaominfo.swagger.service.user.controller;
 
-import com.google.common.collect.Lists;
+import cn.hutool.core.collection.CollectionUtil;
 import com.xiaominfo.swagger.service.user.common.Rest;
 import com.xiaominfo.swagger.service.user.model.User;
 import io.swagger.annotations.Api;
@@ -32,7 +32,7 @@ public class UserController {
     @PostMapping(value = "/list")
     public Rest<List<User>> list(){
         Rest<List<User>> rest=new Rest<>();
-        List<User> list= Lists.newArrayList(new User("user1","Java开发工程师","公司2")
+        List<User> list= CollectionUtil.newArrayList(new User("user1","Java开发工程师","公司2")
         ,new User("user2","C开发工程师","公司1")
         ,new User("user3","JavaScript工程师","公司3")
         ,new User("user4","Ui工程师","公司4")
