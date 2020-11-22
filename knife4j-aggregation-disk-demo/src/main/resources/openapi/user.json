@@ -2457,16 +2457,6 @@
           }
         ]
       }
-    ],
-    "x-setting": {
-      "language": "zh-CN",
-      "enableSwaggerModels": true,
-      "enableDocumentManage": true,
-      "enableRequestCache": true,
-      "enableFilterMultipartApis": false,
-      "enableFilterMultipartApiMethodType": "POST",
-      "enableHost": false,
-      "enableHostText": ""
-    }
+    ]
   }
 }
