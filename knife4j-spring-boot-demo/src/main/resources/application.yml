@@ -1,7 +1,7 @@
 server:
   port: 8999
   servlet:
-    context-path: /abb
+    context-path: /
 spring:
   application:
     name: Knife4j-Demo
