@@ -13,6 +13,7 @@ import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.github.xiaoymin.knife4j.annotations.DynamicParameter;
 import com.github.xiaoymin.knife4j.annotations.DynamicParameters;
 import com.swagger.bootstrap.ui.demo.common.Rest;
+import com.swagger.bootstrap.ui.demo.domain.resp203.UploadBody;
 import com.swagger.bootstrap.ui.demo.domain.resp208.RequestValidateModel;
 import com.swagger.bootstrap.ui.demo.domain.resp208.ValidateBean;
 import io.swagger.annotations.Api;
@@ -108,5 +109,16 @@ public class Api208Controller {
     @PostMapping(value = "/jsr303-body")
     public Rest<ValidateBean> jsr303body(@RequestBody @Validated ValidateBean validateBean){
         return Rest.data(validateBean);
+    }
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "file",value = "文件",dataType = "__File",required = true,allowMultiple = true),
+            @ApiImplicitParam(name = "title",value = "标题",required = true),
+
+    })
+    @PostMapping("/testupload")
+    public Rest<String> testupload(@RequestParam(value = "file")MultipartFile multipartFile,@RequestParam(value = "title")String title){
+        String data="fileName:"+multipartFile.getOriginalFilename()+",title:"+title;
+        return Rest.data(data);
     }
 }
