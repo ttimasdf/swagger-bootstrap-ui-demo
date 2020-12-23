@@ -22,7 +22,7 @@ knife4j:
     enableFilterMultipartApiMethodType: POST
     language: zh-CN
     enableAfterScript: false
-    enableHomeCustom: false
+    enableHomeCustom: true
     homeCustomLocation: classpath:test/home.md
     enableFooter: false
     enableFooterCustom: true
@@ -37,3 +37,7 @@ knife4j:
     enable: false
     username: test
     password: 123
+springfox:
+  documentation:
+    open-api:
+      enabled: false
