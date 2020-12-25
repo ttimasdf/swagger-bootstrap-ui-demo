@@ -109,19 +109,19 @@ public class SwaggerConfiguration {
                 //.extensions(openApiExtensionResolver.buildSettingExtensions())
                 //.globalOperationParameters(parameters)
                 //.securityContexts(securityContexts).securitySchemes(securitySchemes);
-                .securityContexts(CollectionUtil.newArrayList(securityContext())).securitySchemes(CollectionUtil.newArrayList(apiKey()))
+                .securityContexts(CollectionUtil.newArrayList(securityContext()))
+                .securitySchemes(CollectionUtil.newArrayList(apiKey()))
                 ;
         return docket;
     }
+    private List<ApiKey> securitySchemes() {
+        return CollectionUtil.newArrayList(
+                new ApiKey("JWT", "Authorization", "header"));
+    }
 
-    /*@Bean(value = "defaultApi")*/
+    @Bean(value = "defaultApi")
     public Docket defaultApi() {
-        ParameterBuilder parameterBuilder=new ParameterBuilder();
-        List<Parameter> parameters= CollectionUtil.newArrayList();
-        parameterBuilder.name("token").description("token令牌").modelRef(new ModelRef("String"))
-                .parameterType("header")
-                .required(true).build();
-        parameters.add(parameterBuilder.build());
+
 
         Docket docket=new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
@@ -133,8 +133,9 @@ public class SwaggerConfiguration {
                 .build()
                 .extensions(openApiExtensionResolver.buildExtensions("3.默认接口"))
                 //.extensions(openApiExtensionResolver.buildSettingExtensions())
-                .globalOperationParameters(parameters)
-                .securityContexts(CollectionUtil.newArrayList(securityContext())).securitySchemes(CollectionUtil.newArrayList(apiKey()));
+                //.securityContexts(CollectionUtil.newArrayList(securityContext()))
+                //.securitySchemes(CollectionUtil.newArrayList(apiKey()));
+        .securitySchemes(securitySchemes());
         return docket;
     }
     @Bean(value = "groupRestApi")

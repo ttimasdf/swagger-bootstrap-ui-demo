@@ -7,6 +7,7 @@
 
 package com.swagger.bootstrap.ui.demo.new2;
 
+import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.RandomUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -16,17 +17,21 @@ import com.swagger.bootstrap.ui.demo.common.Rest;
 import com.swagger.bootstrap.ui.demo.domain.resp203.UploadBody;
 import com.swagger.bootstrap.ui.demo.domain.resp208.RequestValidateModel;
 import com.swagger.bootstrap.ui.demo.domain.resp208.ValidateBean;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import com.swagger.bootstrap.ui.demo.grn.HistoricProcessInstanceVo;
+import com.swagger.bootstrap.ui.demo.grn.Ret;
+import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
 import java.util.Map;
 
 /**
@@ -120,5 +125,36 @@ public class Api208Controller {
     public Rest<String> testupload(@RequestParam(value = "file")MultipartFile multipartFile,@RequestParam(value = "title")String title){
         String data="fileName:"+multipartFile.getOriginalFilename()+",title:"+title;
         return Rest.data(data);
+    }
+
+    @ApiOperation(value = "下载文件")
+    @GetMapping(value = "/download",produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public void downloadZip(HttpServletResponse response){
+        try{
+            File file=new File("F:\\bak\\aaa.xlsx");
+            if (file.exists()){
+                response.setContentType("multipart/form-data");
+                //
+                response.addHeader("Content-Disposition","attachement;filename=aaa.xls");
+                OutputStream outputStream= response.getOutputStream();
+                FileInputStream fileInputStream=new FileInputStream(file);
+                int i=-1;
+                byte[] b=new byte[1024*1024];
+                while ((i=fileInputStream.read(b))!=-1){
+                    outputStream.write(b,0,i);
+                }
+                IoUtil.close(fileInputStream);
+                IoUtil.close(outputStream);
+            }
+        }catch (Exception e){
+
+        }
+
+    }
+
+    @ApiOperation("流程实例明细")
+    @GetMapping(value = "/getProcessInstanceById/{processInstanceId}")
+    public Ret<HistoricProcessInstanceVo> getProcessInstanceById(@PathVariable @ApiParam(value = "流程实例id") String processInstanceId) {
+        return null;
     }
 }

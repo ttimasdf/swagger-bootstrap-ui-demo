@@ -9,14 +9,14 @@ package com.xiaominfo.jfinal.config;
 
 import com.github.xiaoymin.knife4j.jfinal.JFinalDocument;
 import com.github.xiaoymin.knife4j.jfinal.JFinalSwagger;
+import com.github.xiaoymin.knife4j.jfinal.controller.JFinalSwaggerController;
+import com.github.xiaoymin.knife4j.jfinal.controller.JFinalSwaggerRoute;
 import com.jfinal.config.*;
 import com.jfinal.template.Engine;
 import com.xiaominfo.jfinal.controller.HelloController;
 import com.xiaominfo.jfinal.controller.SwaggerController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.List;
 
 /**
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
@@ -40,7 +40,8 @@ public class Knife4jJfinalConfig extends JFinalConfig {
                 .build();
 
         //添加路由
-        routes.add("/", SwaggerController.class);
+        //routes.add(new JFinalSwaggerRoute());
+        routes.add("/jf-swagger", JFinalSwaggerController.class);
         routes.add("/ab", HelloController.class);
         routes.getRouteItemList().forEach(route -> {
             jFinalDocument.addController(route.getControllerKey(),route.getControllerClass());
@@ -73,7 +74,7 @@ public class Knife4jJfinalConfig extends JFinalConfig {
     @Override
     public void onStart() {
         logger.info("启动回调");
-        /*JFinalSwagger.me.addDocs(new JFinalDocument.Builder().basePath("/")
+       /* JFinalSwagger.me.addDocs(new JFinalDocument.Builder().basePath("/")
                 .name("测试").description("JFinal整合Knife4j文档")
                 .title("JFinal整合Knife4j文档")
                 .paths("com.xiaominfo.jfinal.controller")
