@@ -66,8 +66,8 @@ public class Knife4jConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.xiaominfo.knife4j.new2"))
                 .paths(PathSelectors.any())
                 .build().globalRequestParameters(requestParameters)
-                //.extensions(openApiExtensionResolver.buildExtensions("1.2.x"))
-                .extensions(openApiExtensionResolver.buildSettingExtensions())
+                .extensions(openApiExtensionResolver.buildExtensions("1.2.x"))
+                //.extensions(openApiExtensionResolver.buildSettingExtensions())
             .securityContexts(securityContexts).securitySchemes(securitySchemes);
         return docket;
     }

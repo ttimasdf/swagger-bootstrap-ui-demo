@@ -4,6 +4,7 @@ import com.github.xiaoymin.knife4j.discovery.annotation.EnableKnife4jCloudDiscov
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -34,7 +35,9 @@ public class Knife4jSpringBootDemoApplication implements WebMvcConfigurer{
 
 
 	public static void main(String[] args) throws UnknownHostException {
-		ConfigurableApplicationContext application=SpringApplication.run(Knife4jSpringBootDemoApplication.class, args);
+		SpringApplication app=new SpringApplication(Knife4jSpringBootDemoApplication.class);
+		ConfigurableApplicationContext application=app.run(args);
+		//ConfigurableApplicationContext application=SpringApplication.run(Knife4jSpringBootDemoApplication.class, args);
 		Environment env = application.getEnvironment();
 		logger.info("\n----------------------------------------------------------\n\t" +
 						"Application '{}' is running! Access URLs:\n\t" +

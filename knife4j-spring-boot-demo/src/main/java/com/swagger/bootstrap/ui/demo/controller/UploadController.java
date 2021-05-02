@@ -130,6 +130,7 @@ public class UploadController {
         rm.setData(uploadFiles);
         return rm;
     }
+
     @Order(value = 2)
     @ApiOperation(value = "单文件File上传-noArg")
     @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式",paramType="form", required = true,dataType = "__File"),
