@@ -100,4 +100,16 @@ public class Api209Controller {
     public Rest<String> hi(){
         return Rest.data(RandomUtil.randomString(13));
     }
+
+
+    /**
+     * https://gitee.com/xiaoym/knife4j/issues/I28RJ5
+     * @return
+     */
+    @RequestMapping(value = "/hi1",method = {RequestMethod.POST,RequestMethod.GET})
+    @ApiImplicitParam(name = "name",value = "昵称",required = true,defaultValue = "张飞")
+    @ApiOperation(value = "method限制")
+    public Rest<String> hi1(@RequestParam(value = "name")String name){
+        return Rest.data("name:"+name+",random:"+RandomUtil.randomString(13));
+    }
 }

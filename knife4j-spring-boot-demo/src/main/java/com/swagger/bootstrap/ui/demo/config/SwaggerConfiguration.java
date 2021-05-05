@@ -83,17 +83,13 @@ public class SwaggerConfiguration {
         List<SecurityContext> securityContexts=CollectionUtil.newArrayList(securityContext);
         List<Parameter> parameters=new ArrayList<>();
         parameters.add(new ParameterBuilder()
-                .name("token").modelRef(new ModelRef("string"))
-                .parameterType("header")
-                .required(true).description("请求Token权限").build());
-        parameters.add(new ParameterBuilder()
-                .name("token1").modelRef(new ModelRef("string"))
-                .parameterType("header")
-                .required(true).description("请求Token权限1").build());
-        parameters.add(new ParameterBuilder()
-                .name("xname").modelRef(new ModelRef("string"))
+                .name("abroadId")
+                .description("(公共参数)环境标识")
+                .modelRef(new ModelRef("integer"))
+                .defaultValue("0")
                 .parameterType("query")
-                .required(true).description("测试").build());
+                .required(true)
+                .build());
         String groupName="2.X版本";
         Docket docket=new Docket(DocumentationType.SWAGGER_2)
                 //.host("https://www.baidu.com")
@@ -105,9 +101,9 @@ public class SwaggerConfiguration {
                 .paths(PathSelectors.any())
                 .build()
                 .enableUrlTemplating(false)
-                //.extensions(openApiExtensionResolver.buildExtensions(groupName))
+                .extensions(openApiExtensionResolver.buildExtensions(groupName))
                 //.extensions(openApiExtensionResolver.buildSettingExtensions())
-                //.globalOperationParameters(parameters)
+                .globalOperationParameters(parameters)
                 //.securityContexts(securityContexts).securitySchemes(securitySchemes);
                 .securityContexts(CollectionUtil.newArrayList(securityContext()))
                 .securitySchemes(CollectionUtil.newArrayList(apiKey()))

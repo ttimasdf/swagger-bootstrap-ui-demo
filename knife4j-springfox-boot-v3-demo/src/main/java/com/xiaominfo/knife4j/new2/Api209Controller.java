@@ -8,13 +8,16 @@
 package com.xiaominfo.knife4j.new2;
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.ZipUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import com.xiaominfo.knife4j.common.Rest;
 import com.xiaominfo.knife4j.domain.resp209.ModelApiResponse;
 import com.xiaominfo.knife4j.util.FileUtils;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -83,6 +86,13 @@ public class Api209Controller {
         ModelApiResponse modelApiResponse=new ModelApiResponse();
         modelApiResponse.setUrl("ddd");
         return ResponseEntity.ok(modelApiResponse);
+    }
+
+
+    @RequestMapping("/hi")
+    @ApiOperation(value = "你好",notes = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    public Rest<String> hi(){
+        return Rest.data(RandomUtil.randomString(13));
     }
 
 

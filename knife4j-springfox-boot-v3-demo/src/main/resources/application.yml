@@ -1,5 +1,5 @@
 server:
-  port: 18568
+  port: 8999
   servlet:
     context-path: /
 spring:
@@ -40,4 +40,4 @@ knife4j:
 springfox:
   documentation:
     open-api:
-      enabled: false
+      enabled: true

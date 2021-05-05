@@ -12,6 +12,7 @@ import com.github.xiaoymin.knife4j.spring.extension.OpenApiExtensionResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.*;
@@ -44,7 +45,8 @@ public class Knife4jConfig {
 
     @Bean(value = "defaultApi1")
     public Docket defaultApi1() {
-        List<SecurityScheme> securitySchemes=Arrays.asList(new ApiKey("Authorization", "Authorization", "header"));
+        //List<SecurityScheme> securitySchemes=Arrays.asList(new ApiKey("Authorization", "Authorization", "header"));
+        List<SecurityScheme> securitySchemes=new ArrayList<>();
 
         AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
@@ -54,6 +56,13 @@ public class Knife4jConfig {
                 .securityReferences(CollectionUtil.newArrayList(new SecurityReference("Authorization", authorizationScopes)))
                 .forPaths(PathSelectors.regex("/.*"))
                 .build());
+        HttpAuthenticationScheme httpAuthenticationScheme = HttpAuthenticationScheme.JWT_BEARER_BUILDER
+                .name(HttpHeaders.AUTHORIZATION)
+                .description("Bearer Token")
+                .build();
+        securitySchemes.add(httpAuthenticationScheme);
+
+        //默认全局参数
         List<RequestParameter> requestParameters=new ArrayList<>();
         requestParameters.add(new RequestParameterBuilder().name("test").description("测试").in(ParameterType.QUERY).required(true).build());
 
@@ -65,8 +74,9 @@ public class Knife4jConfig {
                 //这里指定Controller扫描包路径
                 .apis(RequestHandlerSelectors.basePackage("com.xiaominfo.knife4j.new2"))
                 .paths(PathSelectors.any())
-                .build().globalRequestParameters(requestParameters)
-                .extensions(openApiExtensionResolver.buildExtensions("1.2.x"))
+                .build()
+                //.globalRequestParameters(requestParameters)
+                //.extensions(openApiExtensionResolver.buildExtensions("1.2.x"))
                 //.extensions(openApiExtensionResolver.buildSettingExtensions())
             .securityContexts(securityContexts).securitySchemes(securitySchemes);
         return docket;

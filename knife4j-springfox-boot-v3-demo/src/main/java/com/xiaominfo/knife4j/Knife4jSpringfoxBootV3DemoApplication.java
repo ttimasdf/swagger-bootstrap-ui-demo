@@ -26,9 +26,11 @@ public class Knife4jSpringfoxBootV3DemoApplication {
                         "Local: \t\thttp://localhost:{}\n\t" +
                         "External: \thttp://{}:{}\n\t"+
                         "Doc: \thttp://{}:{}/doc.html\n\t"+
+                        "SwaggerDoc: \thttp://{}:{}/swagger-ui.html\n\t"+
                         "----------------------------------------------------------",
                 env.getProperty("spring.application.name"),
                 env.getProperty("server.port"),
+                host,port,
                 host,port,
                 host,port);
     }
