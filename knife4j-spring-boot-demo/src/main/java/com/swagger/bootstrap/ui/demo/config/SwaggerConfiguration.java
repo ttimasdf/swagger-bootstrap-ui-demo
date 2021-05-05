@@ -105,7 +105,7 @@ public class SwaggerConfiguration {
                 .paths(PathSelectors.any())
                 .build()
                 .enableUrlTemplating(false)
-                .extensions(openApiExtensionResolver.buildExtensions(groupName))
+                //.extensions(openApiExtensionResolver.buildExtensions(groupName))
                 //.extensions(openApiExtensionResolver.buildSettingExtensions())
                 //.globalOperationParameters(parameters)
                 //.securityContexts(securityContexts).securitySchemes(securitySchemes);

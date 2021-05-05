@@ -18,7 +18,7 @@ import java.util.List;
  * @since:knife4j-spring-boot-demo 1.0
  */
 public class UserListModel {
-    @ApiModelProperty(value = "名称")
+    @ApiModelProperty(value = "名称",notes = "我是备注信息")
     private String name;
     @ApiModelProperty(value = "工单等级(1:一级，2：二级，3：三级)",example = "[1,2]")
     private List<String> workOrderGradeList;

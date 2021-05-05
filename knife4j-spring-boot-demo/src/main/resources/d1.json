@@ -27,6 +27,10 @@
     {
       "name": "枚举测试",
       "description": "Enum Controller"
+    },
+    {
+      "name": "白板测试",
+      "description": "白板测试"
     }
   ],
   "paths": {
