@@ -7,14 +7,19 @@
 
 package com.xiaominfo.knife4j.new2;
 
+import cn.hutool.captcha.CaptchaUtil;
+import cn.hutool.captcha.LineCaptcha;
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.ImageUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.ZipUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.xiaominfo.knife4j.common.Rest;
+import com.xiaominfo.knife4j.domain.resp192.Result;
 import com.xiaominfo.knife4j.domain.resp209.ModelApiResponse;
+import com.xiaominfo.knife4j.domain.resp209.ModelInteger;
 import com.xiaominfo.knife4j.util.FileUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,9 +37,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -96,5 +103,40 @@ public class Api209Controller {
     }
 
 
+    @ApiOperation(value = "Long类型format")
+    @PostMapping("/model")
+    public Rest<ModelInteger> model(@RequestBody ModelInteger modelInteger){
+        return Rest.data(modelInteger);
+    }
 
+    /**
+     * https://gitee.com/xiaoym/knife4j/issues/I3IUUQ
+     * @param request
+     * @param response
+     * @throws Exception
+     */
+    @ApiOperation(value = "获取验证码", produces = "image/gif")
+    @GetMapping(value = "/captcha", produces = "image/gif")
+    public void captcha(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        // 设置请求头为输出图片类型
+        response.setContentType("image/gif");
+        response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+        response.setHeader("Cache-Control", "post-check=0, pre-check=0");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
+        LineCaptcha lineCaptcha=CaptchaUtil.createLineCaptcha(100,50);
+        Image image=lineCaptcha.createImage(RandomUtil.randomNumbers(5));
+        ImageUtil.write(image,"gif",response.getOutputStream());
+    }
+
+    /**
+     * https://gitee.com/xiaoym/knife4j/issues/I3BRWT
+     * @param file
+     * @return
+     */
+    @PostMapping(value = "/upload")
+    @ApiOperation(value = "上传文件")
+    public Rest<String> upload(@RequestPart(value = "file") MultipartFile file) {
+        return Rest.data("fileName:"+file.getName());
+    }
 }

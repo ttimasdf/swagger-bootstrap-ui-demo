@@ -103,7 +103,7 @@ public class SwaggerConfiguration {
                 .enableUrlTemplating(false)
                 .extensions(openApiExtensionResolver.buildExtensions(groupName))
                 //.extensions(openApiExtensionResolver.buildSettingExtensions())
-                .globalOperationParameters(parameters)
+                //.globalOperationParameters(parameters)
                 //.securityContexts(securityContexts).securitySchemes(securitySchemes);
                 .securityContexts(CollectionUtil.newArrayList(securityContext()))
                 .securitySchemes(CollectionUtil.newArrayList(apiKey()))

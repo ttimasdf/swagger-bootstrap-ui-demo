@@ -7,9 +7,12 @@
 
 package com.swagger.bootstrap.ui.demo.new2;
 
+import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.RandomUtil;
+import cn.hutool.extra.servlet.ServletUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.swagger.bootstrap.ui.demo.common.Rest;
+import com.swagger.bootstrap.ui.demo.domain.resp208.RequestValidateModel;
 import com.swagger.bootstrap.ui.demo.domain.resp209.IndexTree;
 import com.swagger.bootstrap.ui.demo.domain.resp209.UserListModel;
 import io.swagger.annotations.Api;
@@ -111,5 +114,17 @@ public class Api209Controller {
     @ApiOperation(value = "method限制")
     public Rest<String> hi1(@RequestParam(value = "name")String name){
         return Rest.data("name:"+name+",random:"+RandomUtil.randomString(13));
+    }
+
+    @GetMapping("/html")
+    @ApiOperation(value = "响应HTML")
+    public void html(HttpServletResponse response){
+        ServletUtil.write(response,new File("C:\\Users\\xiaoymin\\Desktop\\test.html"));
+    }
+
+    @ApiOperation(value = "表单请求")
+    @PostMapping(value = "/req")
+    public Rest<RequestValidateModel> req(@RequestBody RequestValidateModel requestValidateModel){
+        return Rest.data(requestValidateModel);
     }
 }

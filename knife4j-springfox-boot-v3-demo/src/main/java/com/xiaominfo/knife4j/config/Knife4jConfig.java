@@ -13,13 +13,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.*;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spi.service.contexts.OperationContext;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 
@@ -69,7 +67,7 @@ public class Knife4jConfig {
         Docket docket=new Docket(DocumentationType.OAS_30)
                 .apiInfo(apiInfo())
                 //分组名称
-                .groupName("1.2.x")
+                .groupName("2")
                 .select()
                 //这里指定Controller扫描包路径
                 .apis(RequestHandlerSelectors.basePackage("com.xiaominfo.knife4j.new2"))
@@ -81,7 +79,7 @@ public class Knife4jConfig {
             .securityContexts(securityContexts).securitySchemes(securitySchemes);
         return docket;
     }
-    @Bean(value = "defaultApi2")
+    //@Bean(value = "defaultApi2")
     public Docket defaultApi2() {
         Docket docket=new Docket(DocumentationType.OAS_30)
                 .apiInfo(apiInfo())
@@ -95,7 +93,7 @@ public class Knife4jConfig {
         return docket;
     }
 
-    @Bean(value = "defaultApi3")
+    //@Bean(value = "defaultApi3")
     public Docket defaultApi3() {
         Docket docket=new Docket(DocumentationType.OAS_30)
                 .apiInfo(apiInfo())

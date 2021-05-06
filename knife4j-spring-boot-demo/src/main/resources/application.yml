@@ -32,7 +32,7 @@ knife4j:
     enableReloadCacheParameter: false
     enableAfterScript: true
     enableFilterMultipartApiMethodType: POST
-    enableFilterMultipartApis: false
+    enableFilterMultipartApis: true
     enableRequestCache: true
     enableHost: false
     enableHostText: 192.168.0.193:8000
