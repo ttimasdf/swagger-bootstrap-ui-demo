@@ -39,6 +39,25 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/api/nxew202")
 public class Api202Controller {
 
+
+    @ApiOperation(value = "忽略参数 - 正则-query")
+    @ApiOperationSupport(order = 25,ignoreParameters = {"name*"})
+    @GetMapping("/getUserRegular")
+    public Rest<KRegularDto> getUserRegular(KRegularDto kDto){
+        Rest<KRegularDto> r=new Rest<>();
+        r.setData(kDto);
+        return r;
+    }
+
+    @ApiOperation(value = "忽略参数-正则-body")
+    @ApiOperationSupport(order = 25,ignoreParameters = {"kRegularDto.name*"})
+    @GetMapping("/getUserRegularBody")
+    public Rest<KRegularDto> getUserRegularBody(@RequestBody KRegularDto kRegularDto){
+        Rest<KRegularDto> r=new Rest<>();
+        r.setData(kRegularDto);
+        return r;
+    }
+
     @ApiOperation(value = "忽略参数")
     @ApiOperationSupport(order = 26,ignoreParameters = {"nodes[0]"})
     @GetMapping("/getUser221")
