@@ -18,9 +18,14 @@ import java.util.Map;
  * 2021/03/13 18:21
  * @since:knife4j-spring-boot-demo 1.0
  */
-public class UserListModel {
+public class UserListModelRegex {
     @ApiModelProperty(value = "名称",notes = "我是备注信息")
     private String name;
+
+    private String createTime;
+    private String createUser;
+    private String createUserId;
+    private String createTimer;
     @ApiModelProperty(value = "工单等级(1:一级，2：二级，3：三级)",example = "[1,2]")
     private List<String> workOrderGradeList;
 
@@ -29,6 +34,38 @@ public class UserListModel {
 
     public Map<String, DicDimension> getDicDimensionMap() {
         return dicDimensionMap;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getCreateUser() {
+        return createUser;
+    }
+
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser;
+    }
+
+    public String getCreateUserId() {
+        return createUserId;
+    }
+
+    public void setCreateUserId(String createUserId) {
+        this.createUserId = createUserId;
+    }
+
+    public String getCreateTimer() {
+        return createTimer;
+    }
+
+    public void setCreateTimer(String createTimer) {
+        this.createTimer = createTimer;
     }
 
     public void setDicDimensionMap(Map<String, DicDimension> dicDimensionMap) {

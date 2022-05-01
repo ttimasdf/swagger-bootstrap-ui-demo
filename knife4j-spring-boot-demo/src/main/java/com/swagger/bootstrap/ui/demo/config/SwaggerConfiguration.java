@@ -154,7 +154,7 @@ public class SwaggerConfiguration {
                 .description("<div style='font-size:14px;color:red;'>swagger-bootstrap-ui-demo RESTful APIs</div>")
                 .termsOfServiceUrl("http://www.group.com/")
                 .contact("group@qq.com")
-                .version("1.0")
+                .version("")
                 .build();
     }
 
@@ -164,7 +164,7 @@ public class SwaggerConfiguration {
                 .description("# swagger-bootstrap-ui-demo RESTful APIs")
                 .termsOfServiceUrl("http://www.xx.com/")
                 .contact("xx@qq.com")
-                .version("1.0")
+                .version("")
                 .build();
     }
 

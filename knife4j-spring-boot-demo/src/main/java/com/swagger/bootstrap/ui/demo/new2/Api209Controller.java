@@ -10,15 +10,16 @@ package com.swagger.bootstrap.ui.demo.new2;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.extra.servlet.ServletUtil;
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import com.swagger.bootstrap.ui.demo.common.PageVo;
 import com.swagger.bootstrap.ui.demo.common.Rest;
+import com.swagger.bootstrap.ui.demo.domain.resp196.IgnoreP1;
 import com.swagger.bootstrap.ui.demo.domain.resp208.RequestValidateModel;
 import com.swagger.bootstrap.ui.demo.domain.resp209.IndexTree;
 import com.swagger.bootstrap.ui.demo.domain.resp209.UserListModel;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import com.swagger.bootstrap.ui.demo.domain.resp209.UserListModelRegex;
+import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
@@ -43,6 +45,39 @@ import java.util.List;
 @RequestMapping("/api/nxew209")
 public class Api209Controller {
     Logger logger= LoggerFactory.getLogger(Api209Controller.class);
+
+    @ApiOperationSupport(order = 32,ignoreParameters = {"long.*"})
+    @ApiOperation(value = "正则忽略1")
+    @PostMapping("/ex1")
+    public Rest<IgnoreP1> findAll12(IgnoreP1 ignoreP1) {
+        Rest<IgnoreP1> r=new Rest<>();
+        r.setData(ignoreP1);
+        return r;
+    }
+
+    @ApiOperation(value = "正则忽略2",notes = "详见https://gitee.com/xiaoym/knife4j/issues/I21ZKC")
+    @ApiOperationSupport(order = 32,ignoreParameters = {"create.*","userListModel.createTime"})
+    @PostMapping("/ignoreRegex")
+    public Rest<UserListModelRegex> pageVoRest(@RequestBody UserListModelRegex userListModel){
+        return Rest.data(userListModel);
+    }
+
+
+    @ApiOperation(value = "正则忽略3",notes = "详见https://gitee.com/xiaoym/knife4j/issues/I21ZKC")
+    @ApiOperationSupport(order = 32,ignoreParameters = {"create.*"})
+    @PostMapping("/ignoreRegex1")
+    public Rest<UserListModelRegex> ignoreRegex1(UserListModelRegex userListModel){
+        return Rest.data(userListModel);
+    }
+    @ApiOperation(value = "泛型-3层",notes = "详见https://gitee.com/xiaoym/knife4j/issues/I2VRD5")
+    @PostMapping("/pageVoRest")
+    public Rest<PageVo<UserListModel>> pageVoRest(@RequestBody UserListModel userListModel){
+        PageVo<UserListModel> pageVo=new PageVo<UserListModel>();
+        for (int i=0;i<10;i++){
+            pageVo.add(userListModel);
+        }
+        return Rest.data(pageVo);
+    }
 
     @ApiOperation(value = "注解List示例值时",notes = "详见https://gitee.com/xiaoym/knife4j/issues/I2D6D4")
     @PostMapping("/userList")
@@ -126,5 +161,25 @@ public class Api209Controller {
     @PostMapping(value = "/req")
     public Rest<RequestValidateModel> req(@RequestBody RequestValidateModel requestValidateModel){
         return Rest.data(requestValidateModel);
+    }
+
+    @ApiOperation(value = "测试apiparam")
+    @PostMapping(value = "/initw")
+    public Rest<String> intw(Integer type){
+        return Rest.data(RandomUtil.randomString(5)+type);
+    }
+
+    @ApiOperation(value = "测试apiparam1")
+    @PostMapping(value = "/initw1")
+    public Rest<String> intw1(@ApiParam(value = "类型") Integer type){
+        return Rest.data(RandomUtil.randomString(5)+type);
+    }
+
+    @ApiOperation(value = "测试loading效果")
+    @ApiImplicitParam(name = "second",value = "秒",required = true,defaultValue = "3")
+    @GetMapping("/loading")
+    public Rest<String> loading(@RequestParam(value = "second") Long second) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(second);
+        return Rest.data(RandomUtil.randomString(32));
     }
 }

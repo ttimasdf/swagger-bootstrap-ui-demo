@@ -42,12 +42,12 @@ knife4j:
     enableFooter: true
     enableFooterCustom: true
     footerCustomContent: Apache License 2.0 | Copyright  2019-[浙江八一菜刀股份有限公司](https://gitee.com/xiaoym/knife4j)
-    enableDynamicParameter: false
+    enableDynamicParameter: true
     enableDebug: true
     enableOpenApi: false
     enableGroup: true
   cors: false
-  production: false
+  production: true
   basic:
     enable: false
     username: test

@@ -7,7 +7,10 @@
 
 package com.swagger.bootstrap.ui.demo.domain.resp209;
 
+import com.swagger.bootstrap.ui.demo.domain.resp208.ValidateBean;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Map;
 
 /**
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
@@ -23,6 +26,17 @@ public class DicDimension {
 
     @ApiModelProperty(name = "description", value = "描述")
     private String description;
+
+    @ApiModelProperty(value = "map属性")
+    private Map<String, ValidateBean> validateBeanMap;
+
+    public Map<String, ValidateBean> getValidateBeanMap() {
+        return validateBeanMap;
+    }
+
+    public void setValidateBeanMap(Map<String, ValidateBean> validateBeanMap) {
+        this.validateBeanMap = validateBeanMap;
+    }
 
     public Long getId() {
         return id;
