@@ -23,6 +23,7 @@ import com.swagger.bootstrap.ui.demo.domain.resp210.SysUser;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -47,12 +48,35 @@ import java.util.concurrent.TimeUnit;
 public class Api210Controller {
     Logger logger= LoggerFactory.getLogger(Api210Controller.class);
 
+    @ApiOperation(value = "下载excel文件" )
+    @GetMapping(value = "/xlsx" )
+    public void pdf(HttpServletResponse response) throws IOException {
+        //创建临时文件
+        File tmpFile=new File("/Users/xiaoyumin/Downloads/test/abc.dmg");
+        try{
+            //响应流
+            ServletUtil.write(response,tmpFile);
+        }finally {
+            //FileUtil.del(tmpFile);
+        }
+    }
+    @ApiOperation(value = "多文件上传")
+    @ApiImplicitParam(name = "files",value = "文件",dataType = "MultipartFile",allowMultiple = true)
+    @PostMapping("/uploadBatch")
+    public ResponseEntity<List<String>> uploadBatch(@RequestParam("files") List<MultipartFile> files){
+        List<String> fileResps=new ArrayList<>();
+        for (MultipartFile file:files){
+            fileResps.add(file.getOriginalFilename());
+        }
+        return ResponseEntity.ok(fileResps);
+    }
+
 
 
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "name",value = "名称",required = true),
-            @ApiImplicitParam(name = "title",value = "标题"),
-            @ApiImplicitParam(name = "age",value = "年龄")
+            @ApiImplicitParam(name = "name",value = "名称",defaultValue = "你好",required = true),
+            @ApiImplicitParam(name = "title",value = "标题",defaultValue = "我是标题"),
+            @ApiImplicitParam(name = "age",value = "年龄",defaultValue = "20")
     })
     @PostMapping("/reuqireParams")
     public Rest<String> requireParams(@RequestParam("name") String name,
@@ -61,6 +85,17 @@ public class Api210Controller {
         return Rest.data("name:"+name+",title:"+title+",age:"+age);
     }
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "name",value = "名称",example = "你好",required = true),
+            @ApiImplicitParam(name = "title",value = "标题",example = "我是标题"),
+            @ApiImplicitParam(name = "age",value = "年龄",example = "20")
+    })
+    @PostMapping("/reuqireParams2")
+    public Rest<String> requireParams2(@RequestParam("name") String name,
+                                      @RequestParam(value = "title",required = false) String title,
+                                      @RequestParam(value = "age",required = false) Integer age){
+        return Rest.data("name:"+name+",title:"+title+",age:"+age);
+    }
     @ApiOperation(value = "获取用户列表")
     @GetMapping("/getUsers")
     public Rest<List<SysUser>> get(){

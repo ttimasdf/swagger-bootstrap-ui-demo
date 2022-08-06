@@ -15,6 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @since:knife4j-springdoc-openapi-demo
  * @auth <a href="xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
@@ -83,6 +86,16 @@ public class FileController {
         fileResp.setSuccess(true);
         fileResp.setRandom(RandomUtil.randomString(12)+",receiveName:"+name+",id:"+id);
         return ResponseEntity.ok(fileResp);
+    }
+
+
+    @Operation(summary = "多文件上传")
+    @Parameter(name = "file",description = "文件",in = ParameterIn.DEFAULT,ref="file")
+    @PostMapping("/uploadBatch")
+    public ResponseEntity<List<FileResp>> uploadBatch(@RequestParam("files") List<MultipartFile> files){
+        List<FileResp> fileResps=new ArrayList<>();
+
+        return ResponseEntity.ok(fileResps);
     }
 
 
