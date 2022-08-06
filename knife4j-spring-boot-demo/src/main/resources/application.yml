@@ -47,7 +47,7 @@ knife4j:
     enableOpenApi: false
     enableGroup: true
   cors: false
-  production: true
+  production: false
   basic:
     enable: false
     username: test
