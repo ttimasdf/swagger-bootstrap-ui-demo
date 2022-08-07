@@ -7,6 +7,6 @@ spring:
       max-request-size: 100MB
 springdoc:
   swagger-ui:
-    path: /self/swagger-ui.html
+    path: /swagger-ui.html
   api-docs:
-    path: /self/v3/api-docs
+    path: /v3/api-docs
