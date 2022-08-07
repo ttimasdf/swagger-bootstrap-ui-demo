@@ -10,6 +10,7 @@ package com.swagger.bootstrap.ui.demo.new2;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.extra.servlet.ServletUtil;
+import com.alibaba.excel.EasyExcel;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.swagger.bootstrap.ui.demo.common.PageVo;
@@ -23,11 +24,13 @@ import com.swagger.bootstrap.ui.demo.domain.resp210.SysUser;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -113,5 +116,26 @@ public class Api210Controller {
                                       @RequestParam(value = "title",required = false) String title,
                                       @RequestParam(value = "age",required = false) Integer age){
         return Rest.data("name:"+name+",title:"+title+",age:"+age);
+    }
+
+    @ApiOperation("导出员工人才榜")
+    @GetMapping(value = "/excellentUser/export",produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public void excellentUserExport(HttpServletResponse response) {
+
+        List<SysUser> userRespList = new ArrayList<>();
+        for (int i=0;i<10;i++){
+            SysUser sysUser=new SysUser();
+            sysUser.setUserId(RandomUtil.randomLong());
+            sysUser.setDepId(RandomUtil.randomLong());
+            userRespList.add(sysUser);
+        }
+        try {
+            // 这里URLEncoder.encode可以防止中文乱码 当然和easyexcel没有关系
+            String fileName = URLEncoder.encode("测试", "UTF-8").replaceAll("\\+", "%20");
+            response.setHeader("Content-disposition", "attachment;filename=" + fileName + ".xlsx");
+            EasyExcel.write(response.getOutputStream(), SysUser.class).sheet("模板").doWrite(userRespList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
