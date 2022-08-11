@@ -8,12 +8,9 @@ import com.github.xiaoymin.knife4j.spring.extension.OpenApiExtensionResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.*;
 import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.*;
@@ -37,8 +34,6 @@ public class SwaggerConfiguration {
         this.typeResolver = typeResolver;
         this.openApiExtensionResolver = openApiExtensionResolver;
     }
-
-
 
 
     @Bean(value = "defaultApi2")

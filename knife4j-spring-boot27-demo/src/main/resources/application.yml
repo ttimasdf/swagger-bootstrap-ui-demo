@@ -23,7 +23,7 @@ knife4j:
     enableRequestCache: true
     enableHost: false
     enableHostText: 192.168.0.193:8000
-    enableHomeCustom: true
+    enableHomeCustom: false
     homeCustomLocation: classpath:markdown/home.md
     enableSearch: false
     enableFooter: true
@@ -39,9 +39,10 @@ knife4j:
     enable: false
     username: test
     password: 12313
+  customCode: 200
 server:
   port: 8990
-spring:
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
+#spring:
+ # mvc:
+  #  pathmatch:
+      #matching-strategy: ant_path_matcher
