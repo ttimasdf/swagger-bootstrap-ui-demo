@@ -33,6 +33,7 @@ knife4j:
     enableDebug: true
     enableOpenApi: false
     enableGroup: true
+    enableResponseCode: false
   cors: false
   production: false
   basic:

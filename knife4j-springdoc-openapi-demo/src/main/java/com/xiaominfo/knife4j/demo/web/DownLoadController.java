@@ -37,7 +37,7 @@ public class DownLoadController {
     public void image(HttpServletResponse response) throws IOException {
         //创建临时文件
         LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(150, 40, 4, 80);
-        response.addHeader("Content-Type","image/jpg");
+        response.addHeader("Content-Type",MediaType.IMAGE_PNG_VALUE);
         lineCaptcha.write(response.getOutputStream());
     }
 
