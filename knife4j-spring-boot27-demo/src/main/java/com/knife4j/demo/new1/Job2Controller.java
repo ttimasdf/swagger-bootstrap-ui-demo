@@ -2,7 +2,7 @@
  * Copy right © 2022 浙江力石科技股份有限公司 All Rights Reserved.
  * Official Web Site: http://lishiots.com
  */
-package com.knife4j.demo.new2;
+package com.knife4j.demo.new1;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.RandomUtil;
@@ -31,11 +31,11 @@ import java.util.Map;
  * 2022/8/6 23:42
  */
 @Slf4j
-@Api(tags = "job-20210501")
+@Api(tags = "job-20210502")
 @ApiSupport(author = "xiaoymin@foxmail.com",order = 278)
 @RestController
-@RequestMapping(value = "/job",produces = MediaType.APPLICATION_JSON_VALUE)
-public class JobController {
+@RequestMapping(value = "/job1",produces = MediaType.APPLICATION_JSON_VALUE)
+public class Job2Controller {
 
     @ApiOperation(value = "动态参数")
     @ApiImplicitParams({
