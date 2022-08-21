@@ -21,7 +21,37 @@ knife4j:
     group:
       test:
         group-name: 根据包名
-        strategy: package
-        resources:
+        api-rule: package
+        api-rule-resources:
           - com.knife4j.demo.new1
           - com.knife4j.demo.new2
+      path:
+        group-name: 根据路由
+        path-rule: ant
+        path-rule-resources:
+          - /job/**
+          - /work/**
+          - /job1/**
+      regex:
+        group-name: 根据正则表达式
+        path-rule: regex
+        path-rule-resources:
+          - .*?work.*
+      annotation:
+        group-name: 根据注解
+        api-rule: annotation
+        api-rule-resources:
+          - io.swagger.annotations.ApiOperation
+  production: false
+  setting:
+    custom-code: 500
+    enable-footer-custom: true
+    footer-custom-content: 我是自定义的Footer
+    language: zh_cn
+    enable-footer: false
+    enable-debug: true
+spring:
+  messages:
+    basename: i18n/message
+    encoding: utf-8
+    cache-duration: 3600

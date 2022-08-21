@@ -7,9 +7,12 @@ package com.knife4j.demo.new2;
 import cn.hutool.core.util.RandomUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.knife4j.demo.model.SysUser;
+import com.knife4j.demo.model.SysUserTime;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @auth <a href="xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
  * 2022/8/6 23:42
  */
-@Api(tags = "work-20210501")
 @ApiSupport(author = "xiaoymin@foxmail.com",order = 278)
 @RestController
 @RequestMapping("/work")
@@ -32,6 +34,18 @@ public class WorkController {
 
     @PostMapping("/orderList1")
     public ResponseEntity<SysUser> orderList1(SysUser sysUser){
+        return ResponseEntity.ok(sysUser);
+    }
+
+
+    @PostMapping("/orderList2")
+    @ApiOperation(value = "LocalDateTime测试")
+    public ResponseEntity<SysUserTime> orderList21(SysUserTime sysUser){
+        return ResponseEntity.ok(sysUser);
+    }
+    @PostMapping("/orderList2-body")
+    @ApiOperation(value = "LocalDateTime测试1")
+    public ResponseEntity<SysUserTime> orderList221(@RequestBody SysUserTime sysUser){
         return ResponseEntity.ok(sysUser);
     }
 

@@ -13,16 +13,16 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -36,6 +36,14 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "/job",produces = MediaType.APPLICATION_JSON_VALUE)
 public class JobController {
+
+    @Autowired MessageSource messageSource;
+
+    @ApiOperation(value = "API_JOB_I18n",notes = "API_JOB_I18n_DESC")
+    @GetMapping("/i18n")
+    public ResponseEntity<String> i18n(){
+        return ResponseEntity.ok(messageSource.getMessage("API_JOB_TAG",null, Locale.CHINA));
+    }
 
     @ApiOperation(value = "动态参数")
     @ApiImplicitParams({
