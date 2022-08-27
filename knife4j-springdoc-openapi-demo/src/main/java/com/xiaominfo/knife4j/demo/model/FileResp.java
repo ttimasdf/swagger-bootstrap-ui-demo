@@ -13,6 +13,7 @@ import lombok.Data;
  * 2022/8/6 16:26
  */
 @Data
+@Schema(name = "文件name",description = "文件对象")
 public class FileResp {
 
     @Schema(description = "随机名称")
