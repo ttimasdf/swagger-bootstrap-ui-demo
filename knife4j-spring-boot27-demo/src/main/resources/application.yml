@@ -1,7 +1,6 @@
 
 server:
   port: 8990
-
 #spring:
  # mvc:
   #  pathmatch:
@@ -10,7 +9,8 @@ knife4j:
   enable: true
   openapi:
     title: Knife4j官方文档
-    description: 我是测试
+    description: "`我是测试`,**你知道吗**
+    # aaa"
     email: xiaoymin@foxmail.com
     concat: 八一菜刀
     url: https://docs.xiaominfo.com
@@ -45,11 +45,16 @@ knife4j:
   production: false
   setting:
     custom-code: 500
-    enable-footer-custom: true
+    enable-footer-custom: false
     footer-custom-content: 我是自定义的Footer
     language: zh_cn
     enable-footer: false
     enable-debug: true
+    enable-open-api: true
+  documents:
+    - name: 我测试
+      group: 根据包名
+      locations: classpath:markdown/*
 spring:
   messages:
     basename: i18n/message

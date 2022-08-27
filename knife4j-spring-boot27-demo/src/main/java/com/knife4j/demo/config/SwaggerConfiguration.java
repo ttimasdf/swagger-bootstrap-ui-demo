@@ -112,7 +112,7 @@ public class SwaggerConfiguration {
 //    }
 //
 
-    @Bean(value = "defaultApi")
+    //@Bean(value = "defaultApi")
     public Docket defaultApi() {
 
 

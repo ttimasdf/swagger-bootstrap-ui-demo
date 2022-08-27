@@ -5,6 +5,7 @@
 
 package com.knife4j.demo.model;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.time.LocalDateTime;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
  * 2022/5/1 13:32
  * @since:knife4j-spring-boot-demo 1.0
  */
+@ApiModel("系统用户时间表")
 public class SysUserTime {
     @ApiModelProperty(value = "用户id")
     private Long userId;

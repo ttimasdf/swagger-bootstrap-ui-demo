@@ -68,6 +68,7 @@ public class JobController {
     }
 
 
+    @ApiOperation(value = "测试斜杠/abb")
     @PostMapping("/orderList1")
     public ResponseEntity<String> orderList1(){
         return ResponseEntity.ok(RandomUtil.randomNumbers(12));
