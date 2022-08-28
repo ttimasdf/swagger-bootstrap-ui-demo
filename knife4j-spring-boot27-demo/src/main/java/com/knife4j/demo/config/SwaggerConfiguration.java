@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.*;
 import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.*;
@@ -25,8 +27,12 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger2WebMvc
-public class SwaggerConfiguration {
-//
+public class SwaggerConfiguration implements WebMvcConfigurer {
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    }
+
+    //
 //   //private final TypeResolver typeResolver;
 ////   private final OpenApiExtensionResolver openApiExtensionResolver;
 ////

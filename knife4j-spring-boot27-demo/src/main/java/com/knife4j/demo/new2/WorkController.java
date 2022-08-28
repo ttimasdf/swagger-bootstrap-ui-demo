@@ -1,6 +1,6 @@
 /*
- * Copy right © 2022 浙江力石科技股份有限公司 All Rights Reserved.
- * Official Web Site: http://lishiots.com
+ * Copyright (C) 2018 Zhejiang xiaominfo Technology CO.,LTD.
+ * Official Web Site: http://www.xiaominfo.com.
  */
 package com.knife4j.demo.new2;
 
@@ -11,10 +11,7 @@ import com.knife4j.demo.model.SysUserTime;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @since:knife4j-spring-boot-demo
@@ -49,5 +46,12 @@ public class WorkController {
         return ResponseEntity.ok(sysUser);
     }
 
-
+    @PostMapping("/orderList2-header")
+    @ApiOperation(value = "LocalDateTime测试-header")
+    public ResponseEntity<SysUserTime> orderList212(
+            @RequestHeader("depId") Long depId,
+            @RequestHeader("userId") Long userId,
+            SysUserTime sysUser){
+        return ResponseEntity.ok(sysUser);
+    }
 }
