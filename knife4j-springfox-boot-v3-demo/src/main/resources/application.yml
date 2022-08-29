@@ -41,3 +41,6 @@ springfox:
   documentation:
     open-api:
       enabled: true
+    swagger:
+      v2:
+        enabled: true

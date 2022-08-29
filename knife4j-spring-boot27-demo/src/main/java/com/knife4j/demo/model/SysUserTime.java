@@ -8,6 +8,9 @@ package com.knife4j.demo.model;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
 
@@ -19,9 +22,12 @@ import java.time.LocalDateTime;
 @ApiModel("系统用户时间表")
 public class SysUserTime {
     @ApiModelProperty(value = "用户id")
+    @NotBlank(message = "不能为空")
     private Long userId;
 
     @ApiModelProperty(value = "部门id")
+    @NotEmpty(message = "不能为空")
+    @Max(2000)
     private Long depId;
 
     @ApiModelProperty(value = "日期")

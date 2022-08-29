@@ -1,13 +1,20 @@
 server:
   port: 19081
+  servlet:
+    context-path: /nihao
 knife4j:
-  enableAggregation: true
   cloud:
     enable: true
     routes:
       - name: 测试分组1
-        uri: knife4j.xiaominfo.com
-        location: /v2/api-docs?group=2.X版本
+        uri: http://localhost:8991
+        location: /v2/api-docs?group=根据包名
       - name: 测试分组2
-        uri: knife4j.xiaominfo.com
-        location: /v2/api-docs?group=3.默认接口
+        uri: http://localhost:8990
+        location: /v2/api-docs?group=根据注解
+  connection-setting:
+    socket-timeout: 20000
+    connect-timeout: 20000
+    max-connection-total: 200
+    max-pre-route: 20
+  enable-aggregation: true

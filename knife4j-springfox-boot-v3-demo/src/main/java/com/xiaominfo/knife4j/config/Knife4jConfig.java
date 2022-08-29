@@ -76,10 +76,15 @@ public class Knife4jConfig {
                 //.globalRequestParameters(requestParameters)
                 //.extensions(openApiExtensionResolver.buildExtensions("1.2.x"))
                 //.extensions(openApiExtensionResolver.buildSettingExtensions())
-            .securityContexts(securityContexts).securitySchemes(securitySchemes);
+            .securityContexts(securityContexts).securitySchemes(securitySchemes());
         return docket;
     }
-    //@Bean(value = "defaultApi2")
+    private List<SecurityScheme> securitySchemes() {
+        List<SecurityScheme> apiKeyList= new ArrayList<>();
+        apiKeyList.add(HttpAuthenticationScheme.JWT_BEARER_BUILDER.name("Authorization").build());
+        return apiKeyList;
+    }
+    @Bean(value = "defaultApi2")
     public Docket defaultApi2() {
         Docket docket=new Docket(DocumentationType.OAS_30)
                 .apiInfo(apiInfo())
@@ -93,7 +98,7 @@ public class Knife4jConfig {
         return docket;
     }
 
-    //@Bean(value = "defaultApi3")
+    @Bean(value = "defaultApi3")
     public Docket defaultApi3() {
         Docket docket=new Docket(DocumentationType.OAS_30)
                 .apiInfo(apiInfo())
