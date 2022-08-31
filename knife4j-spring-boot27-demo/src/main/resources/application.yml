@@ -47,7 +47,7 @@ knife4j:
     custom-code: 500
     enable-footer-custom: false
     footer-custom-content: 我是自定义的Footer
-    language: zh_cn
+    language: en
     enable-footer: true
     enable-debug: true
     enable-open-api: true
