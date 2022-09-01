@@ -51,7 +51,7 @@ knife4j:
     enable-footer: true
     enable-debug: true
     enable-open-api: true
-    enable-host: true
+    enable-host: false
     enable-host-text: localhost:9090
   documents:
     - name: 我测试
