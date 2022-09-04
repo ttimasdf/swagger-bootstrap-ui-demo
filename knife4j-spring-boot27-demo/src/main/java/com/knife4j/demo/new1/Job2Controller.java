@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -65,8 +67,54 @@ public class Job2Controller {
 
 
     @ApiOperation(value = "邮箱")
+    @ApiImplicitParam(name = "email",value = "邮箱地址",defaultValue = "xiaoymin@foxmail.com",paramType = "path")
     @GetMapping("/test/{email}")
     public ResponseEntity<String> email(@PathVariable("email") String email){
         return ResponseEntity.ok("email:"+email);
+    }
+
+
+    @ApiOperation(value = "Put请求")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "email",value = "邮箱地址",required = true),
+            @ApiImplicitParam(name = "name",value = "昵称",required = true)
+    })
+    @PutMapping(value = "/putMethod",produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public ResponseEntity<String> putParam(@RequestParam("email") String email,@RequestParam("name") String name){
+        return ResponseEntity.ok("email:"+email);
+    }
+
+
+
+    @ApiOperation(value = "测试功能-0", notes = "测试功能(domain=other)")
+    @PostMapping("/rest")
+    public Object rest(HttpServletRequest request, HttpServletResponse response) {
+        System.err.println("/test/rest ......");
+        return "default method";
+    }
+
+    @ApiOperation(value = "测试功能-a", notes = "测试功能A(domain=aaa)")
+    @PostMapping(value = "/rest", params = {"domain=aaa"})
+    public Object rest_aaa(Integer goodsId, Integer goodsCount) {
+        System.err.println("/test/rest_aaa ......" + goodsId + ", " + goodsCount);
+        return "AAA";
+    }
+
+    @ApiOperation(value = "测试功能-b", notes = "测试功能B(domain=bbb)")
+    @PostMapping(value = "/rest", params = {"domain=bbb"})
+    public Object restb_bbb(String username, @RequestParam("pwd") String password) {
+        System.err.println("/test/rest_bbb ......" + username + ", " + password);
+        return "BBB";
+    }
+
+    @PutMapping("projects/{name}")
+    @ApiOperation(value = "修改一个项目的名称")
+    public ResponseEntity<Map<String,Object>> modifyProject(@PathVariable String name,
+                                               @RequestBody String newName) {
+        log.info("name:"+name+",newName:"+newName);
+        Map<String,Object> data=new HashMap<>();
+        data.put("name",name);
+        data.put("newName",newName);
+        return ResponseEntity.ok(data);
     }
 }

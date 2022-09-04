@@ -18,7 +18,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(description = "用户信息")
 public class UserSchema {
 
-    @Schema(description = "主键id",defaultValue = "1")
+    @Schema(description = "主键id",defaultValue = "1",title = "注解id-title")
     private String id;
 
     @Schema(description = "名称",defaultValue = "张飞")
