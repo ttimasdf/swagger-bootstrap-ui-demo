@@ -17,7 +17,7 @@ public class SysUserAllow1 {
     @ApiModelProperty(value = "用户id")
     private Long userId;
 
-    @ApiModelProperty(value = "状态",allowableValues = "success,fail")
+    @ApiModelProperty(value = "状态")
     private StatusEnum status;
 
     @ApiModelProperty(value = "部门id")
