@@ -117,4 +117,11 @@ public class Job2Controller {
         data.put("newName",newName);
         return ResponseEntity.ok(data);
     }
+
+
+    @GetMapping("/parents/{parentId:.+}")
+    @ApiOperation(value = "url特殊字符")
+    public ResponseEntity<String> list(@PathVariable(name = "parentId") String parentId){
+        return ResponseEntity.ok("pid:"+parentId);
+    }
 }

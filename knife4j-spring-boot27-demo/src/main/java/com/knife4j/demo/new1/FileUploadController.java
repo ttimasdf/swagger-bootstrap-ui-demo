@@ -61,4 +61,11 @@ public class FileUploadController {
     public ResponseEntity<SysUserAllow1> allowResponseEntity2(SysUserAllow1 sysUserAllow){
         return ResponseEntity.ok(sysUserAllow);
     }
+
+
+    @ApiOperation(value = "allow-示例23")
+    @PostMapping("/allow32")
+    public ResponseEntity<SysUserAllow1> allowResponseEntity23(@RequestBody SysUserAllow1 sysUserAllow){
+        return ResponseEntity.ok(sysUserAllow);
+    }
 }

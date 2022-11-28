@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
  */
 @ApiModel("系统用户时间表")
 public class SysUserTime {
-    @ApiModelProperty(value = "用户id")
+    @ApiModelProperty(value = "用户id",required = true)
     @NotBlank(message = "不能为空")
     private Long userId;
 
