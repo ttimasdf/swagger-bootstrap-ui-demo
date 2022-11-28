@@ -21,6 +21,29 @@ knife4j:
     group:
       test:
         group-name: 根据包名
+        basic-auths:
+          - auth-type: api_key
+            name: Authorization
+            key-name: BearerToken
+            paths:
+              - /**
+            scopes:
+              - name: read
+                description: read resource
+              - name: write
+                description: write resources
+
+        api-rule: package
+        api-rule-resources:
+          - com.knife4j.demo.new1
+          - com.knife4j.demo.new2
+      path:
+        group-name: 根据路由
+        path-rule: ant
+        path-rule-resources:
+          - /job/**
+          - /work/**
+          - /job1/**
         oauth2:
           grant-type: password
           paths:
@@ -35,17 +58,6 @@ knife4j:
               description: read resource
             - name: write
               description: write resources
-        api-rule: package
-        api-rule-resources:
-          - com.knife4j.demo.new1
-          - com.knife4j.demo.new2
-      path:
-        group-name: 根据路由
-        path-rule: ant
-        path-rule-resources:
-          - /job/**
-          - /work/**
-          - /job1/**
       regex:
         group-name: 根据正则表达式
         path-rule: regex
