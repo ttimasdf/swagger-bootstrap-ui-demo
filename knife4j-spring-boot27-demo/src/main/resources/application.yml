@@ -21,6 +21,20 @@ knife4j:
     group:
       test:
         group-name: 根据包名
+        oauth2:
+          grant-type: password
+          paths:
+            - /**
+          config:
+            url: http://127.0.0.1:8080/token/oauth
+            token-name: access_name
+            client-id: 123
+            client-secret: abc
+          scopes:
+            - name: read
+              description: read resource
+            - name: write
+              description: write resources
         api-rule: package
         api-rule-resources:
           - com.knife4j.demo.new1
