@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @since:knife4j-spring-boot-demo 1.0
  */
 public class SysUser {
-    @ApiModelProperty(value = "用户id")
+    @ApiModelProperty(value = "用户id",hidden = true)
     private Long userId;
 
     @ApiModelProperty(value = "部门id")

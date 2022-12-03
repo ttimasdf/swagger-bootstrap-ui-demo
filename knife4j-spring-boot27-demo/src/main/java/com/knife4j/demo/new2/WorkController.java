@@ -6,12 +6,17 @@ package com.knife4j.demo.new2;
 
 import cn.hutool.core.util.RandomUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import com.knife4j.demo.model.MapUser;
 import com.knife4j.demo.model.SysUser;
 import com.knife4j.demo.model.SysUserTime;
+import com.knife4j.demo.model.UserMessageRecordVOList;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * @since:knife4j-spring-boot-demo
@@ -53,5 +58,38 @@ public class WorkController {
             @RequestHeader("userId") Long userId,
             SysUserTime sysUser){
         return ResponseEntity.ok(sysUser);
+    }
+
+    @GetMapping("/html")
+    @ApiOperation(value = "html响应")
+    public void html(HttpServletResponse response) throws IOException {
+        response.sendRedirect("http://www.baidu.com");
+    }
+
+    @GetMapping("/html1")
+    @ApiOperation(value = "html响应1")
+    public void html1(HttpServletResponse response) throws IOException {
+        response.sendRedirect("/job/i18n");
+    }
+
+    @GetMapping("/html2")
+    @ApiOperation(value = "html响应2")
+    public void html2(HttpServletResponse response) throws IOException {
+        response.sendRedirect("http://localhost:8080/job/i18n");
+    }
+
+
+
+    @GetMapping("/definition")
+    @ApiOperation(value = "definition")
+    public ResponseEntity<UserMessageRecordVOList> definition(HttpServletResponse response) throws IOException {
+        return ResponseEntity.ok(new UserMessageRecordVOList());
+    }
+
+
+    @GetMapping("/mpuser")
+    @ApiOperation(value = "mpuser")
+    public ResponseEntity<MapUser> MapUser(HttpServletResponse response) throws IOException {
+        return ResponseEntity.ok(new MapUser());
     }
 }
