@@ -21,22 +21,13 @@ knife4j:
     group:
       test:
         group-name: 根据包名
-        basic-auths:
-          - auth-type: api_key
-            name: Authorization
-            key-name: BearerToken
-            paths:
-              - /**
-            scopes:
-              - name: read
-                description: read resource
-              - name: write
-                description: write resources
-
         api-rule: package
+        basic-auths:
+          - key-name: MyAuthorization
+            name: Authorization
+            auth-type: API_KEY
         api-rule-resources:
-          - com.knife4j.demo.new1
-          - com.knife4j.demo.new2
+          - com.knife4j.demo.new3
       path:
         group-name: 根据路由
         path-rule: ant

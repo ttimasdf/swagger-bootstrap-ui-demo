@@ -7,6 +7,9 @@ package com.knife4j.demo.model;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
+import java.util.List;
+
 /**
  * @author <a href="xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
  * 2022/12/3 21:41
@@ -19,6 +22,16 @@ public class ModelUser {
 
     @ApiModelProperty(value = "系统用户")
     private SysUser sysUser;
+
+    /**
+     * 教师 id 列表。
+     */
+    @ApiModelProperty(value = "教师 id 列表。", required = true)
+    @NotNull(message = "请选择教师")
+    private List<Long> ids;
+
+    @ApiModelProperty(value = "年龄")
+    private Long age;
 
 
 }
