@@ -5,6 +5,8 @@ server:
  # mvc:
   #  pathmatch:
       #matching-strategy: ant_path_matcher
+  servlet:
+    context-path: /
 knife4j:
   enable: true
   openapi:

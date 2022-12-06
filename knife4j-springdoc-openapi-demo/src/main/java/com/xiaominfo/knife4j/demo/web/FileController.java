@@ -94,6 +94,15 @@ public class FileController {
     @PostMapping("/uploadBatch")
     public ResponseEntity<List<FileResp>> uploadBatch(@RequestParam("files") List<MultipartFile> files){
         List<FileResp> fileResps=new ArrayList<>();
+        for (MultipartFile file:files){
+            FileResp fileResp=new FileResp();
+            fileResp.setSize(file.getSize());
+            fileResp.setName(file.getOriginalFilename());
+            fileResp.setSuccess(true);
+            fileResp.setRandom(RandomUtil.randomString(12));
+
+            fileResps.add(fileResp);
+        }
 
         return ResponseEntity.ok(fileResps);
     }
