@@ -5,18 +5,19 @@
 package com.knife4j.demo.new3;
 
 import cn.hutool.core.util.RandomUtil;
+import cn.hutool.extra.servlet.ServletUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import com.knife4j.demo.model.MapEnumUser;
 import com.knife4j.demo.model.ModelUser;
 import com.knife4j.demo.model.SysUser;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -32,6 +33,14 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "/job3",produces = MediaType.APPLICATION_JSON_VALUE)
 public class Job3Controller {
+
+    @GetMapping("/download")
+    public void download(HttpServletResponse response){
+        String path="/Users/xiaoyumin/Desktop/mac-app/robot_chat_info.xlsx";
+        log.info("download-path:{}",path);
+        response.setHeader("Access-Control-Expose-Headers","Content-Disposition");
+        ServletUtil.write(response,new File(path));
+    }
 
     @ApiOperation(value = "API_JOB_I18n",notes = "API_JOB_I18n_DESC")
     @PostMapping("/hidden3")
@@ -55,5 +64,23 @@ public class Job3Controller {
         map.put("token_type","Benear");
         map.put("access_token", RandomUtil.randomString(64));
         return ResponseEntity.ok(map);
+    }
+
+
+    @ApiOperation(value = "枚举可用值")
+    @PostMapping("/mo")
+    public ResponseEntity<MapEnumUser> mo(@RequestBody MapEnumUser mapEnumUser){
+        return ResponseEntity.ok(mapEnumUser);
+    }
+
+    @ApiOperation(value = "枚举可用值1")
+    @PostMapping("/mo1")
+    public ResponseEntity<MapEnumUser> mo1( MapEnumUser mapEnumUser){
+        return ResponseEntity.ok(mapEnumUser);
+    }
+    @ApiOperation(value = "枚举可用值2")
+    @PutMapping("/mo2")
+    public ResponseEntity<MapEnumUser> mo12( MapEnumUser mapEnumUser){
+        return ResponseEntity.ok(mapEnumUser);
     }
 }

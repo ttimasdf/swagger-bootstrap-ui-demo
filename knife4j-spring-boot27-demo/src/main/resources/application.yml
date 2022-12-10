@@ -76,6 +76,11 @@ knife4j:
     - name: 我测试
       group: 根据包名
       locations: classpath:markdown/*
+  basic:
+    enable: false
+    username: abc
+    password: 123
+  cors: true
 spring:
   messages:
     basename: i18n/message
