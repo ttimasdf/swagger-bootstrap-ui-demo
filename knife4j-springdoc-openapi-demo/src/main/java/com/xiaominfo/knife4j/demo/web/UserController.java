@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +44,7 @@ public class UserController {
 
     @Operation(summary = "创建用户1",description = "根据姓名创建用户1")
     @PostMapping("/createOne1")
-    public ResponseEntity<User> createOne1(User user){
+    public ResponseEntity<User> createOne1(@ParameterObject User user){
         return ResponseEntity.ok(user);
     }
 
