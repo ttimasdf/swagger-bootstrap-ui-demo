@@ -33,6 +33,8 @@ knife4j:
           - key-name: MyAuthorization
             name: Authorization
             auth-type: API_KEY
+            paths:
+              - /**
         api-rule-resources:
           - com.knife4j.demo.new3
       path:
@@ -71,7 +73,7 @@ knife4j:
     custom-code: 500
     enable-footer-custom: false
     footer-custom-content: 我是自定义的Footer
-    language: en
+    language: zh_cn
     enable-footer: true
     enable-debug: true
     enable-open-api: true
