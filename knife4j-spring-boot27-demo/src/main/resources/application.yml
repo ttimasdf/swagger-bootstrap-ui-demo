@@ -21,6 +21,11 @@ knife4j:
     license-url: https://stackoverflow.com/
     terms-of-service-url: https://stackoverflow.com/
     group:
+      test1:
+        group-name: com.focus
+        api-rule: package
+        api-rule-resources:
+          - com.knife4j.demo.new3
       test:
         group-name: 根据包名
         api-rule: package
@@ -66,7 +71,7 @@ knife4j:
     custom-code: 500
     enable-footer-custom: false
     footer-custom-content: 我是自定义的Footer
-    language: zh_cn
+    language: en
     enable-footer: true
     enable-debug: true
     enable-open-api: true
