@@ -79,6 +79,12 @@ public class UserController {
     public ResponseEntity<UserSchema> getRequest(UserSchema userSchema,@RequestParam("cade")String cade){
         return ResponseEntity.ok(userSchema);
     }
+
+    @Operation(summary = "json参数查询2")
+    @GetMapping(value = "/getRequest2",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UserSchema> getRequest2(@ParameterObject UserSchema userSchema,@RequestParam("cade")String cade){
+        return ResponseEntity.ok(userSchema);
+    }
     @Operation(summary = "json参数查询1")
     @PostMapping(value = "/getRequest1",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserSchema> getRequest1(@RequestBody UserSchema userSchema,@RequestParam("cade")String cade){
