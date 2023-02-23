@@ -26,6 +26,7 @@ knife4j:
   setting:
     language: zh_cn
     swagger-model-name: 实体类列表
+
   documents:
     - name: 标题1
       locations: classpath:markdown/*

@@ -72,4 +72,17 @@ public class DownLoadController {
             //FileUtil.del(tmpFile);
         }
     }
+
+    @Operation(summary = "下载excel文件1" )
+    @GetMapping(value = "/xlsx1" )
+    public void pdf1(HttpServletResponse response) throws IOException {
+        //创建临时文件
+        File tmpFile=new File("/Users/xiaoyumin/Desktop/Downloads/test1.xlsx");
+        try{
+            //响应流
+            ServletUtil.write(response,tmpFile);
+        }finally {
+            //FileUtil.del(tmpFile);
+        }
+    }
 }
