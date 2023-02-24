@@ -18,7 +18,7 @@ springdoc:
     - group: 'default'
       paths-to-match: '/**'
       packages-to-scan: com.xiaominfo.knife4j.demo.web
-
+  default-flat-param-object: true
 knife4j:
   enable: true
   setting:
