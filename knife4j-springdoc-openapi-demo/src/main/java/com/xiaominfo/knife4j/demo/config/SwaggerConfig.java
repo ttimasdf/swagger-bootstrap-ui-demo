@@ -7,13 +7,13 @@
 
 package com.xiaominfo.knife4j.demo.config;
 
-import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.RandomUtil;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.media.StringSchema;
 import io.swagger.v3.oas.models.parameters.HeaderParameter;
+import lombok.extern.slf4j.Slf4j;
 import org.springdoc.core.GroupedOpenApi;
 import org.springdoc.core.customizers.GlobalOpenApiCustomizer;
 import org.springframework.context.annotation.Bean;
@@ -28,6 +28,7 @@ import java.util.Map;
  * @author <a href="mailto:xiaoymin@foxmail.com">xiaoymin@foxmail.com</a> 
  * 2020/03/15 20:40
  */
+@Slf4j
 @Configuration
 public class SwaggerConfig {
     /**
