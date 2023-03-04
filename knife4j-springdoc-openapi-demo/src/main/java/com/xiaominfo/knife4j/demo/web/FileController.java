@@ -6,11 +6,14 @@ package com.xiaominfo.knife4j.demo.web;
 
 import cn.hutool.core.util.RandomUtil;
 import com.xiaominfo.knife4j.demo.model.FileResp;
+import com.xiaominfo.knife4j.demo.model.OSSRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,10 +26,18 @@ import java.util.List;
  * @auth <a href="xiaoymin@foxmail.com">xiaoymin@foxmail.com</a>
  * 2022/8/6 16:24
  */
+@Slf4j
 @RestController
 @RequestMapping("file")
 @Tag(name = "文件上传")
 public class FileController {
+
+    @PostMapping(value = "/oss",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<String> oss(@RequestPart MultipartFile file,OSSRequest ossRequest){
+        log.info("req:{}",ossRequest.toString());
+        log.info("file-name:{}",file.getOriginalFilename());
+        return ResponseEntity.ok(RandomUtil.randomString(12));
+    }
 
     @Operation(description = "单纯文件上传，无任何参数",summary = "单纯文件上传")
     @PostMapping("/upload")

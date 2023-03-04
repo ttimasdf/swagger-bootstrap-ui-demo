@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("body")
-@Tag(name = "body参数")
+@Tag(name = "body参数/2323")
 public class BodyController {
 
     @Operation(summary = "普通body请求")
