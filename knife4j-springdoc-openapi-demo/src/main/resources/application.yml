@@ -12,6 +12,7 @@ springdoc:
     path: /swagger-ui.html
     tags-sorter: alpha
     operations-sorter: alpha
+    show-extensions: true
   api-docs:
     path: /v3/api-docs
   group-configs:

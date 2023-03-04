@@ -6,6 +6,8 @@ package com.xiaominfo.knife4j.demo.web;
 
 import cn.hutool.extra.servlet.ServletUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import io.swagger.v3.oas.annotations.extensions.Extension;
+import io.swagger.v3.oas.annotations.extensions.ExtensionProperty;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -21,7 +23,11 @@ import java.io.File;
  * 2022/8/6 23:42
  */
 @Slf4j
-@Tag(name = "文件下载1")
+@Tag(name = "文件下载190",extensions = {
+        @Extension(name = "x-test-tag",properties = {
+                @ExtensionProperty(name = "x-or",value = "9000")
+        })
+})
 @ApiSupport(author = "xiaoymin@foxmail.com",order = 278)
 @RestController
 @RequestMapping(value = "/job3",produces = MediaType.APPLICATION_JSON_VALUE)

@@ -44,10 +44,10 @@ public class BodyController {
     @Operation(summary = "普通body请求+Param+Header")
     @Parameters({
             @Parameter(name = "token",description = "请求token",required = true,in = ParameterIn.HEADER),
-            @Parameter(name = "name",description = "文件名称",required = true,in=ParameterIn.QUERY)
+            @Parameter(name = "name",description = "文件名称",required = false,in=ParameterIn.QUERY)
     })
     @PostMapping("/bodyParamHeader")
-    public ResponseEntity<FileResp> bodyParamHeader(@RequestHeader("token") String token, @RequestParam("name")String name,@RequestBody FileResp fileResp){
+    public ResponseEntity<FileResp> bodyParamHeader(@RequestHeader("token") String token, @RequestParam(value = "name",required = false)String name,@RequestBody FileResp fileResp){
         fileResp.setName(fileResp.getName()+",receiveName:"+name+",token:"+token);
         return ResponseEntity.ok(fileResp);
     }
