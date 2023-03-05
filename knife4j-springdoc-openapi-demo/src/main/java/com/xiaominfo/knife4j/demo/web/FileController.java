@@ -5,12 +5,15 @@
 package com.xiaominfo.knife4j.demo.web;
 
 import cn.hutool.core.util.RandomUtil;
+import com.xiaominfo.knife4j.demo.model.FileRequestVo;
 import com.xiaominfo.knife4j.demo.model.FileResp;
 import com.xiaominfo.knife4j.demo.model.OSSRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.*;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -31,6 +34,26 @@ import java.util.List;
 @RequestMapping("file")
 @Tag(name = "文件上传")
 public class FileController {
+
+    @Operation(summary = "附件上传",description = "附近上传-xxx",requestBody = @RequestBody(content = {
+            @Content(mediaType = MediaType.MULTIPART_FORM_DATA_VALUE,schema = @Schema(type = "object"),
+            schemaProperties = {
+                    @SchemaProperty(name = "file",array = @ArraySchema(schema = @Schema(type = "string",format = "binary",requiredMode = Schema.RequiredMode.REQUIRED))),
+                    @SchemaProperty(name = "module",schema = @Schema(type = "string",required = true)),
+                    @SchemaProperty(name = "bizNo",schema = @Schema(type = "string",required = true)),
+                    @SchemaProperty(name = "bizType",schema = @Schema(type = "integer",required = true))
+            })
+    }))
+    @PostMapping(value = "/module/upload1",consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> fileModule1(FileRequestVo fileRequestVo){
+        return ResponseEntity.ok(RandomUtil.randomString(23));
+    }
+
+
+    @PostMapping(value = "/module/upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> fileModule(FileRequestVo fileRequestVo){
+        return ResponseEntity.ok(RandomUtil.randomString(23));
+    }
 
     @PostMapping(value = "/oss",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> oss(@RequestPart MultipartFile file,OSSRequest ossRequest){
