@@ -27,7 +27,7 @@ public class WebFluxKnife4jConfig {
     @Bean
     public GroupedOpenApi streamOpenApi(@Value("${springdoc.version}") String appVersion) {
         String[] paths = { "/stream/**" };
-        String[] packagedToMatch = { "org.springdoc.demo.app3" };
+        String[] packagedToMatch = { "com.github.xiaoymin" };
         return GroupedOpenApi.builder().group("x-stream")
                 .addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Stream API").version(appVersion)))
                 .pathsToMatch(paths).packagesToScan(packagedToMatch)
