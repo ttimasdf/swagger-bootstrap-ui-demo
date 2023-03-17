@@ -4,14 +4,12 @@ import cn.hutool.core.util.RandomUtil;
 import com.xiaominfo.knife4j.demo.config.TestBody;
 import com.xiaominfo.knife4j.demo.model.FileRequestVo;
 import com.xiaominfo.knife4j.demo.model.FileResp;
+import com.xiaominfo.knife4j.demo.model.MyBodyTest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -25,9 +23,29 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/test")
 public class Test1Controller {
 
-    @Operation(description = "测试一下")
+    @Operation(summary = "测试一下3")
+    @PostMapping(value = "/module/upload3",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> fileModule3(MyBodyTest fileResp, HttpServletResponse response){
+        return ResponseEntity.ok(RandomUtil.randomString(23));
+    }
+
+
+    @Operation(summary = "测试一下2")
+    @PostMapping(value = "/module/upload2",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> fileModule2(@RequestBody MyBodyTest fileResp, HttpServletResponse response){
+        return ResponseEntity.ok(RandomUtil.randomString(23));
+    }
+
+    @Operation(summary = "测试一下1")
+    @PostMapping(value = "/module/upload1",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> fileModule1(@RequestBody FileResp fileResp, HttpServletResponse response){
+        return ResponseEntity.ok(RandomUtil.randomString(23));
+    }
+
+    @Operation(summary = "测试一下")
     @PostMapping(value = "/module/upload",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> fileModule(@TestBody FileRequestVo fileRequestVo,@TestBody FileResp fileResp, HttpServletResponse response){
         return ResponseEntity.ok(RandomUtil.randomString(23));
     }
+
 }
