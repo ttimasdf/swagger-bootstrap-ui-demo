@@ -7,11 +7,11 @@
         <artifactId>knife4j-openapi3-gateway</artifactId>
         <version>1.0</version>
     </parent>
-    <groupId>com.github.knife4j.user</groupId>
-    <artifactId>user-service</artifactId>
+    <groupId>com.github.knife4j.order</groupId>
+    <artifactId>order-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>user-service</name>
-    <description>user-service</description>
+    <name>order-service</name>
+    <description>order-service</description>
 
     <repositories>
         <repository>
