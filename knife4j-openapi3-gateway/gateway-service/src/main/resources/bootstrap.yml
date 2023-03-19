@@ -6,12 +6,10 @@ knife4j:
     strategy: manual
     routes:
       - name: 用户服务
-        service-name: user-service
-        url: /v3/api-docs/default
+        url: /user-service/v3/api-docs/default
         context-path: /
       - name: 订单服务
-        service-name: order-service
-        url: /v3/api-docs/default
+        url: /order-service/v3/api-docs/default
         context-path: /
 
 spring:
@@ -21,15 +19,10 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-        username: nacos
-        password: nacos
       config:
         server-addr: 127.0.0.1:8848
         file-extension: yaml
         group: DEFAULT_GROUP
-        namespace: xiaoyumin
-        username: nacos
-        password: nacos
     discovery:
       reactive:
         enabled: false
@@ -46,12 +39,12 @@ spring:
         - id: user-service
           uri: lb://user-service
           predicates:
-            - Path=/**
+            - Path=/user-service/**
           filters:
-            - RewritePath=/(?<segment>.*),/$\{segment}
+            - RewritePath=/user-service/(?<segment>.*),/$\{segment}
         - id: order-service
           uri: lb://order-service
           predicates:
-            - Path=/**
+            - Path=/order-service/**
           filters:
-            - RewritePath=/(?<segment>.*),/$\{segment}
+            - RewritePath=/order-service/(?<segment>.*),/$\{segment}
