@@ -5,6 +5,13 @@ knife4j:
     enabled: true
     strategy: discover
     discover:
+      service-config:
+        user-service:
+          group-name: 用户服务
+          order: 1
+        order-service:
+          group-name: 订单
+          order: 1
       version: openapi3
 
 spring:
