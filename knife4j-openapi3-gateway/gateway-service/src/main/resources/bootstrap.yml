@@ -1,0 +1,57 @@
+server:
+  port: 10093
+knife4j:
+  gateway:
+    enabled: true
+    strategy: manual
+    routes:
+      - name: 用户服务
+        service-name: user-service
+        url: /v3/api-docs/default
+        context-path: /
+      - name: 订单服务
+        service-name: order-service
+        url: /v3/api-docs/default
+        context-path: /
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        group: DEFAULT_GROUP
+        namespace: xiaoyumin
+        username: nacos
+        password: nacos
+    discovery:
+      reactive:
+        enabled: false
+    loadbalancer:
+      retry:
+        enabled: true
+    # 路由网关配置
+    gateway:
+      # 启用了自动根据服务名建立路由
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/**
+          filters:
+            - RewritePath=/(?<segment>.*),/$\{segment}
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/**
+          filters:
+            - RewritePath=/(?<segment>.*),/$\{segment}
