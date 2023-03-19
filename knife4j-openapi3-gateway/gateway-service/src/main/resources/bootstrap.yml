@@ -3,14 +3,9 @@ server:
 knife4j:
   gateway:
     enabled: true
-    strategy: manual
-    routes:
-      - name: 用户服务
-        url: /user-service/v3/api-docs/default
-        context-path: /
-      - name: 订单服务
-        url: /order-service/v3/api-docs/default
-        context-path: /
+    strategy: discover
+    discover:
+      version: openapi3
 
 spring:
   application:
