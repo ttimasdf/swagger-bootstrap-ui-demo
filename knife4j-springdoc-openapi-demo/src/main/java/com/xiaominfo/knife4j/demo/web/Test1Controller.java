@@ -7,8 +7,10 @@ import com.xiaominfo.knife4j.demo.model.FileResp;
 import com.xiaominfo.knife4j.demo.model.MyBodyTest;
 import com.xiaominfo.knife4j.demo.model.v41.ConfigPageParam;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springdoc.api.annotations.ParameterObject;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,8 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/test")
 public class Test1Controller {
 
+
+    @SecurityRequirement(name = HttpHeaders.AUTHORIZATION)
     @Operation(summary = "描述1")
     @PostMapping("/description")
     public ResponseEntity<ConfigPageParam> description(@ParameterObject ConfigPageParam configPageParam){

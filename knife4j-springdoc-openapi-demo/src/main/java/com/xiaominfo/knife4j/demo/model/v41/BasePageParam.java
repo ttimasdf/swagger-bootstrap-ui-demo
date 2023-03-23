@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 @Schema(name = "通用分页查询参数")
 public class BasePageParam {
-    @Schema(description = "页码", example = "1")
+    @Schema(description = "页码",requiredMode = Schema.RequiredMode.REQUIRED, example = "1")
     private Long pageNo = 1L;
     @Schema(description = "分页大小", example = "20")
     private Long pageSize = 99999L;

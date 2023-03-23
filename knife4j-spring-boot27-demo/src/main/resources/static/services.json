@@ -1,8 +1,8 @@
 [
   {
     "name": "根据包名1",
-    "url": "/openapi31.json",
-    "swaggerVersion": "3.0",
-    "location": "/openapi31.json"
+    "url": "/openapi7.json",
+    "swaggerVersion": "2.0",
+    "location": "/openapi7.json"
   }
 ]
