@@ -49,6 +49,19 @@ public class FileUploadController {
         return ResponseEntity.ok(stringBuilder.toString());
     }
 
+    @ApiOperation(value = "文件上传-带参数Header")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "file",value = "文件",required = true,paramType = "form",dataType = "__File"),
+            @ApiImplicitParam(name = "name",value = "文件名称",required = true),
+    })
+    @PostMapping("/uploadParamHeader1")
+    public ResponseEntity<String> uploadParamHeader1(@RequestParam("file") MultipartFile file, @RequestParam("name") String name){
+        StringBuilder stringBuilder=new StringBuilder();
+        stringBuilder.append("token:").append("");
+            stringBuilder.append("file:"+file.getOriginalFilename());
+        stringBuilder.append("name:").append(name);
+        return ResponseEntity.ok(stringBuilder.toString());
+    }
 
     @ApiOperation(value = "allow-示例")
     @PostMapping("/allow")

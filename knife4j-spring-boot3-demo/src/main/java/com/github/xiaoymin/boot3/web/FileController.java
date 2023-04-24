@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -90,7 +91,7 @@ public class FileController {
 
 
     @Operation(summary = "多文件上传")
-    @Parameter(name = "file",description = "文件",in = ParameterIn.DEFAULT,ref="file")
+    @Parameter(name = "files",description = "文件",in = ParameterIn.DEFAULT,schema = @Schema(name = "files",format = "file"))
     @PostMapping("/uploadBatch")
     public ResponseEntity<List<FileResp>> uploadBatch(@RequestParam("files") List<MultipartFile> files){
         List<FileResp> fileResps=new ArrayList<>();

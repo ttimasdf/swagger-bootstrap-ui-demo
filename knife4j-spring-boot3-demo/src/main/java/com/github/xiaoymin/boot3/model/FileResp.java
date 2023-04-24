@@ -16,7 +16,7 @@ import lombok.Data;
 @Schema(name = "文件name",description = "文件对象")
 public class FileResp {
 
-    @Schema(description = "随机名称")
+    @Schema(description = "随机名称",requiredMode = Schema.RequiredMode.REQUIRED)
     private String random;
     @Schema(description = "文件名称")
     private String name;

@@ -41,9 +41,9 @@ public class BodyController {
         return ResponseEntity.ok(fileResp);
     }
 
-    @Operation(summary = "普通body请求+Param+Header")
+    @Operation(summary = "普通body请求+Param+Header",description = "")
     @Parameters({
-            @Parameter(name = "token",description = "请求token",required = true,in = ParameterIn.HEADER),
+            @Parameter(name = "token",example = "1",description = "请求token",required = true,in = ParameterIn.HEADER),
             @Parameter(name = "name",description = "文件名称",required = true,in=ParameterIn.QUERY)
     })
     @PostMapping("/bodyParamHeader")
