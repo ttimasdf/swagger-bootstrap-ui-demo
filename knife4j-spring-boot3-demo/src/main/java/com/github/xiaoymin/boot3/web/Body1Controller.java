@@ -6,6 +6,7 @@ package com.github.xiaoymin.boot3.web;
 
 import com.github.xiaoymin.boot3.model.FileResp;
 import com.github.xiaoymin.boot3.model.MapEnumUser;
+import com.github.xiaoymin.boot3.model.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("body1")
 @Tag(name = "aaa参数")
 public class Body1Controller {
+
+    @Operation(summary = "我是表单")
+    @PostMapping("/user")
+    public ResponseEntity<User> use(User user){
+        return ResponseEntity.ok(user);
+    }
+
 
     @Operation(summary = "枚举可用值")
     @PostMapping("/mo")

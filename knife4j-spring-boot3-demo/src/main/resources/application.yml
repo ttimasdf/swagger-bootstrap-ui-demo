@@ -20,6 +20,7 @@ springdoc:
     - group: 'default'
       paths-to-match: '/**'
       packages-to-scan: com.github.xiaoymin.boot3
+  default-flat-param-object: true
 
 knife4j:
   enable: true
